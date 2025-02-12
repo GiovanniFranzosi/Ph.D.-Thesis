@@ -1,0 +1,61 @@
+\chapter{Inroduction}
+\label{chap:chapter1}
+
+\section{Background}
+
+Cavitation is a widely studied phenomenon in fluid dynamics. It occurs when the fluid breaks due to pressure conditions to form a vapour-filled cavity. In marine engineering applications, these cavities can present complex dynamics and produce very different phenomena, including bubble, sheet, cloud, and vortex cavitation. 
+Each of these phenomena, which will be discussed in more detail below, forms and evolves with different mechanisms and has different implications on the hydrodynamic components on which it occurs.
+In marine engineering, cavitation poses critical challenges, especially for ship propellers and hull appendages. When cavitation occurs, the continuous collapses of vapour cavities may lead to material erosion.
+Cavitation erosion is mainly driven by high stress due to cavity collapses, which induce high-speed micro-jets and shockwaves. Repeated over time, these actions degrade material integrity, shortening the propeller's lifespan and demanding frequent repairments.
+Moreover, the pulsation and collapse of cavitation bubbles are a primary source of underwater noise, disrupting marine ecosystems, especially in areas with high traffic, where propeller cavitation noise becomes a major environmental pollutant.
+In addition to physical damage and noise, cavitation also reduces the hydrodynamic components' performances. For instance, under severe cavitation, the pressure distribution over the blades of a marine propeller significantly differs from the design one, leading to thrust breakdown and loss of efficiency.
+Therefore, due to cavitation, ships can experience vibrations and performance losses, which pose safety risks and increase operational costs due to higher fuel consumption.
+
+In this scenario, avoiding cavitation appears to be an effective solution to address these issues. However, this approach is generally not practicable. Indeed, most solutions adopted to mitigate cavitation often result in compromised efficiency. For instance, modifying the pitch or shape of the blades may reduce cavitation but could simultaneously decrease the propeller's thrust-generating capability.
+
+To achive an optimal balance between cavitation reduction and high efficiency in hydrodynamic component design is necessary to deeply invesigate mechanisms and dynamics of cavitation. Thus, developing experimental tecnique or numerical simulation is extemely important to gain the knowledge required to predict and control of cavitation-related effects.
+
+\section{Scientific Gap and Thesis Aims}
+
+In this regard, this study primarily focuses on cavitation erosion and cavitation-induced noise, as these two phenomena are often the most critical impacts of cavitation. Furthermore, studying these effects provides a foundation for understanding other detrimental consequences of cavitation. For instance, noise often correlates with vibration or pressure pulses.
+The scientific literature provides a broad spectrum of methodologies for analyzing these effects. These researchs, along with a comprehensive overview of the most advanced and sophisticated techniques, will be discussed in a dedicated chapter. However, to establish a clear foundation for this study’s objectives, the following section presents standard practices and methodologies used to investigate and predict these phenomena.
+
+Focusing on cavitation erosion, different approaches are available to get information regarding the aggressiveness of cavitation flow in terms of erosion potential or, more precisely, damage rate. Unfortunately, experimental and numerical approaches commonly employed in the study of erosive cavitation present several limitations.
+Numerical methods for erosion risk assessment can generally be divided into two groups. The first group does not resolve the dynamics of individual cavities and their collapse; instead, it relies on mixture theory. These methods generally estimate the cavitation erosive power using aggressiveness criteria based on specific parameters, often necessitating empirical calibration.
+The second group methods provides a more comprehensive description of cavitation dynamics. These approaches are usually more complex, time-consuming, resource-demanding and require skilled users while, in some cases, still leading to inaccurate results. For this reason, this approach remains an active area of research.
+Gathering data on erosion damages is generally more feasible through an experimental campaign on a model scale. Nevertheless, establishing a test procedure capable of reliably assessing cavitation erosion power is challenging. The most widely used experimental techniques for erosion risk assessment are based on the guidelines proposed by the International Towing Tank Conference (\cite{ITTC_Erosion}).
+These methods include visual observation of cavitation phenomena, often captured through high-speed video recordings, as well as damage assessment using the soft-paint technique. While these techniques offer valuable qualitative insights, they do not provide a quantitative measure of cavitation aggressiveness.
+In recent years, various experimental techniques have been developed to address these limitations and provide a more accurate, quantitative assessment of erosive power. Nowithstanding these advancements, several aspects of erosive cavitation remain in need of further investigation.
+
+The situation is slightly different regarding radiated noise. Numerical methods to address this phenomenon are highly resource-intensive and require advanced user skills. 
+Although rather complex, experimental procedures for measuring noise at the model scale and for determining its relative scaling to full-scale applications are quite well established. Even so, these procedures still need to be fully optimized and may be further improved. 
+Moreover, performing experimental tests or CFD simulations for noise prediction during a propeller design phase is not always feasible. In such cases, predictive methods based on empirical calibrations are frequently used. A typical example of these methods is the Empirical Tip Vortex Cavity (ETV) model, proposed in \cite{ETV_JMSE}.
+Collecting experimental data that allow strong physical correlations among model parameters would be highly beneficial for such empirical methods. Additionally, such data could support the development of novel and more detailed methods that capture the phenomenon more comprehensively.
+
+In this framework, collecting experimental data to enable a deeper understanding of cavitation becomes even more important. The work presented in this thesis aims to develop an experimental approach for gathering data on specific cavitation characteristics. Such data include measurements of the size of cavitating structures and their variation over time. 
+Beyond the information contained within the data, these insights would enable the estimation of specific parameters that are challenging to obtain experimentally but are essential for understanding and predicting the effects of cavitation. 
+For instance, by measuring the size variation of a cavitating bubble, it may be possible to estimate the pressure impulse generated by its collapse and assess its aggressiveness or erosive potential.
+Additionally, these factors heavily influence the prediction of underwater radiated noise. For instance, in many marine applications, noise generated by a cavitating propeller is largely attributed to tip vortex cavitation. This phenomenon is mainly a monopolar noise source which is directly influenced by fluctuations in vortex size over time. 
+
+\section{Thesis Layout}
+
+In order to make the reading as clear and simple as possible, here is reported a summary of the structure of the thesis and the content of the various chapters. This thesis consists of seven chapters. Chapeter \ref{chap:chapter1} present an general overview of cavitation, emphasizing its significance in marine engineering. In addition a short presetation of the objectives of the present work is provided.
+
+In Chapter \ref{chap:chapter2}, the general aspects of cavitation are introduced, highlighting its implication in naval engineering. Furthermore, a detailed description of the primary cavitation phenomena is provided, focusing especially on the physical mechanisms underlying cavitation dynamics.
+
+Chapter \ref{chap:chapter3} provides an overview of the primary effects associated with cavitation phenomena. Specifically, this thesis focuses on two key aspects: cavitation-induced erosion and the radiated underwater noise. The chapter presents the main techniques employed in the study of erosive cavitation and the prediction of cavitation noise. Furthermore, it highlights the opportunities that developing measurement techniques based on high-speed video and computer vision could offer in studying and understanding both phenomena.
+
+Chapter \ref{chap:chapter4} explores the computer vision and image processing techniques employed to analyze cavitation phenomena within the cavitation tunnel. The discussion is structured around the three fundamental phases of any computer vision methodology. Accordingly, the chapter is divided into three sections: selection of the camera model, calibration of the camera, and reconstruction strategies. Each section provides a brief mathematical framework to support the concepts presented. Moreover, the challenges associated with the cavitation tunnel environment and the solutions adopted to overcome these issues are outlined.
+
+Chapter \ref{chap:chapter5} presents the first case study discussed in this thesis, focusing on the application of computer vision techniques to the study of bubble cavitation.
+This case study was designed to investigate erosive cavitation. In this context, not only the sizes of cavitation bubbles but also their dynamics over time were analyzed. Based on this information, a method was proposed to estimate parameters directly related to the cavitation erosive power, i.e. the magnitude and duration of the pressure pulse generated by bubble collapse.
+
+Chapter \ref{chap:chapter6} is dedicated to presenting the second case study. Although still preliminary, this study investigates the relationship between tip vortex cavitation dynamics and the corresponding underwater radiated noise.
+The study focuses on a model-scale marine propeller tested under various operational and flow conditions. The application of the developed computer vision techniques enabled the reconstruction of cavitating vortices and the analysis of their dynamics over time. 
+Additionally, velocimetry tests were conducted to analyze the flow at the propeller tip, while noise measurements were used to evaluate the radiated noise spectrum.
+Despite being an early-stage investigation, these analyses have already provided valuable insights into the link between cavitating vortex dynamics and the resulting radiated noise.
+
+Finally, Chapter \ref{chap:chapter7} presents the conclusions of this thesis. This chapter summarizes the strengths and key findings obtained through the proposed techniques. Additionally, it highlights the challenges of applying computer vision to the study of cavitation and discusses potential future developments.
+
+
+

@@ -1,0 +1,95 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{ETV_JMSE}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d947b94b255bef77b22b70ec873fc0da}{%
+           family={Bosschers},
+           familyi={B\bibinitperiod},
+           given={Johan},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{fullhash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{fullhashraw}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{bibnamehash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{authorbibnamehash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{authornamehash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{authorfullhash}{d947b94b255bef77b22b70ec873fc0da}
+      \strng{authorfullhashraw}{d947b94b255bef77b22b70ec873fc0da}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2077-1312}
+      \field{journaltitle}{Journal of Marine Science and Engineering}
+      \field{number}{2}
+      \field{title}{A Semi-Empirical Prediction Method for Broadband Hull-Pressure Fluctuations and Underwater Radiated Noise by Propeller Tip Vortex Cavitation}
+      \field{volume}{6}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.3390/jmse6020049
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2077-1312/6/2/49
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2077-1312/6/2/49
+      \endverb
+    \endentry
+    \entry{ITTC_Erosion}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d7f087235282a680e5d3665b37f73536}{%
+           family={ITTC},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7f087235282a680e5d3665b37f73536}
+      \strng{fullhash}{d7f087235282a680e5d3665b37f73536}
+      \strng{fullhashraw}{d7f087235282a680e5d3665b37f73536}
+      \strng{bibnamehash}{d7f087235282a680e5d3665b37f73536}
+      \strng{authorbibnamehash}{d7f087235282a680e5d3665b37f73536}
+      \strng{authornamehash}{d7f087235282a680e5d3665b37f73536}
+      \strng{authorfullhash}{d7f087235282a680e5d3665b37f73536}
+      \strng{authorfullhashraw}{d7f087235282a680e5d3665b37f73536}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Recommended Procedures and Guidelines - Cavitation Induced Erosion on Propellers, Rudders and Appendages Model Scale Experiments}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
+      \verb{urlraw}
+      \verb https://www.ittc.info/media/8043/75-02-03-035.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.ittc.info/media/8043/75-02-03-035.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

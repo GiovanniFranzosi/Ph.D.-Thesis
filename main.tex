@@ -1,0 +1,122 @@
+\documentclass[10pt,b5paper,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[style=authoryear, citestyle=authoryear-comp, backend=biber, hyperref=true, maxcitenames=2]{biblatex}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+
+\usepackage{longtable}
+\usepackage{adjustbox}
+
+\usepackage{booktabs}
+\usepackage{array}
+
+\geometry{
+ b5paper,
+ left=30mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+}
+\usepackage[nottoc]{tocbibind}
+\usepackage{lineno}
+\usepackage{fancyhdr}
+
+\addbibresource{BIBLIOGRAPHY/references.bib}
+
+\setcounter{tocdepth}{3} 
+\setcounter{secnumdepth}{3} 
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot[LE]{\textit{Computer Vision Techniques in Cavitation Studies}} 
+\fancyhead[LE,RO]{\thepage} 
+\fancyhead[RE]{\leftmark} 
+\fancyhead[LO]{\leftmark} 
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}} 
+\renewcommand{\sectionmark}[1]{} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+    \vspace{1cm}
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{FIGURES/FrontPage/logo_verticale_BLACK.png}\\[1cm]
+        \textsc{\LARGE Università degli Studi di Genova}\\[1.5cm]
+        
+        \textsc{\Large PhD in Marine and Science Technologies} \\[0.5cm]
+        \textsc{\large Curriculum: Marine and Nautical Engineering,} \\[0.25cm]
+        \textsc{\large Marine Technologies} \\[0.5cm]
+        \textsc{\Large XXXVII Cycle}
+        \vspace{0.5cm}
+
+        % Titolo
+        \rule{\linewidth}{0.5mm} \\[0.4cm]
+        { \Large \bfseries Computer Vision Techniques in Cavitation Studies}\\[0.2cm]
+        \rule{\linewidth}{0.5mm} \\[1cm]
+
+        % Autore
+        \large
+        \emph{Candidate:}\\
+        Giovanni Franzosi
+        \vfill
+
+        % Relatore
+        \large
+        \emph{Supervisor:}\\
+        Prof. Giorgio Tani
+        \vfill
+
+        % Altri
+        \large
+        \emph{After an opinion from:}\\
+        External reviewers
+        \vfill
+
+        \large
+        \emph{In front of a jury composed of:}\\
+        Jury members
+        \vfill
+
+        % Data
+        \large
+        \emph{Date:}\\
+        To be defined
+        \vfill
+    \end{center}
+\end{titlepage}
+
+\include{CHAPTERS/abstract}
+
+\tableofcontents 
+\listoffigures    
+\listoftables   
+
+\mainmatter
+
+% Chapters
+\include{CHAPTERS/chapter1}
+% \include{CHAPTERS/chapter2}
+% \include{CHAPTERS/chapter3}
+% \include{CHAPTERS/chapter4}
+% \include{CHAPTERS/chapter5}
+% \include{CHAPTERS/chapter6}
+% \include{CHAPTERS/chapter7}
+
+% % Appendix
+% \appendix
+% \include{APPENDIX/appendixA}
+% \include{APPENDIX/appendixB}
+
+\backmatter
+\printbibliography
+\end{document}
