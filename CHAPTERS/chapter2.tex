@@ -1,0 +1,286 @@
+\chapter{Cavitation Fundamentals}
+\label{chap:chapter2}
+
+This chapter provides an overview of cavitation, describing the phenomenon's physical aspects and focusing on its relevance to naval engineering. It also includes a brief description of the main types of cavitation present in marine applications.
+Exploring this aspect of cavitation is essential to underscore the phenomenon's importance, its detrimental aspects, and the main purpose of the thesis, which will be discussed in detail in the following chapter.
+
+\section{General Aspects} 
+
+Cavitation is a physical phenomenon that occurs when a uniform liquid medium breaks down due to a sudden pressure drop. Generally, the breakdown of the liquid medium can be triggered, forgiving less relevant factors, by changes in temperature or pressure. When an increase in temperature causes this breakdown, it is called boiling. Conversely, the phenomenon is known as cavitation when vapour pockets form within the liquid medium due to a pressure drop at a nearly constant temperature (Figure \ref{fig:Phase Diagram}).
+
+In general, cavitation occurs when the local pressure of the fluid falls below a pressure threshold below which fluid cohesion is not guaranteed. 
+A breakdown in the liquid must occur for vapour pockets to begin forming within a liquid medium. However, the mere reduction of the local fluid pressure below the vapour pressure is not sufficient to drive this process. The Van der Waals isotherm curve (Figure \ref{fig:Van der Waals Isothermal}) shows that the liquid can withstand a certain degree of tensile stress before cavitating (\cite{carlton2018marine}).
+
+The amount of tension the liquid can tolerate depends on many factors that characterise the fluid from a microscopic point of view. One such factor is the number of particles (or cavitation nuclei) on which pockets of vapour can form and which facilitate the rupture of the liquid medium. 
+However, since the local pressure value of the fluid is still the main factor influencing cavitation, a more macroscopic approach can be adopted, using that parameter as a reference.
+Figure \ref{fig:Phase Diagram} shows the pressure-temperature phase diagram for water. In this diagram, it can be seen that the mechanism that triggers cavitation is a pressure drop. 
+In real applications, this pressure drop is often related to fluid dynamics.
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section1/Phase Diagram.png} 
+        \caption{Water Phase Diagram (\cite{carlton2018marine})}
+        \label{fig:Phase Diagram}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section1/Van der Waals Isothermal.png} 
+        \caption{Van der Waals’ isotherm and definition of tensile strength of liquid (\cite{carlton2018marine})}
+        \label{fig:Van der Waals Isothermal}
+    \end{minipage}
+\end{figure}
+
+Specifically, depending on the conditions of the liquid in which it occurs, cavitation can usually be divided into three macro-categories. 
+Cavitation can occur in a static or quasi-static liquid subject to an oscillating pressure field (if the oscillation amplitude is sufficiently high). This type of cavitation is called acoustic cavitation. Cavitation can also appear after a sudden acceleration of a solid body with sharp edges in a stationary liquid. 
+However, this work is interested only in hydrodynamic cavitation. This concerns fluids moving through narrow passages or around fins, wings, or propeller blades and generally involves high velocity (\cite{carlton2018marine}, \cite{franc2006fundamentals}). 
+
+In marine engineering and the maritime industry, cavitation is a phenomenon that often occurs in ship propellers and hull appendages. This phenomenon is usually considered detrimental, resulting in various harmful effects.
+
+Indeed, the dynamics of cavities generate hydrodynamic and acoustic pressure fluctuations, resulting in underwater radiated noise and pressure pulses that induce vibrations on the hull, potentially damaging structures and causing onboard noise. 
+Furthermore, in more severe cases, cavity collapse, vortex action, and cloud cavitation can erode the material of propellers or appendages, leading to a drastic reduction in the object's useful life and a consequent significant increase in maintenance costs.
+
+These phenomena will be discussed in more detail later in this thesis. However, it is important to highlight that cavitation can pose significant challenges to vessel safety, comfort, and operational costs. 
+Despite this, designing propellers that completely avoid cavitation in their operating conditions is not always an effective solution. 
+The design solutions adopted to reduce or delay the onset of cavitation often result in decreased propeller performance. 
+
+As a matter of fact, propeller design requires the search for an acceptable trade-off between propeller efficiency and cavitation reduction. While in many cases, an acceptable trade-off can be defined based on simple criteria for reduced cavitation (e.g. verification through the Burril method), for high-performance propellers, larger efforts are needed to optimise propeller performances without incurring cavitation negative effects.
+Therefore, it is essential to accurately define the threshold beyond which cavitation-related risks can not be accepted.
+This represents the main motivation of a large part of the research carried out on cavitation in  marine applications, including the current thesis. Achieving such knowledge requires deeply investigating the cavitation phenomenon and its effects.
+
+The following section provides a concise overview of the main types of cavitation affecting marine propellers and hull appendages.
+
+\section{Types of Cavitation}
+
+A cavitating flow is a region where fluid appears both in the liquid phase and as vapour. However, in real applications, such as ship propellers, a certain amount of gas is often present in addition to liquid water and vapour. The presence of gas (mainly air) strongly alters cavitating structures' growth and collapse dynamics. For this reason, a cavitating flow is usually treated as a two-phase, three-component phenomenon.
+Generally, cavitation dynamics are divided into three macro-groups: fixed forms, travelling forms and vibrating forms. However, with regard to marine applications, such as foils or marine propellers, fixed and travelling shapes are of greater interest (\cite{carlton2018marine}, \cite{knapp1970cavitation}). 
+
+Generally, cavitation occurring in propellers or hull appendages can be classified as one (or a combination) of the following phenomena:
+Bubble cavitation, sheet cavitation, cavitating vortices, cloud cavitation.
+A brief description of each of these phenomena is given below. 
+
+\subsection{Bubble Cavitation}
+To provide a complete description of bubble cavitation, it is first necessary to discuss the behaviour of a single cavitation bubble.
+Although less relevant to marine engineering practical applications, the dynamics of a single bubble is the phenomenon underlying any more complex type of cavitation. 
+When a cavitation nucleus enters a low-pressure region, it can rapidly expand, transitioning from a microscopic to macroscopic size in a process known as a 'cavitation event' (\cite{brennen2014cavitation}). The bubble continues to grow until external pressure conditions change. As it convects downstream into higher pressure regions, collapse begins, initially with slow contraction followed by a rapid, violent implosion.
+For instance, \cite{franc2006fundamentals} shows that the entire duration of the collapse phase of a 1 cm radius spherical vapour bubble in water under an external pressure of one bar is approximately one millisecond. At the same time, the duration of the last collapse stage is of the order of one microsecond.
+Since, from a practical standpoint, the bubble evolves near a solid wall in most of the relevant scenarios, the interaction between the bubble and the body surface has been deeply investigated.
+As shown in \cite{franc2006fundamentals}, the wall's presence alters the bubble's behaviour, causing the bubble to collapse asymmetrically with the formation of a micro-jet.
+However, this mechanism, which could be modelled as in \cite{Plesset_Chapman_1971}, differs from the experimental observation in which the flow conveys the bubble. 
+Experimental observations on headforms bodies, presented in \cite{Ceccio_Brennen_1991} show how the viscous boundary layer affects the behaviour of a cavitating bubble. The results of these experiments show a wide difference in the micromechanics of the phenomenon related to the Raynolds number and small variation in the body shape (inducing a laminar separation).
+Specifically, in the Schiebe headform (\cite{Schiebe1972MeasurementOT}), when the cavity approaches the collapse region, it takes on a wedge shape wider in the direction transverse to the flow. At the same time, since the bubble occupies flow layers at different velocities, shear effects arise. These effects cause significant spanwise vorticity, making the front side of the bubble twist around itself, generating a cavitating vortex.
+When the body shape produces a laminar separation within the region in which the cavitation bubbles occur (e.g. the ITTC headform originally presented in \cite{Lindgren1966CavitationIO}), different phenomena are observed. The separation onsets instability in the layer underneath the bubble. This instability appears like a cloudy layer of microscopic bubbles that slides beneath the bubble and is left behind as it evolves. As shown in \ref{fig:BubbleInstability}, the bubbly layer lasts for a few after the implosion of the main bubble, and two separate collapses occur. 
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble1.png}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble2.png} 
+    \end{subfigure}
+    \caption{Instability of the liquid layer under a traveling cavitation bubble (\cite{brennen2014cavitation})}
+    \label{fig:BubbleInstability}
+\end{figure}
+
+During these experiments, occasional bubbles formed local " attached cavitation" as they passed the point of laminar separation. This " attached cavitation" appeared as "tails" on the spanwise sides of the bubble. Again, as long as the main cavity moves downstream, these tails are left behind, resulting in separate collapses (\ref{fig:BubbleTails}).
+The influence of viscous effects on bubble dynamics is further demonstrated by the experiments presented in \cite{DeChizelle_Ceccio_Brennen_1994}, \cite{DeChizelle_Ceccio_Brennen_1995}. These experiments show that as the Reynolds number increases, the phenomena described above develop further and new ones arise. For example, the occurrence frequency of cavitation attached to "tails" increases. In addition, the tails grow in size until they surround the entire bubble, leaving a sort of cavitation patch as the bubble passes (\ref{fig:BubblePatches}). 
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble3.png}
+        \caption{Attached tails formed behind a traveling cavitation bubble \cite{brennen2014cavitation}}
+        \label{fig:BubbleTails}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble4.png} 
+        \caption{Cavitation patch induced by a traveling cavitation bubble \cite{brennen2014cavitation}}
+        \label{fig:BubblePatches}
+    \end{subfigure}
+\end{figure}
+
+In cases of practical interest for marine applications, bubble cavitation often occurs near a solid body that induces a specific pressure field in the fluid.  
+Specifically, it mainly affects the central portion of hydrofoils operating at a low angle of attack, propeller blades at the root, where the thickness is at its greatest, or the most heavily loaded sections when operating under no-impact conditions, i.e., at a small angle of attack (\ref{fig:BubbleFoilCavitation}).
+In this case, the occurrence of cavitation "events" increases considerably due to various scale effects (including the increased number of Raynolds and the significant increase in the number and size of cavitation nuclei). In real applications, this leads to many bubbles interacting with each other, further modifying their dynamics.
+Analysing cavitation on hydrofoils or ship propellers, it has been observed that the cavitating bubbles, if in enough number, coalesce into agglomerates characterised by strong instability. 
+By further simulating cavitation, the coalescence of the travelling bubbles forms a single cavitating body. This structure remains stable, sustained by incoming bubbles, and releases cavitating vortices downstream made of microscopic bubbles.
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble5.png}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble6.png} 
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{FIGURES/Chapter2/Section2/Subsection1/Bubble7.png} 
+    \end{subfigure}
+    \caption{Bubble cavitation on a NACA 0015 hydrofoil for different cavitation number conditions}
+    \label{fig:BubbleFoilCavitation}
+\end{figure}
+
+\subsection{Sheet Cavitation}
+Sheet cavitation, also known as attached cavitation, appears as a single vapour-filled separation zone. This vapour region is generally very stable and remains in approximately the same position. For this reason, it appears to be attached to the surface on which it develops. 
+The appearance of sheet cavitation depends on the conditions under which it is generated. In general, the sheet cavitation surface may appear glossy (especially at model scale) while, in other cases, it may not be transparent and show some instabilities.
+As already done for bubble cavitation, it may be helpful to refer to some simplified examples to clarify better what mechanisms govern sheet cavitation.
+Studying bluff bodies, \cite{Brennen_1970} noted that, when further stimulated (e.g. by reducing the cavitation number), the travelling bubble cavitation can show a sudden change, passing to a single vapour-filled wake (Figure \ref{fig:S1}).
+
+The experiments on bluff bodies showed that sheet cavitation strongly depends on the forebody shape of the tested objects and the flow conditions. Specifically, it was noted that when a sharp edge causes a boundary layer detachment in a laminar flow region, the leading edge of sheet cavitation is well-defined, and the surface is smooth and glassy. For some head forms, the cavitation preserves this glossy aspect almost indefinitely, while for others, the interfacial boundary layer may rapidly pass to a turbulent interfacial layer. 
+The cavitation leading edge may be jagged in other cases, forming quite unstable and bubbly sheet cavitation.
+In general, sheet cavitation often develops in separate flows, or at least that separation helps its development.
+
+In cases of more practical interest for marine engineering, sheet cavitation can be found on hydrofoils or marine propeller blades. Specifically, this type of cavitation generally occurs when profiles work at a certain angle of attack. In this case, the pressure distribution on the foil shows a minimum strongly shifted towards the leading edge and a sharp trend. This pressure distribution is characterised by a solid adverse gradient, i.e. an area downstream of the minimum peak where the pressure rises rapidly. The adverse gradient facilitates the separation of the boundary layer and, thus, the development of laminar cavitation. 
+For this reason, sheet cavitation can also be found on the pressure side of profiles. When there is a small suction region on this side of the blade, the adverse gradient is highly steep as the flow passes from a suction region to overpressure in a short space.
+These observations agree with the results of \cite{Kermeen1956} that the hydrofoils tested showed bubble cavitation for small angles of attack, while there is sheet cavitation for angles greater than 10° or less than -2°.
+
+As with headforms, sheet cavitation on foils or propellers can have very different aspects and dynamics. Specifically, it is worth differentiating various cavitation regimes based on the cavitation extent and risks involved. 
+Generally, when sheet cavitation starts to form, it appears as a stable layer above the foil (Figure \ref{fig:S2}), and the interface between liquid and vapour is easily distinguishable. As it develops, some instabilities arise, and the surface becomes progressively less smooth and bubbly. 
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection2/Sheet1.png}
+        \caption{Single Fully Developed Vapour Cavity (\cite{brennen2014cavitation})}
+        \label{fig:S1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection2/Sheet2.png}
+        \caption{Stable sheet cavitation on the blade of a propeller model (\cite{Kuiper1998})}
+        \label{fig:S2}
+    \end{subfigure}
+\end{figure}
+
+Specifically, as cavitation increases, the flow near the cavity closure becomes more and more important. 
+The presence of sheet cavitation causes the boundary layer to detach from the body and a new interfacial boundary layer to form. Since the cavity pressure is near the equilibrium vapour pressure, this interface can be considered a free surface, characterised by a constant pressure.
+A constant pressure on the free surface requires a smooth attachment between the streamline and the foil. As this is not usually the case, part of the fluid re-enters the cavity and forms a re-entrant jet. In addition, the turbulence level in the interfacial boundary layer increases as it approaches the closure region. For this reason, in real applications, the flow at the cavity closure is always turbulent, leading to a re-entrant jet appearing like a cloudy and turbulent mass.
+
+If the cavitation develops further, it may cover the entire surface of the foil or even extend beyond it. Under these conditions, the flow becomes highly unstable, and the cavitation generally assumes periodic dynamics, whereby a cloud cavitation forms and collapses in an oscillating manner.
+Futhermore, the flow (especially the re-entrant jet and the collapse of the cloud) releases significant vorticity into the flow, which gives rise to vortices (e.g., horseshoe vortices). The following paragraphs will describe these phenomena in more detail.
+
+\subsection{Cloud Cavitation}
+
+The definition of cloud cavitation is even more ambiguous than for other phenomena, however its study is of utmost importance, being cloud cavitation collapse recognised as one of the main causes of cavitation erosion. 
+Cloud cavitation is defined in \cite{brennen2014cavitation} as the periodical formation of clouds of bubbles, with reference to phenomena such as the periodical shedding of cavitating vortexes or the periodical fluctuations of cavitation occurring on a propeller in behind hull conditions. In \cite{carlton2018marine} it is described as a mist or cloud of small bubbles, frequently observed behind large sheet cavitation. In \cite{franc2006fundamentals} a clear definition of cloud cavitation is not given, however cloud cavitation is often mentioned as a consequence of other phenomena, with a specific focus on the case of “cloud instability” which is the periodical shedding of cloud cavitation at the closure of sheet cavities. In addition these Authors identified another phenomenon with common characteristics with cloud cavitation, i.e. shear cavitation. This is the cavitation occurring in the shear layers present in the wake of objects, around submerged jets or at the borders of recirculating regions behind a foil in stall conditions. 
+
+As a matter of fact, cloud cavitation consists of a macroscopic, dense assembly of tiny bubbles, usually looking like white clouds in videos, photographs or visual observations, as visible in Figure \ref{fig:Cloud1}. Frequently, cloud cavitation occurs within vortical flows; therefore, it takes the form of cavitating vortexes. The interaction between vortexes and cloud cavitation may take various forms: cloudy structures are often collected by vortexes which become visible being tracked by cavitation, on the other hand vortexes may contribute to the production and subsistence of cloud cavitation.
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png} 
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png} 
+    \end{minipage}
+    \caption{Cloud cavitation on a NACA 0015 hydrofoil: production of cloud cavitation downstream of sheet cavitation (left) and downstream of travelling bubble cavitation (right).}
+    \label{fig:Cloud1}
+\end{figure}
+
+Cloud cavitation usually appears as the evolution or deterioration of other cavitation phenomena, such as attached cavitation, bubble cavitation. Its production is mostly associated with the presence of high shear regions in the flow wield around the main cavity
+
+These conditions are typically met at the closure of attached cavitation, where the formation of a re-entrant shed may trigger the periodical break-up of cavitation with the shedding of vertical cloud cavitation. The occurrence of this periodical cloud shedding is highly related to the characteristic of the attached cavity and the resulting re-entrant jet, as point out in \cite{franc2006fundamentals}, however some similar cavitation can be observed also at the closure of stable cavities, where large periodical events are not present. As an example two distinct behaviours can be observed at the closure of the sheet cavity on the suction side of a propeller blade shown in Figure \ref{fig:Cloud2}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth]{FIGURES/Chapter2/Section2/Subsection3/Cloud2.png}  
+    \caption{Stable sheet cavitation on the suction side of a propeller blade (\cite{Kuiper1998}).}  
+    \label{fig:Cloud2}
+\end{figure}
+
+Actually, cavity closure at inner radii consist of a clear line without significant cloud shedding, while at outer radii many small cloud structures are shed at the closure of the sheet cavity without however the presence of any global cavitation instabilities. In both cases some re-entrant jet is present. At inner radii this jet is clearly present but it does not cause any breakup of the sheet cavity. However a certain amount of bubbles is observed within the jet, which could be considered as some limited cloud cavitation produced by the shear in the jet. In the outer region instead the re-entrant jet is hardly visible while the sheet cavitation continuously breaks locally, shedding small cloudy structures.
+As a matter of fact only the shed cavitation at outer radii can be rigorously identified as cloud cavitation, however the bubbly flow within the re-entrant jet of a stable cavity presents similar features.
+
+Cloud cavitation can be generated also in other situations, such as the collapse of larger cavities and the successive rebound, if any (Figure \ref{fig:Cloud3}, \ref{fig:Cloud4}).
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection3/Cloud3.png}  
+        \caption{Cloud cavitation produced by vortex bursting on a full scale propeller \cite{carlton2018marine}.}
+        \label{fig:Cloud3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg}  
+        \caption{Cloudy cavitation structure resulting from the rebound of a collapsing cavity at the root of a propeller blade.}
+        \label{fig:Cloud4}
+    \end{minipage}
+\end{figure}
+
+\subsection{Vortex Cavitation}
+
+Vortex cavitation arises in flows characterized by high vorticity and steep velocity gradients. While irrotational flows present the minimum pressure at the fluid boundary, in high vorticity flows, the suction peak is observed within the core of the vortex structure. When the pressure within this core reaches sufficiently low values, it can fill with vapour and trigger vortex cavitation.
+The pressure difference between the external flow and the vortex core can be very high. Due to these pressure gradients, in engineering applications (e.g. marine propellers), vortex cavitation onset often precedes other cavitation phenomena.
+In order to give a clearer idea of vortex cavitation, it is helpful to differentiate types of vortices adopting the classification proposed in \cite{franc2006fundamentals}. 
+According to this criterion, coherent and almost steady-state vortices should be distinguished from the vortex structures often observed in shear flows and strongly influenced by turbulence.
+
+Both types are often encountered in marine applications. 
+Coherent vortices often originate near or attached to solid bodies that provide circulation to the vortex.
+Typical examples of these vortices are the tip vortices often observed in ship propellers or finite aspect ratio hydrofoils. In this case, the onset of the cavitation vortex occurs in a region of intense vorticity, generally some distance from the solid body (Figure \ref{TipHubVortex}).
+By further reducing the value of the pressure in the vortex core (e.g. by increasing the load on the propeller tip), the cavitation grows as it approaches the body until it sticks to it (\cite{carlton2018marine}, \cite{brennen2014cavitation}).
+Other examples of coherent vortices can be found in the vortex flows in the draft tube of water turbines or at the hub of ship propellers. This phenomenon, called 'hub vortex', is generated by vortices originating from each blade root of the propeller. These vortices are smaller and not prone to cavitation, but as they are dragged downstream by the shape of the hub, they merge to form a stronger vortex.
+If this vortex is strong enough to initiate cavitation, a very stable cavitating vortex will result (Figure \ref{TipHubVortex}). 
+Finally, leading-edge vortices, which develop on delta wing foils or, in some cases, on marine propellers, also belong to this category. These vortices are generated and sustained by the circulation produced by lifting surfaces and have a stationary character. For this reason, they can certainly be classified as coherent vortices. However, upon closer examination of the formation process, flow separation and shear flows at the leading edge play a contributing role (Figure \ref{fig:LeadingVortex}).
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection4/Vortex1.png}
+        \caption{Tip and hub vortex cavitation observed on a model-scale propeller.}
+        \label{fig:TipHubVortex}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg}
+        \caption{Leading edge vortex cavitation observed on a model-scale propeller.}
+        \label{fig:LeadingVortex}
+    \end{subfigure}
+\end{figure}
+
+Unlike coherent vortices, the vortical structures developed in shear flows do not originate due to circulation produced by lifting surfaces but are generally free. These vortices are not stationary but propagate into the flow. The absence of a continuous circulation source, combined with their unsteady character, makes them susceptible to viscous dissipation. Consequently, shear vortices typically show a limited duration in time.
+In practical cases, shear cavitation vortexes often appear downstream of bluff bodies. A typical example is the cavitation associated with the alternating Bénard–Kármán vortices, which develop downstream of wedges or spheres (Figure \ref{fig:BKvortex}). 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection4/Vortex3.png}
+        \caption{Bénard–Kármán Cavitating Vortices in the Separated Wake of a Lifting Flat Plate with a Flap \cite{brennen2014cavitation}.}
+        \label{fig:BKvortex}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg}
+        \caption{Horseshoe Vortexes Observed Cownstream Cloud Cavitation on a Hydrofoil NACA 0015.}
+        \label{fig:Horse}
+    \end{subfigure}
+\end{figure}
+
+More significant for naval applications are the shear vortices or vapour filaments generated by other types of cavitation. These structures often form downstream fully developed sheet cavitation or cloud cavitation or can be generated by other cavitating vortices.
+These phenomena include, for instance, horseshoe vortexes, which are often associated with cavitation erosion, or other vortex phenomena already briefly presented in previous sections (Figure \ref{fig:Horse}). 

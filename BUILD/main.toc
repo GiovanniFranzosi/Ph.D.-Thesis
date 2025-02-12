@@ -6,3 +6,46 @@
 \contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Scientific Gap and Thesis Aims}{2}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Thesis Layout}{3}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Cavitation Fundamentals}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}General Aspects}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Types of Cavitation}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Bubble Cavitation}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Sheet Cavitation}{9}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Cloud Cavitation}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Vortex Cavitation}{12}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Main effects of cavitation on marine propellers}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Cavitation Erosion}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Theory and Modeling Approaches}{16}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Exprimental Approaches for Cavitation Erosion}{17}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Cavitation Underwater Radiated Noise}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Theory and Modeling Approaches}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Pratical Nosise Prediction}{22}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Summary}{24}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Computer Vision in Cavitation Tunnel Environment}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Camera Model}{25}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Pinhole Camera Model}{26}{subsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}Omogeneus Coordinates}{27}{subsubsection.4.1.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.2}General Camera Model}{28}{subsubsection.4.1.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}Distortion Models}{31}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}Radial Distortion}{31}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}Tangential Distortion}{32}{subsubsection.4.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}Thin-Prism Distortion}{33}{subsubsection.4.1.2.3}%
+\contentsline {subsubsection}{\numberline {4.1.2.4}Scheimpflug Principle}{33}{subsubsection.4.1.2.4}%
+\contentsline {subsubsection}{\numberline {4.1.2.5}Pratical Applications}{34}{subsubsection.4.1.2.5}%
+\contentsline {subsection}{\numberline {4.1.3}Refraction Effects and Management}{35}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Camera Calibration}{37}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Mono Calibration}{38}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Theoretical Aspects}{39}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Accuracy Validation}{42}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Warp Correction of Tunnel Windows}{43}{subsubsection.4.2.1.3}%
+\contentsline {subsection}{\numberline {4.2.2}Stereo Calibration}{46}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Epioplar Geometry}{46}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Theoretical Aspects}{49}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Accuracy Validation}{50}{subsubsection.4.2.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Multiview Calibration}{53}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Epioplar Graph}{54}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Theoretical Aspects}{55}{subsubsection.4.2.3.2}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}Accuracy Validation}{58}{subsubsection.4.2.3.3}%
+\contentsline {section}{\numberline {4.3}Recostruction Strategies}{59}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Stereo Triangulation}{59}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Shape from Silhouette}{62}{subsection.4.3.2}%

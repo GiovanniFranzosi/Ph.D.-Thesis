@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.12.17)  12 FEB 2025 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.12.17)  12 FEB 2025 15:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -703,7 +703,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/abstract.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter1.aux))
+ (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/abstract.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter1.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter2.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter3.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter4.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
@@ -811,7 +811,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<FIGURES/FrontPage/logo_verticale_BLACK.png, id=31, 255.95625pt x 217.5628pt>
+<FIGURES/FrontPage/logo_verticale_BLACK.png, id=203, 255.95625pt x 217.5628pt>
 File: FIGURES/FrontPage/logo_verticale_BLACK.png Graphic file (type png)
 <use FIGURES/FrontPage/logo_verticale_BLACK.png>
 Package pdftex.def Info: FIGURES/FrontPage/logo_verticale_BLACK.png  used on input line 53.
@@ -846,33 +846,33 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
  (C:\Users\giova\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+)
+
+[5])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 
 
-[5]
+[6] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.lof
 
-[6
+[7
 
-] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.lof)
+])
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
 
 
-[7]
-
-[8
-
-] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.lot)
+[8] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.lot)
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
 
 
-[9]
+[9
+
+]
 
 [10
 
@@ -890,15 +890,6 @@ Chapter 1.
 
 [2]
 
-LaTeX Warning: Reference `chap:chapter2' on page 3 undefined on input line 44.
-
-
-LaTeX Warning: Reference `chap:chapter3' on page 3 undefined on input line 46.
-
-
-LaTeX Warning: Reference `chap:chapter4' on page 3 undefined on input line 48.
-
-
 LaTeX Warning: Reference `chap:chapter5' on page 3 undefined on input line 50.
 
 
@@ -913,13 +904,556 @@ LaTeX Warning: Reference `chap:chapter7' on page 4 undefined on input line 58.
 )
 
 [4]
+\openout2 = `CHAPTERS/chapter2.aux'.
+
+ (CHAPTERS/chapter2.tex
+Chapter 2.
+<FIGURES/Chapter2/Section1/Phase Diagram.png, id=442, 339.51843pt x 249.18094pt>
+File: FIGURES/Chapter2/Section1/Phase Diagram.png Graphic file (type png)
+<use FIGURES/Chapter2/Section1/Phase Diagram.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section1/Phase Diagram.png  used on input line 23.
+(pdftex.def)             Requested size: 161.32602pt x 118.40018pt.
+<FIGURES/Chapter2/Section1/Van der Waals Isothermal.png, id=446, 350.81062pt x 263.48438pt>
+File: FIGURES/Chapter2/Section1/Van der Waals Isothermal.png Graphic file (type png)
+<use FIGURES/Chapter2/Section1/Van der Waals Isothermal.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section1/Van der Waals Isothermal.png  used on input line 30.
+(pdftex.def)             Requested size: 161.32602pt x 121.16809pt.
+
 
 [5
 
 
 
 
-] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/abstract.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter1.aux))
+]
+
+[6 <./FIGURES/Chapter2/Section1/Phase Diagram.png> <./FIGURES/Chapter2/Section1/Van der Waals Isothermal.png>]
+
+[7]
+<FIGURES/Chapter2/Section2/Subsection1/Bubble1.png, id=480, 155.07938pt x 137.01187pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble1.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble1.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble1.png  used on input line 80.
+(pdftex.def)             Requested size: 168.49765pt x 148.8675pt.
+<FIGURES/Chapter2/Section2/Subsection1/Bubble2.png, id=481, 155.07938pt x 137.01187pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble2.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble2.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble2.png  used on input line 85.
+(pdftex.def)             Requested size: 168.49765pt x 148.8675pt.
+<FIGURES/Chapter2/Section2/Subsection1/Bubble3.png, id=488, 121.57922pt x 70.01157pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble3.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble3.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble3.png  used on input line 98.
+(pdftex.def)             Requested size: 168.49765pt x 97.02946pt.
+<FIGURES/Chapter2/Section2/Subsection1/Bubble4.png, id=491, 128.73094pt x 70.01157pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble4.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble4.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble4.png  used on input line 105.
+(pdftex.def)             Requested size: 168.49765pt x 91.64743pt.
+
+
+[8 <./FIGURES/Chapter2/Section2/Subsection1/Bubble1.png> <./FIGURES/Chapter2/Section2/Subsection1/Bubble2.png> <./FIGURES/Chapter2/Section2/Subsection1/Bubble3.png> <./FIGURES/Chapter2/Section2/Subsection1/Bubble4.png>]
+<FIGURES/Chapter2/Section2/Subsection1/Bubble5.png, id=508, 118.94438pt x 76.78688pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble5.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble5.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble5.png  used on input line 121.
+(pdftex.def)             Requested size: 111.13559pt x 71.74966pt.
+<FIGURES/Chapter2/Section2/Subsection1/Bubble6.png, id=509, 118.94438pt x 76.78688pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble6.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble6.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble6.png  used on input line 126.
+(pdftex.def)             Requested size: 111.13559pt x 71.74966pt.
+<FIGURES/Chapter2/Section2/Subsection1/Bubble7.png, id=510, 118.94438pt x 76.78688pt>
+File: FIGURES/Chapter2/Section2/Subsection1/Bubble7.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection1/Bubble7.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection1/Bubble7.png  used on input line 131.
+(pdftex.def)             Requested size: 111.13559pt x 71.74966pt.
+
+
+[9 <./FIGURES/Chapter2/Section2/Subsection1/Bubble5.png> <./FIGURES/Chapter2/Section2/Subsection1/Bubble6.png> <./FIGURES/Chapter2/Section2/Subsection1/Bubble7.png>]
+<FIGURES/Chapter2/Section2/Subsection2/Sheet1.png, id=525, 529.22719pt x 447.17062pt>
+File: FIGURES/Chapter2/Section2/Subsection2/Sheet1.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection2/Sheet1.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection2/Sheet1.png  used on input line 158.
+(pdftex.def)             Requested size: 168.49765pt x 142.36743pt.
+<FIGURES/Chapter2/Section2/Subsection2/Sheet2.png, id=528, 271.0125pt x 230.36063pt>
+File: FIGURES/Chapter2/Section2/Subsection2/Sheet2.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection2/Sheet2.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection2/Sheet2.png  used on input line 165.
+(pdftex.def)             Requested size: 168.49765pt x 143.22632pt.
+
+
+[10 <./FIGURES/Chapter2/Section2/Subsection2/Sheet1.png> <./FIGURES/Chapter2/Section2/Subsection2/Sheet2.png>]
+<FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png, id=543, 218.31563pt x 227.34938pt>
+File: FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png  used on input line 189.
+(pdftex.def)             Requested size: 161.32602pt x 168.00346pt.
+<FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png, id=544, 218.31563pt x 227.34938pt>
+File: FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png  used on input line 194.
+(pdftex.def)             Requested size: 161.32602pt x 168.00346pt.
+
+
+[11 <./FIGURES/Chapter2/Section2/Subsection3/Cloud1a.png> <./FIGURES/Chapter2/Section2/Subsection3/Cloud1b.png>]
+<FIGURES/Chapter2/Section2/Subsection3/Cloud2.png, id=553, 204.16275pt x 215.6055pt>
+File: FIGURES/Chapter2/Section2/Subsection3/Cloud2.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection3/Cloud2.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection3/Cloud2.png  used on input line 206.
+(pdftex.def)             Requested size: 161.32602pt x 170.37253pt.
+<FIGURES/Chapter2/Section2/Subsection3/Cloud3.png, id=558, 199.144pt x 150.5625pt>
+File: FIGURES/Chapter2/Section2/Subsection3/Cloud3.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection3/Cloud3.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection3/Cloud3.png  used on input line 220.
+(pdftex.def)             Requested size: 161.32602pt x 121.97102pt.
+<FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg, id=561, 199.49532pt x 150.5625pt>
+File: FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg Graphic file (type jpg)
+<use FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg  used on input line 227.
+(pdftex.def)             Requested size: 161.32602pt x 121.75966pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[12 <./FIGURES/Chapter2/Section2/Subsection3/Cloud2.png>]
+
+LaTeX Warning: Reference `TipHubVortex' on page 13 undefined on input line 242.
+
+
+LaTeX Warning: Reference `TipHubVortex' on page 13 undefined on input line 245.
+
+<FIGURES/Chapter2/Section2/Subsection4/Vortex1.png, id=571, 354.123pt x 214.401pt>
+File: FIGURES/Chapter2/Section2/Subsection4/Vortex1.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection4/Vortex1.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection4/Vortex1.png  used on input line 252.
+(pdftex.def)             Requested size: 168.49765pt x 102.01819pt.
+<FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg, id=572, 353.82187pt x 214.55156pt>
+File: FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg Graphic file (type jpg)
+<use FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg  used on input line 259.
+(pdftex.def)             Requested size: 168.49765pt x 102.17494pt.
+
+
+[13 <./FIGURES/Chapter2/Section2/Subsection3/Cloud3.png> <./FIGURES/Chapter2/Section2/Subsection3/Cloud4.jpg>]
+<FIGURES/Chapter2/Section2/Subsection4/Vortex3.png, id=580, 321.45094pt x 167.12437pt>
+File: FIGURES/Chapter2/Section2/Subsection4/Vortex3.png Graphic file (type png)
+<use FIGURES/Chapter2/Section2/Subsection4/Vortex3.png>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection4/Vortex3.png  used on input line 272.
+(pdftex.def)             Requested size: 168.49765pt x 87.60388pt.
+<FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg, id=583, 321.45094pt x 167.12437pt>
+File: FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg Graphic file (type jpg)
+<use FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg>
+Package pdftex.def Info: FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg  used on input line 279.
+(pdftex.def)             Requested size: 168.49765pt x 87.60388pt.
+)
+
+[14 <./FIGURES/Chapter2/Section2/Subsection4/Vortex1.png> <./FIGURES/Chapter2/Section2/Subsection4/Vortex2.jpg> <./FIGURES/Chapter2/Section2/Subsection4/Vortex3.png> <./FIGURES/Chapter2/Section2/Subsection4/Vortex4.jpg>]
+\openout2 = `CHAPTERS/chapter3.aux'.
+
+ (CHAPTERS/chapter3.tex
+Chapter 3.
+
+
+[15
+
+
+
+
+]
+
+[16]
+Overfull \hbox (2.59663pt too wide) in paragraph at lines 49--51
+[]\OT1/cmr/m/n/10 In this equa-tion, $\OML/cmm/m/it/10 $ \OT1/cmr/m/n/10 de-fines the vapour frac-tion (the mix-ture ap-proach is adopted),
+ []
+
+
+
+[17]
+
+[18]
+
+[19]
+Overfull \hbox (5.19041pt too wide) in paragraph at lines 125--131
+[]\OT1/cmr/m/n/10 Monopolar sources are typ-i-cally as-so-ci-ated with phe-nom-ena in-volv-ing a medium's
+ []
+
+
+
+[20]
+
+[21]
+
+[22]
+
+[23]
+
+LaTeX Warning: Reference `chap:chapter5' on page 24 undefined on input line 205.
+
+
+LaTeX Warning: Reference `chap:chapter6' on page 24 undefined on input line 205.
+
+)
+
+[24]
+\openout2 = `CHAPTERS/chapter4.aux'.
+
+ (CHAPTERS/chapter4.tex
+Chapter 4.
+
+LaTeX Warning: Reference `app:appendixA' on page 25 undefined on input line 12.
+
+<FIGURES/Chapter4/Section1/interface.png, id=737, 851.43094pt x 548.80031pt>
+File: FIGURES/Chapter4/Section1/interface.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/interface.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/interface.png  used on input line 16.
+(pdftex.def)             Requested size: 250.95221pt x 161.75232pt.
+
+
+[25
+
+
+
+
+]
+<FIGURES/Chapter4/Section1/SubSection1/pinhole.png, id=746, 383.18156pt x 140.02313pt>
+File: FIGURES/Chapter4/Section1/SubSection1/pinhole.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection1/pinhole.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection1/pinhole.png  used on input line 34.
+(pdftex.def)             Requested size: 322.65205pt x 117.91133pt.
+
+
+[26 <./FIGURES/Chapter4/Section1/interface.png>]
+<FIGURES/Chapter4/Section1/SubSection1/prespective.png, id=753, 139.27031pt x 77.53969pt>
+File: FIGURES/Chapter4/Section1/SubSection1/prespective.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection1/prespective.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection1/prespective.png  used on input line 49.
+(pdftex.def)             Requested size: 250.95221pt x 139.72273pt.
+
+
+[27 <./FIGURES/Chapter4/Section1/SubSection1/pinhole.png> <./FIGURES/Chapter4/Section1/SubSection1/prespective.png>]
+
+[28]
+<FIGURES/Chapter4/Section1/SubSection1/reference_frames.png, id=782, 823.57687pt x 498.36188pt>
+File: FIGURES/Chapter4/Section1/SubSection1/reference_frames.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection1/reference_frames.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection1/reference_frames.png  used on input line 211.
+(pdftex.def)             Requested size: 286.80487pt x 173.54715pt.
+
+
+[29 <./FIGURES/Chapter4/Section1/SubSection1/reference_frames.png>]
+
+[30]
+<FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png, id=808, 1027.84pt x 1027.84pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png  used on input line 309.
+(pdftex.def)             Requested size: 107.5525pt x 107.54213pt.
+<FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png, id=809, 1027.84pt x 1027.84pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png  used on input line 317.
+(pdftex.def)             Requested size: 107.5525pt x 107.54213pt.
+<FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png, id=810, 1027.84pt x 1027.84pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png  used on input line 325.
+(pdftex.def)             Requested size: 107.5525pt x 107.54213pt.
+
+
+[31]
+<FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png, id=823, 423.83344pt x 410.2828pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png  used on input line 366.
+(pdftex.def)             Requested size: 172.08073pt x 166.57681pt.
+<FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png, id=824, 423.83344pt x 411.03563pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png  used on input line 374.
+(pdftex.def)             Requested size: 172.08073pt x 166.88246pt.
+
+
+[32 <./FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png> <./FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png> <./FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png>]
+<FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png, id=841, 210.7875pt x 141.52875pt>
+File: FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png  used on input line 423.
+(pdftex.def)             Requested size: 250.95221pt x 168.49904pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[33 <./FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png> <./FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png>]
+
+[34 <./FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png>]
+<FIGURES/Chapter4/Section1/SubSection3/interface1.png, id=865, 358.33875pt x 219.06844pt>
+File: FIGURES/Chapter4/Section1/SubSection3/interface1.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection3/interface1.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection3/interface1.png  used on input line 549.
+(pdftex.def)             Requested size: 286.80487pt x 175.34857pt.
+
+
+[35]
+<FIGURES/Chapter4/Section1/SubSection3/interface2.png, id=871, 361.35pt x 192.72pt>
+File: FIGURES/Chapter4/Section1/SubSection3/interface2.png Graphic file (type png)
+<use FIGURES/Chapter4/Section1/SubSection3/interface2.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection3/interface2.png  used on input line 558.
+(pdftex.def)             Requested size: 286.80487pt x 152.96463pt.
+
+
+[36 <./FIGURES/Chapter4/Section1/SubSection3/interface1.png> <./FIGURES/Chapter4/Section1/SubSection3/interface2.png>]
+<FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg, id=879, 665.48625pt x 361.35pt>
+File: FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg Graphic file (type jpg)
+<use FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg>
+Package pdftex.def Info: FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg  used on input line 571.
+(pdftex.def)             Requested size: 358.50473pt x 194.66293pt.
+
+
+[37 <./FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg>]
+<FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png, id=892, 302.25421pt x 242.40562pt>
+File: FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png  used on input line 611.
+(pdftex.def)             Requested size: 161.32602pt x 129.38055pt.
+<FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png, id=893, 302.25421pt x 242.40562pt>
+File: FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png  used on input line 618.
+(pdftex.def)             Requested size: 161.32602pt x 129.38055pt.
+<FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png, id=897, 2569.6pt x 1606.0pt>
+File: FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png  used on input line 630.
+(pdftex.def)             Requested size: 161.32602pt x 100.81584pt.
+
+
+[38]
+<FIGURES/Chapter4/Section2/SubSection1/WorldRF.png, id=906, 316.93407pt x 172.39406pt>
+File: FIGURES/Chapter4/Section2/SubSection1/WorldRF.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection1/WorldRF.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/WorldRF.png  used on input line 639.
+(pdftex.def)             Requested size: 268.87854pt x 146.2647pt.
+
+
+[39 <./FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png> <./FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png> <./FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png (PNG copy)>]
+
+[40 <./FIGURES/Chapter4/Section2/SubSection1/WorldRF.png>]
+Underfull \vbox (badness 1168) has occurred while \output is active []
+
+
+
+[41]
+<FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf, id=938, 867.24pt x 433.62pt>
+File: FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf  used on input line 730.
+(pdftex.def)             Requested size: 268.87854pt x 134.44066pt.
+<FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf, id=942, 867.24pt x 433.62pt>
+File: FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf  used on input line 741.
+(pdftex.def)             Requested size: 268.87854pt x 134.44066pt.
+
+
+[42 <./FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf> <./FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf>]
+<FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf, id=1040, 867.24pt x 578.16pt>
+File: FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf  used on input line 752.
+(pdftex.def)             Requested size: 268.87854pt x 179.25421pt.
+<FIGURES/Chapter4/Section2/SubSection1/Comparator.png, id=1044, 226.446pt x 218.7372pt>
+File: FIGURES/Chapter4/Section2/SubSection1/Comparator.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection1/Comparator.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection1/Comparator.png  used on input line 770.
+(pdftex.def)             Requested size: 268.87854pt x 259.73308pt.
+
+
+[43 <./FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf>]
+
+[44 <./FIGURES/Chapter4/Section2/SubSection1/Comparator.png>]
+
+[45]
+<FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png, id=1123, 790.45313pt x 531.48563pt>
+File: FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png  used on input line 862.
+(pdftex.def)             Requested size: 322.65205pt x 216.94545pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[46]
+<FIGURES/Chapter4/Section2/SubSection2/StereoRF.png, id=1130, 899.61093pt x 451.6875pt>
+File: FIGURES/Chapter4/Section2/SubSection2/StereoRF.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection2/StereoRF.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection2/StereoRF.png  used on input line 885.
+(pdftex.def)             Requested size: 322.65205pt x 162.00085pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[47 <./FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png>]
+
+[48 <./FIGURES/Chapter4/Section2/SubSection2/StereoRF.png>]
+<FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png, id=1166, 984.67876pt x 553.31718pt>
+File: FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png  used on input line 993.
+(pdftex.def)             Requested size: 322.65205pt x 181.30347pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[49]
+<FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf, id=1180, 722.7pt x 433.62pt>
+File: FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf  used on input line 1045.
+(pdftex.def)             Requested size: 358.50473pt x 215.1024pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[50 <./FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png>]
+
+[51 <./FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf>]
+<FIGURES/Chapter4/Section2/SubSection2/TriError.pdf, id=1240, 867.24pt x 578.16pt>
+File: FIGURES/Chapter4/Section2/SubSection2/TriError.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection2/TriError.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection2/TriError.pdf  used on input line 1065.
+(pdftex.def)             Requested size: 358.50473pt x 239.00562pt.
+
+
+[52 <./FIGURES/Chapter4/Section2/SubSection2/TriError.pdf>]
+<FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png, id=1292, 816.80156pt x 435.12563pt>
+File: FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png  used on input line 1116.
+(pdftex.def)             Requested size: 322.65205pt x 171.88269pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[53]
+<FIGURES/Chapter4/Section2/SubSection3/EgSketch.png, id=1298, 523.20468pt x 364.36125pt>
+File: FIGURES/Chapter4/Section2/SubSection3/EgSketch.png Graphic file (type png)
+<use FIGURES/Chapter4/Section2/SubSection3/EgSketch.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection3/EgSketch.png  used on input line 1134.
+(pdftex.def)             Requested size: 179.25237pt x 124.83188pt.
+
+
+[54 <./FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png> <./FIGURES/Chapter4/Section2/SubSection3/EgSketch.png>]
+
+[55]
+
+[56]
+
+[57]
+<FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf, id=1357, 1084.05pt x 361.35pt>
+File: FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf Graphic file (type pdf)
+<use FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf>
+Package pdftex.def Info: FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf  used on input line 1341.
+(pdftex.def)             Requested size: 358.50473pt x 119.4995pt.
+
+
+[58]
+
+LaTeX Warning: Reference `chap:chapter5' on page 59 undefined on input line 1369.
+
+
+LaTeX Warning: Reference `chap:chapter6' on page 59 undefined on input line 1369.
+
+
+
+[59 <./FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf>]
+<FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png, id=1425, 820.56563pt x 420.06938pt>
+File: FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png Graphic file (type png)
+<use FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png  used on input line 1396.
+(pdftex.def)             Requested size: 322.65205pt x 165.17244pt.
+
+
+[60 <./FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png>]
+
+[61]
+Overfull \hbox (1.91255pt too wide) in paragraph at lines 1483--1486
+\OT1/cmr/m/n/10 Shape from sil-hou-ette is a tech-nique for re-con-struct-ing an ob-ject's three-dimensional
+ []
+
+<FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png, id=1450, 1102.87032pt x 638.385pt>
+File: FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png Graphic file (type png)
+<use FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png>
+Package pdftex.def Info: FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png  used on input line 1489.
+(pdftex.def)             Requested size: 322.65205pt x 186.76338pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[62]
+
+[63 <./FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png>])
+
+[64]
+Overfull \hbox (12.361pt too wide) in paragraph at lines 122--122
+\OT1/cmr/m/sc/10 isbn\OT1/cmr/m/n/10 : 9780081003749. \OT1/cmr/m/sc/10 url\OT1/cmr/m/n/10 : [][]$\OT1/cmtt/m/n/10 https : / / books . google . it / books ? id = 2drWDgAAQBAJ$[][]\OT1/cmr/m/n/10 . 
+ []
+
+
+
+[65
+
+
+
+
+]
+
+[66]
+Overfull \hbox (19.83093pt too wide) in paragraph at lines 122--122
+[][]\OT1/cmr/m/n/10 Lecoffre, Y. (1999). \OT1/cmr/m/it/10 Cav-i-ta-tion: Bub-ble Track-ers\OT1/cmr/m/n/10 . Tay-lor & Fran-cis. \OT1/cmr/m/sc/10 isbn\OT1/cmr/m/n/10 : 9789054107835.
+ []
+
+
+Overfull \hbox (51.4075pt too wide) in paragraph at lines 122--122
+\OT1/cmr/m/n/10 727. \OT1/cmr/m/sc/10 issn\OT1/cmr/m/n/10 : 0098-2202. \OT1/cmr/m/sc/10 doi\OT1/cmr/m/n/10 : [][]$\OT1/cmtt/m/n/10 10 . 1115 / 1 . 2820729$[][]\OT1/cmr/m/n/10 . eprint: [][]$\OT1/cmtt/m/n/10 https : / / asmedigitalcollection .
+ []
+
+
+
+[67]
+Overfull \hbox (19.05905pt too wide) in paragraph at lines 122--122
+[][]\OT1/cmr/m/n/10 Ross, D. (2013). \OT1/cmr/m/it/10 Me-chan-ics of Un-der-wa-ter Noise\OT1/cmr/m/n/10 . El-se-vier Sci-ence. \OT1/cmr/m/sc/10 isbn\OT1/cmr/m/n/10 : 9781483160467.
+ []
+
+
+
+[68]
+Overfull \hbox (5.31146pt too wide) in paragraph at lines 122--122
+[][]\OT1/cmr/m/n/10 Vogel, A and W Lauter-born (1988). \  Acous-tic tran-sient gen-er-a-tion by laser-produced
+ []
+
+
+Overfull \hbox (3.26727pt too wide) in paragraph at lines 122--122
+\OT1/cmr/m/it/10 IEEE Trans-ac-tions on pat-tern anal-y-sis and ma-chine in-tel-li-gence \OT1/cmr/m/n/10 22.11, pp. 1330{
+ []
+
+
+
+[69] (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/abstract.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter1.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter2.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter3.aux) (c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS/chapter4.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
@@ -929,23 +1463,23 @@ L3 programming layer <2024-11-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AFAD5B8F4F169A76261E2D037BAA2D49;869.
+(rerunfilecheck)             Checksum: 5C5A1D66C6075B91DB250EEEF024B46F;8543.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23339 strings out of 473650
- 414968 string characters out of 5717934
- 1259972 words of memory out of 5000000
- 46116 multiletter control sequences out of 15000+600000
- 564256 words of font info for 59 fonts, out of 8000000 for 9000
+ 24644 strings out of 473650
+ 459034 string characters out of 5717934
+ 1295449 words of memory out of 5000000
+ 47123 multiletter control sequences out of 15000+600000
+ 568000 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,81p,761b,1863s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.pdf" (15 pages, 189228 bytes).
+ 66i,21n,81p,1215b,2817s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\giova\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/giova/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.pdf" (79 pages, 11097343 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 62 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1756 PDF objects out of 2073 (max. 8388607)
+ 296 named destinations out of 1000 (max. 500000)
+ 661 words of extra memory for PDF output out of 10000 (max. 10000000)
 

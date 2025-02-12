@@ -1,3 +1,12 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Combinations of distortion models considered.}}{35}{table.caption.22}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Materials Refractive Indices .}}{35}{table.caption.23}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Mean Errors in Warp Correction of Tunnel Windows.}}{45}{table.caption.34}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Statistical Metrics for Different Distortion Models. Metrics include mean, maximum value, standard deviation (Std. Dev.), skewness, kurtosis, and percentage of outliers.}}{53}{table.caption.40}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Triangulation Metrics for both the Stereo Rig in a Multiview Calibration}}{58}{table.caption.43}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Metrics of Distributions of Distances between Triangulated Homologous Points with Different Stereo Rig Configurations}}{59}{table.caption.45}%

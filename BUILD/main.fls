@@ -214,6 +214,15 @@ INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\a
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
 OUTPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -310,7 +319,390 @@ INPUT .\CHAPTERS\chapter1.tex
 INPUT CHAPTERS\chapter1.tex
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT .\CHAPTERS\chapter2.tex
+INPUT .\CHAPTERS\chapter2.tex
+OUTPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT .\CHAPTERS\chapter2.tex
+INPUT .\CHAPTERS\chapter2.tex
+INPUT CHAPTERS\chapter2.tex
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Phase Diagram.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT .\FIGURES\Chapter2\Section1\Van der Waals Isothermal.png
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble3.png
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble4.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble5.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble6.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection1\Bubble7.png
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection2\Sheet2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1a.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud1b.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud2.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection3\Cloud4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex1.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex2.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex3.png
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\FIGURES\Chapter2\Section2\Subsection4\Vortex4.jpg
+INPUT .\CHAPTERS\chapter3.tex
+INPUT .\CHAPTERS\chapter3.tex
+OUTPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT .\CHAPTERS\chapter3.tex
+INPUT .\CHAPTERS\chapter3.tex
+INPUT CHAPTERS\chapter3.tex
+INPUT .\CHAPTERS\chapter4.tex
+INPUT .\CHAPTERS\chapter4.tex
+OUTPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
+INPUT .\CHAPTERS\chapter4.tex
+INPUT .\CHAPTERS\chapter4.tex
+INPUT CHAPTERS\chapter4.tex
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\interface.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\pinhole.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\prespective.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection1\reference_frames.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Barrel_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Pincushion_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Mustache_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Tangential_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Compound_distortion.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection2\Sheimpflug_principle.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface1.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\interface2.png
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section1\SubSection3\Plexiglass_prism.jpg
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_square.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\checkerboard_dot.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\chessboardCorners.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\WorldRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\MeanReprojectionError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\FocalLenghs.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\OpticalCenter.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection1\Comparator.png
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\epipolarPlane.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\StereoRF2.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\RMSError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection2\TriError.pdf
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MuliViewRF.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\EgSketch.png
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section2\SubSection3\MultiTriang.pdf
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection1\sketchTriangulation.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
+INPUT .\FIGURES\Chapter4\Section3\SubSection2\ShapeBy.png
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\abstract.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\abstract.aux
@@ -318,23 +710,56 @@ INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\a
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter1.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter2.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter3.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
+INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\CHAPTERS\chapter4.aux
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.out
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.out
 INPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.run.xml
 OUTPUT c:\Users\giova\OneDrive - unige.it\DOCUMENTS\Ph.D. Thesis\build\main.run.xml
+INPUT C:\Users\giova\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
+INPUT C:\Users\giova\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
+INPUT C:\Users\giova\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

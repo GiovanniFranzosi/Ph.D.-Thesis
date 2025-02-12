@@ -1,0 +1,206 @@
+\chapter{Main effects of cavitation on marine propellers}
+\label{chap:chapter3}
+
+This chapter delves into the critical aspects and risk factors associated with previously discussed cavitation phenomena. A specific focus is posed on erosive cavitation and underwater radiated noise caused by cavitation.
+Although these topics represent only a portion of cavitation-related challenges, they can serve as excellent case studies. Issues such as hull-transmitted vibrations and pressure pulses can somewhat resemble the cases examined in this chapter.
+
+The main goal of this chapter is to present the state of the art in experimental techniques employed in cavitation research. Special attention is given to the most advanced methods, examining their strengths and weaknesses to provide a comprehensive overview.
+These discussions will clarify the reasoning behind the methodological choices and case studies selected for this work. 
+
+\section{Cavitation Erosion}
+
+It has already been mentioned above that under certain conditions, certain cavitation phenomena (e.g. bubble cavitation, unstable laminar cavitation and cloud cavitation) can lead to the erosion of hydrodynamic components. However, it is important to emphasize that the occurrence of potentially erosive phenomena only leads to cavitation in some cases. In contrast, the phenomenon is not intense enough to cause material damage in other scenarios.
+For this reason, the presence of the phenomena mentioned above can be accepted in many cases, provided that their extent and violence are not excessive. 
+In this context, the prediction of flow aggressiveness is particularly important. This prediction should provide a criterion for defining whether the phenomenon under observation is acceptable or whether it can actually cause damage. 
+The availability of precise and reliable criteria for the acceptability of phenomena provides great advantages in design (e.g. of the ship's propeller) as it helps the search for the optimal compromise between conflicting objectives such as reducing cavitation and maximising efficiency.
+
+For these reasons, several methods for predicting the erosive power of certain cavitation phenomena have been developed over the past years. The following section will present the methods that constitute the state of the art for investigating erosive cavitation.
+
+\subsection{Theory and Modeling Approaches}
+
+The cavitation erosive power is closely linked to cavity collapse phenomena near a solid surface. Indeed, The collapse of a bubble results in the generation of extremely high pressures and velocities that apply significant mechanical forces to the material, potentially leading to localized damage.
+The intensity of the erosive action depends on specific characteristics of the cavitation (e.g. size of the cavitation bubbles, collapse velocity, external pressure, bubble content, focusing of energy during collapse). 
+Consequently, to estimate the erosive aggressiveness of cavitation, it is necessary to obtain an evaluation of some of these quantities or quantities that correlate with them. Measurement of the numerical solution of the phenomenon in its wholeness is impractical, which is why models are widely used to study erosion.
+
+Basically, the models adopted to describe cavitation can be distinguished into two categories corresponding to the two physical phenomena commonly believed to be responsible for erosion (\cite{lecoffre1999}): microjets and shock waves. 
+The intensity or energy associated with these phenomena is then related to specific flow and cavitation characteristics that can be calculated or measured experimentally. 
+In the case of the microjet scheme, an attempt is made to calculate the jet velocity based on the flow characteristics (\cite{Peters2018}). For example, a jet velocity formulation has been proposed (\cite{Dular2009}; \cite{Peters2015}).
+For approaches based instead on the "shock wave" scheme, the intensity of the erosive action of cavitation is linked to the concept of the bubble's potential energy, which corresponds to the work done by the external pressure during collapse (\cite{Hammitt1963}; \cite{Pereira1998}; \cite{Vogel1988}), as shown in Equation \ref{eq:CollapseWork}:
+
+\begin{equation}
+    E_C = \Delta P V_C
+    \label{eq:CollapseWork}
+\end{equation}
+
+Where $\Delta P$ represents the difference between the external and internal pressure of the bubble, and $V_C$ is the volume of the bubble. 
+The measurement of the size of cavitation bubbles is one of the main objectives of the present work, so the techniques that can be used for this purpose will be discussed below. However, it should be noted that this measurement can only be carried out for macroscopic cavities and not for microscopic ones (e.g. individual bubbles that form cloud cavitation).
+This is one of the limitations of the proposed approach as well as of much of the work available in the literature. However, it should be noted that characterising the size of the bubbles forming the cloud would be technically prohibitive for complex applications such as a ship's propeller. In addition, information about the macroscopic structures of cavitation correlates with the dynamics of microscopic structures, thus providing valuable information for describing the cavitation erosive power.
+
+Some attempts can be found in the literature which, by considering the macroscopic structures, tried to obtain
+various informations required to evaluate both the potential energy of cavitation and, as far as possible, the process of converting this energy into acoustic energy radiated by the shock waves. 
+These kinds of approach is used in most of the numerical erosion models. Notable example of these methods as presented in \cite{Köksal2021}; \cite{Leclercq2017} or \cite{Usta2019}.
+In these approaches, it is assumed that the instantaneously radiated energy is equal to the potential energy variation provided shown in Equation \ref{eq:PotentialEnergyVar}
+
+\begin{equation}
+    \dot{e}_{\text{pot}} = -\left(p - p_v\right) \frac{D\alpha}{Dt} - \alpha \frac{Dp}{Dt}
+    \label{eq:PotentialEnergyVar}
+\end{equation}
+
+In this equation, $\alpha$ defines the vapour fraction (the mixture approach is adopted), $p_v$ is the vapour pressure and $\frac{D}{Dt}$ represents the material derivative.
+In a numerical simulation, the vapour fraction, the pressure, and thus their derivatives, are calculated for each cell and each time-step. Using these values the erosive power of the impacts on the surface is derived by appropriately propagating the pressure pulses. 
+
+Although this approach provides valuable insights into erosion mechanisms, it remains constrained by some limitations. One major issue is determining a threshold for erosive intensity beyond which actual damage occurs. Current scientific literature offers limited indication in this framework, but comparisons with experimental data and practical experiences might provide a basis for defining such thresholds. 
+A proposed solution by \cite{Usta2019} attempts to address this issue. Nevertheless, its effectiveness is debatable, as it relies on the intensity statistics of the phenomenon under analysis, whereas a threshold would likely benefit from a more universal approach. However its effectiveness is questionable as it is relies on the intensity statistics of the phenomenon under analysis, whereas this kind of threshold should reasonably  be based on a more general value criterion.
+
+Further developments of this model were proposed by \cite{Melissaris2020}. In this work, the Authors assign specific physical meanings to the two material derivatives present in \ref{eq:PotentialEnergyVar}: the derivative of the vapour fraction corresponds to the portion of potential energy turned into kinetic energy during the cavity collapse, while the derivative of the pressure corresponds to the portion converted into inertial kinetic energy (e.g. acceleration of the bubble due to the pressure gradient). 
+
+From these considerations, the Authors deduce that the share of energy actually involved in the erosive process is just the one linked to the collapse. For this reason, the term related to the material derivative of pressure is neglected. 
+Furthermore, the Authors propose a method for modelling energy conversion from potential to the actual energy radiated by the shock-wave corresponding to the energy involved into the erosive action. 
+This method introduces a kinetic energy field $\epsilon$ that must fulfil the related transport equation with production terms. This term allows describing not only the energy conversion but also the advection of collapse kinetic energy through the flow, which plays an important role in the concentration of energy, a driving factor of erosive mechanisms.
+
+Other approaches, such as those proposed by \cite{Arabnejad2020} and \cite{Schmidt2008}, are based on the assessment of pressure pulses induced to the body surface by acoustic waves (i.e. shock-waves) generated by cavitation collapse. Such approaches obviously require the simulation of compressible flows.
+
+\subsection{Exprimental Approaches for Cavitation Erosion}
+
+The observations presented thus far offer a brief outline of the most common techniques for estimating cavitation intensity through numerical solutions. The experimental approach proposed in this study relies on similar theoretical foundations but must necessarily account for the different nature of data acquired through experimental methods.
+Experimental methods allow for a direct examination of the phenomenon and a detailed observation of its dynamics, which cannot be fully captured through numerical models. However, reproducing the precise datasets used in numerical simulations through experimentation is challenging.
+The guidelines provided by the \cite{ITTC_Erosion} provide both a reference and a good starting point for analysing the state of the art of current experimental techniques for predicting erosive cavitation.
+The ITTC procedure is based on a combination of soft-paint coatings and high-speed videos.
+Soft paint coatings allow for the detection of erosive cavitation, acting as a sensor.  By performing endurance tests, cavitation's aggressiveness can be investigated by observing where, how quickly and how much paint is removed.
+High-speed observations allow to verify the actual presence of potentially erosive phenomena (e.g. collapse, cloud cavitation) and their correspondence with the damage observed on the paintings. 
+Examples of experimental experiences based on this approach can be found in \cite{Mantzaris2015}; \cite{Pfitsch2009}.
+To better clarify the objectives and the possible improvements of the ITTC procedure, it is interesting to consider the guidance provided for high-speed video analysis. For this reason, the following is an excerpt from the original document.
+
+“Basic steps to analyse high-speed video recording should focus on:
+\begin{itemize}
+    \item Detecting the existence of violent rebounds
+    \item Estimating the violence, the whiteness and the volume of the rebounded cavity. The whiter the rebounding cloud, the more erosive the collapse can be. A fast rebounding cavity is also regarded as potentially erosive.
+    \item Estimating the position of the rebound and its distance from the body surface. The position is important to figure out if possible actions like blade cutting or redesigns to move the collapses outside of the blade can be successful.
+    \item Checking the occurrence of foggy cavitation (a sparse distribution of very small bubbles). It normally can be used as a collapse indicator. Its production is more intense when violent collapse occur.
+    \item Observing the structure of the focusing cavity (glossy, cloudy or mixed). This gives information on the presence of re-entrant jets and contributes to the high risk assessment.
+    \item Estimating the acceleration and the distribution in time of the collapses’ motion of the focusing cavity.”
+\end{itemize}
+
+This description provides insights into the quantities to be characterised. In particular, much focus is placed on the presence and intensity of rebounds, as well as the presence of cloud cavitation and macroscopic collapses (focusing cavity). 
+On the other hand, the ITTC description is absolutely vague as to how specific cavitation characteristics should be estimated, such as the "violence" of collapses and rebounds. Another clearly poor aspect concerns the use of the "whiteness" of cavitation as a criterion. In fact, while certainly cloud cavitation and rebounds typically appear very white in the images, it is also true that the degree of whiteness cannot be used as a measure for comparing different cases as it is strictly dependent on the experimental setup, optical access and illumination used.
+
+In this regard, several techniques have been developed over the past few years with the potential to overcome some of these limitations. In \cite{Capone2024}, a method based on Laser Doppler Velocimetry (LDV) is presented, apt to quantitatively analyse the size of cavitation developed by a propeller. This method may allow for the reconstruction of the phase average cavitation volume. However, it does not allow the time-resolved analysis of cavity dynamics. 
+In this regard, several techniques have been developed over the past few years with the potential to overcome some of these limitations. 
+A multi-view line-sensing method was proposed in \cite{Shiraishi2024} to reconstruct the shape of cavitation on propeller blades. This approach is very interesting and offers an accurate measurement of cavitation volume. However, like the previous one, it cannot be used to observe the dynamics of a single event over time. 
+Other approaches, such as that proposed by \cite{Vijayan2023}, enable the investigation of cavitation within the time domain, allowing for the analysis of modal frequencies. However, addressing cavitation erosion by applying these methods, based on shadowgraphy and high-speed imaging, is generally unfeasible (especially in cases of engineering interest, such as a ship propeller).
+
+Among the explored alternatives, techniques based on computer vision algorithms appear particularly promising.
+These techniques offer the potential for quantitative, time-resolved cavitation measurements. However, their implementation involves several technical challenges, including optical access to the target region, the quality of captured images, and the complexity of identifying and segmenting the cavities of interest.  
+Nevertheless, the scientific literature provides some examples of applications in the cavitation tunnel environment (\cite{Franzosi2023}, \cite{Ebert2019}).
+
+It is particularly worth mentioning studies by \cite{Pereira1998} and \cite{Savio2011}.
+A volumetric visualisation and reconstruction technique by combining stereometry and tomography to quantify the volume of cavities on a NACA 65012 is proposed in \cite{Pereira1998}.
+This method uses a laser measurement technique to estimate the principal size of the cavities. Then, using a stereometry technique known as shape by silhouette, a more precise estimation of the volume for some cavities is obtained, proving a strong correlation between it and the estimate obtained with the laser.
+
+The work of \cite{Pereira1998} has been partially adopted by \cite{Savio2011}. In this study, the Authors use various computer vision techniques to study cavitation. The work of \cite{Pereira1998} has been partially adopted by \cite{Savio2011}. In this study, the Authors use various computer vision techniques to study cavitation. Specifically, an active triangulation technique is developed to accurately measure the extent and thickness of sheet cavitation. A shape-by-silhouette technique (similar to  \cite{Pereira1998}) is proposed for the study of tip vortex cavitation.
+
+Although these methods are extremely interesting and offer valuable information regarding cavitation, they are limited in studying cavitation mechanisms and dynamics.
+Part of the present work's objective is to develop these techniques further in order to address not only the cavity's size but also its evolution over time.
+
+This approach would allow for combined observation of data that capture the potential energy of cavitation (such as the size of macroscopic structures) with dynamic quantities.  This kind of data, including the velocity of the bubble collapse and the number or the extension of the rebound, provides valuable information on how this energy is released.
+
+Besides providing a deeper understanding of the phenomenon, such data could help overcome some of the limitations of the ITTC procedures. Indeed, measurements of the cavity size and its variation over time could be used to define more precise, quantitative and general criteria for predicting the aggressiveness of erosive cavitation.
+
+\section{Cavitation Underwater Radiated Noise}
+
+The onboard machines and propellers are the main sources of underwater radiated noise (URN) from ships. However, numerous studies (\cite{Ross2013}) have shown that, when cavitating, the propeller is by far the primary source of noise. When cavitation phenomena are present, the URN rises significantly. Specifically, the major cavitation contribution to URN arises from the sheet and tip vortex cavitation.
+The volume variation and especially the volume acceleration during the collapse phase of the sheet cavitation is recognized as a powerful source of underwater noise. While the tip vortex and the pressure pulsations associated with it are generally linked with a broadband hump (\cite{Lloyd2020})
+
+Radiated noise from ships is an important design constraint when designing a ship's propeller. In fact, in both the civil and military fields, there are good reasons to reduce radiated underwater noise as much as possible. 
+In the civil field, radiated noise is a severe environmental problem. Several studies (\cite{Rojano-Doñate2023}) have proven that, especially in the busiest areas, the acoustic pollution produced by ships negatively affects the marine environment. For this reason, although there are no mandatory laws, several international organisations are promoting guidelines and best practices to reduce radiated noise (\cite{MEPC802023}). 
+High levels of radiated noise are often linked to noise and vibrations transmitted to the hull. This phenomenon is a major issue, especially for comfort on board passenger ships, and can make working conditions unpleasant for the crew. In some cases, continuous exposure to high noise levels can have significant repercussions on human health, compromising the health of people on board.
+In the military field, the noise radiated by ships is of considerable strategic importance. Indeed, the acoustical signatures of a ship can compromise its ability to operate undetected, which constitutes a significant security problem.
+
+For these reasons, predicting the underwater noise emitted by a cavitating propeller is of great interest to ship designers. Many efforts have been made in recent years to achieve this goal.
+
+\subsection{Theory and Modeling Approaches}
+
+From a physical point of view, the noise production of a ship's propeller (as of any other source) can be attributed to three main mechanisms. Acoustic sources are usually classified into monopolar, dipolar and quadrupolar sources. These sources describe how sound is generated and radiated into the environment. Each source type has specific characteristics and can be associated with different physical phenomena (\cite{Russell1999}). 
+
+Monopolar sources are typically associated with phenomena involving a medium's volumetric expansion and contraction. In marine applications, such volume variations frequently arise in the dynamics of cavitating structures. For this reason, monopole sources are widely considered the primary contributors to cavitation noise.
+A typical monopolar source is the collapse of cavitating structures. When a cavitation bubble collapses, a rapid volume change occurs, which is associated with a strong acoustic impulse that propagates isotropically in the water. 
+However, it is essential to highlight that the collapse of cavity structures is not the sole mechanism responsible for producing monopolar noise in cavitation phenomena. Even minor volumetric variations of cavitating structures can act as monopole sources.
+Consequently, predicting noise radiation in water necessitates observing the dynamics of all cavitating structures. 
+For instance, the tip vortex is among the cavitation forms most associated with underwater noise radiation.
+While this phenomenon does not typically involve violent collapses, except under specific conditions, the volume variations and fluctuations during the vortex's evolution are widely recognised as a significant source of acoustic emissions (\cite{ETV_JMSE}).
+
+Two monopoles of equal intensity, opposite phase, and separated by a small distance form a dipole source. In this case, when one monopole “expires,” the other “inspires,” and the surrounding fluid oscillates back and forth between the sources. 
+Dipole sources are often associated with pressure forces acting on solid surfaces in interaction with the fluid. A characteristic example of dipole sources is the forces generated by the propeller blades during rotation. Periodic variations in lift and drag induce pressure oscillations that propagate as sound waves.
+The acoustic radiation efficiency of dipole sources is lower than that of monopole sources, as the waves generated by the two poles partially cancel each other in specific directions.
+Quadrupole sources arise from more complex force distributions, such as those generated by stress gradients or turbulence. These sources are typical of turbulent flows. Quadrupole sources are even less efficient than dipole sources, as the radiated acoustic power decreases rapidly with distance.
+
+In scientific literature, various theoretical models can be found that describe underwater noise propagation. Among these, the Ffowcs Williams and Hawkings (FWH) equations (\cite{Ffowcs1969}) are by far the most widely used (Eqn: \ref{eq:FWH}). 
+The FWH equations are derived directly from the Navier-Stokes equations, which govern fluid motion, and represent a generalization of Lighthill’s classical wave equation (\cite{Lighthill1952}), providing a robust mathematical framework for describing acoustic radiation in water. 
+
+\begin{equation}
+    \Box^2 p' = \frac{\partial}{\partial t} \left[ \rho_0 v_n \delta(f) \right] - \frac{\partial}{\partial x_i} \left[ p n_i \delta(f) \right] + \frac{\partial^2}{\partial x_i \partial x_j} \left[ H(f) T_{ij} \right]
+    \label{eq:FWH}
+\end{equation}
+
+In this equation, the left-hand term $\Box^2p'$ represents the d'Alembert operator ($\Box^2$) applied to the pressure fluctuation ($p' = c^2 \rho' = c^2 (\rho - \rho_0)$) and describes the propagation of waves in the medium. 
+Three distinct contributions are present on the right-hand side, each of which can be associated with a specific acoustic source within the system.
+The first term, $\frac{\partial}{\partial t} \left[ \rho_0 v_n \delta(f) \right]$, is linked to the normal velocity $v_n$ at the surface and represents the sound sources dependent on the motion of the surface. This term corresponds to a volumetric variation commonly associated with monopole sources.
+The second term, $-\frac{\partial}{\partial x_i} \left[ p n_i \delta(f) \right]$, describes the contribution of the pressure gradient on the surface. This term can be associated with dipole sources.
+The third term, $\frac{\partial^2}{\partial x_i \partial x_j} \left[ H(f) T_{ij} \right]$, is expressed in terms of Lighthill's stress tensor ($T_{ij}$) and the Heaviside function ($H(f)$). This contribution arises from internal stresses within the fluid, such as those due to turbulence, and is, therefore, related to quadrupole sources.
+
+Given their comprehensiveness, the FWH equations are a powerful numerical noise prediction tool e trovano largo uso negli approcci numerici. Several computational fluid dynamics (CFD) studies, such as \cite{Testa2018}, have demonstrated that approaches based on the FWH equations yield significantly more accurate results than traditional methods relying on Bernoulli’s theorem.
+Nevertheless, applying the Ffowcs Williams Hawkings equations to complex case studies, such as the analysis of cavitating flows, is quite complex.
+
+Solving noise production and propagation simultaneously in a single calculation is usually too complex. For this reason, the acoustic sources and noise propagation are studied separately in most analyses. 
+In these analyses, acoustic sources are usually characterised through computational fluid dynamics (CFD) tools, while post-processing calculations determine noise propagation through acoustic analogies, such as the FWH equations.
+Due to the complexity of the problem, such analyses can be highly computationally demanding. For this reason, simplifying solutions are often adopted. One of the most common simplifications is the so-called "porous surface". Following this approach, the acoustic effects of noise sources can be implicitly evaluated through surface integrals without the need to perform volumetric integration. 
+While this simplification introduces some approximations and challenges, it significantly reduces the complexity of the problem.
+
+\subsection{Pratical Nosise Prediction}
+
+It is even more challenging to provide a reliable prediction of the underwater noise radiated by a cavitating propeller at the design stage.
+
+As previously discussed, it is possible to accurately reproduce noise generation and propagation mechanisms through sophisticated numerical simulations and acoustic analogies.
+However, this does not imply that the issue of noise prediction is fully resolved. These methods are intrinsically complex and demand significant computational time and resources. In addition their effectiveness requires the complete and accurate solution of turbulent scales and cavitation dynamics, which can be prohibitive with commonly used cavitation models and mesh sizes. Consequently these methods are impractical for application during the early stages of the design process, when multiple geometries and operating conditions need to be evaluated. Their use is mostly limited to research and in some cases to the verification of the final propeller design.
+
+A similar comment can be extended to experimental tests conducted on model scales. Although experimental testing remains the most reliable and accurate method for noise prediction, its application during the early stages of design is not economically feasible.
+
+For this reason, more straightforward and cost-effective approaches have been developed over time to provide noise estimates with acceptable accuracy while minimizing both costs and time requirements. 
+The scientific literature offers various examples of these methods that can be grouped into two main categories: semi-empirical and data-driven.
+Both semi-empirical and data-driven methods extensively rely on experimental data to establish robust correlations between propeller geometries, operating conditions, and the spectrum of radiated noise. However, the utilization of experimental data differs significantly between the two approaches: Semi-empirical methods incorporate data to refine and validate physics-based models. Data-driven methods exploit knowledge of phenomena from experimental datasets to train predictive algorithms.
+
+Semi-empirical methods refer to theoretical formulations that describe a specific phenomenon of interest. Simplifying assumptions are often applied to these formulations, making the equations resolvable without requiring sophisticated computational tools. The resulting simplified models are calibrated using experimental data to ensure their applicability to real-world problems. Among the most commonly employed methods for predicting noise radiated by a cavitating propeller are those described in \cite{ETV_JMSE} and \cite{Brown1999}.
+
+The Empirical Tip Vortex (ETV) model presented in \cite{ETV_JMSE} enables the calculation of the frequency ($f_c$) and the radiated noise level ($RNL_c$) of the low-to-medium frequency hump typically associated with the presence of tip vortex cavitation. Furthermore, based on these parameters, the ETV model provides an estimate of the radiated noise spectrum.
+On the other hand, the model proposed by \cite{Brown1999} is used to predict the contribution of sheet cavitation to the noise spectrum. This contribution is generally observed at high frequencies within a band ranging from 10 to 80 kHz.
+In this framework, developing a method apt to provide accurate measurements of both the extent and dynamics of cavitating structures represents an interesting opportunity for enhancing the understanding and prediction of radiated noise. Indeed, these methods typically rely on some simplified estimate of the extent of the cavitating phenomenon of interest.
+
+For instance, in the formulations underlying the ETV model, as presented in Equations \ref{eq:ETV1} and \ref{eq:ETV2}, the term $r_c$ represents the radius of the cavitating vortex.
+
+\begin{equation}
+    \frac{f_c}{nZ} = c_1 \frac{1}{\frac{r_c}{D}} \sqrt{\frac{\sigma_{\text{tip}}}{Z}} + c_2,
+    \label{eq:ETV1}
+\end{equation}
+
+\begin{equation}
+    RNL_c = a_p + 20 \log_{10} \left( \left( \frac{r_c}{D} \right)^k \sqrt{Z} \right),
+    \label{eq:ETV2}
+\end{equation}
+
+The method is based on the assumption that the main noise generation mechanism of tip vortex cavitation is the vortex pulsation at its natural frequency, which is responsible of the typical vortex hump in the spectrum. Accordingly, correlations exist between the vortex radius, its pulsation frequency and the resulting noise levels.
+
+According to the method, the vortex cavitating radius is obtained from the velocity field around the vortex, which is, in turn, described by a 2D vortex model. Among vortex models available in the literature, the model of \cite{Proctor2010} allows obtaining a good agreement with experimental data, while the model of \cite{Lamb1932} provides less accurate results.
+The use of vortex models requires knowledge of the vortex strength as an input parameter. This can be obtained by computations with a Boundary Element Method, or it can be assumed to be roughly proportional to the propeller loading by means of a tip loading coefficient \cite{ETV_JMSE}.
+In all cases, the effects of variable vortex strength during blade revolutions, as well as general cavitation dynamics, are not explicitly included in the theoretical formulations on which the method is based.
+In addition, the validation of the cavitation vortex radius estimates obtained from the vortex models was based on the experimental data collected in \cite{Pennings2015} and \cite{Kuiper1981}. However, these data sets do not include measurements of the vortex radius variation as the blade angle varies along the propeller's rotation. 
+
+In this thesis, the dynamics of the tip vortex is reconstructed using a method based on computer vision techniques.
+The availability of tip vortex volume and its dynamics for a range of propeller operational conditions and for various wake fields will allow analysis in detail of the strength and limits of the state-of-the-art vortex models, also providing the basis for the improvement of these models.
+Among the others, the dominating noise generation mechanism will be investigated, trying to assess under what conditions the vortex pulsation is the main generation process and when, instead, the radiated noise is mostly produced by the volume variation induced by variable blade loading. 
+In addition, the simultaneous measurement of vortex size and radiated noise will allow further investigation of the correlations between radiated noise spectra and vortex dynamics for a realistic configuration, i.e. a propeller with variable inflow conditions.
+
+\section{Summary}
+
+This thesis presents computer vision techniques adapted to work effectively in the cavitation tunnel environment. The main purpose of these techniques is to accurately measure the size of the observed phenomena and study their dynamics over time.
+The developed methods were applied to two case studies. The first, described in Chapter \ref{chap:chapter5}, focuses on bubble cavitation, aiming to analyze bubble collapse dynamics and linked erosion mechanisms. The second, discussed in Chapter \ref{chap:chapter6}, addresses the noise generated by cavitation, with particular attention to the dynamics of tip vortex cavitation.
+These techniques could be extended in the future to study other types of cavitation and to deepen the understanding of additional detrimental effects associated with it.

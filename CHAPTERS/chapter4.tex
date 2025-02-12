@@ -1,0 +1,1510 @@
+\chapter{Computer Vision in Cavitation Tunnel Environment}
+\label{chap:chapter4}
+
+This chapter delves into the primary computer vision and image processing techniques employed in this thesis to analyze cavitation phenomena observed in the cavitation tunnel. The main goal is to provide a structured overview of the mathematical and algorithmic tools utilized, emphasizing the challenges encountered in their application within a complex experimental environment and the solutions devised to address them.
+This chapter will be divided into three main sections to make the discussion as clear as possible. The first section will describe the mathematical camera model and the reasons behind its choice. The second section focuses on camera calibration techniques to define a robust relationship between the physical world and the information in the images. Finally, the third and last section will discuss the computer vision techniques used to extract data from high-speed video and obtain measurements of cavity phenomena.
+
+\section{Camera Model}
+
+The first step in applying any computer vision technique is selecting the mathematical model to describe the cameras.
+The literature offers various models tailored to the camera type and the specific application.
+
+In this particular case, it is necessary to adopt a model capable of addressing the air plexiglass water interface characteristic of the cavitation tunnel. Due to the dimensions of the cavitation tunnel at the University of Genoa (described in Appendix \ref{app:appendixA}), placing cameras directly in the water is unfeasible. While placing cameras out of water ensures completely non-intrusive measurements, it requires solving the refraction problem occurring at the interfaces, as illustrated in Figure \ref{fig:interface}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{FIGURES/Chapter4/Section1/interface.png} 
+    \caption{Refraction at air-plexiglass-water interface (\cite{Sedlazeck2012}).} 
+    \label{fig:interface}  
+\end{figure}
+
+The work presented in \cite{Sedlazeck2012} provides a basis for addressing the issue of refraction in the context of cavitation tunnels. This study examines three types of cameras commonly employed in applications similar to those of interest to identify the strengths and weaknesses of each.
+The first camera model considered is the perspective pinhole camera model (single viewpoint model, SVP), characterized by an effective focal length and distortion parameters designed to compensate for the errors introduced by refraction at the camera housing. The second model analyzed belongs to the category of ray-based camera models. These approaches rely on tracing perspective rays and are characterized by a huge number of degrees of freedom. For this reason, as noted in the article, achieving accurate camera calibration in the context of interest is challenging or even unfeasible.
+Lastly, the last camera model discussed represents an evolution of the pinhole camera model. This approach incorporates a physical description of the interfaces, explicitly calculating the effects of refraction. Although this method shows great potential, the standard pinhole model was preferred in this study. The application of physically-based interface models remains relatively scarce in the literature, and developing a robust calibration procedure that includes the parameters necessary to account for refraction effects is particularly complex.
+
+Conversely, with appropriate adaptations, the pinhole model provides accurate results and is widely used in the literature for similar applications. This model offers several significant advantages. Despite its mathematical simplicity, the pinhole model accurately describes perspective projection. This simplicity makes it user-friendly and allows for considerable adaptability to diverse scenarios. Furthermore, as demonstrated later in this chapter, achieving satisfactory performance is feasible by applying specific precautions. Finally, the simplicity of the pinhole model renders it highly efficient from a computational perspective.
+
+\subsection{Pinhole Camera Model}
+
+The Pinhole model is one of the simplest mathematical formulations used to describe a camera's functioning. Despite its simplicity, the model accurately represents basic optical principles, making it a robust and versatile solution for a wide range of applications.
+The Pinhole model describes the process of perspective projection by modelling the camera as an optical device with an infinitely small aperture (the pinhole) and no lenses (Figure \ref{fig:pinhole}). Its operational principle is straightforward yet effective: all rays of light passing through the pinhole converge to specific points on the image plane. The aperture acts as a projection centre, mapping the three-dimensional (3D) world onto a two-dimensional (2D) plane.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section1/SubSection1/pinhole.png}
+  \caption{Pinhole Camera Model} 
+  \label{fig:pinhole}  
+\end{figure}
+
+
+\begin{equation}
+    u = f \frac{X}{Z}, \quad v = f \frac{Y}{Z}.
+    \label{eq:prespective1}
+\end{equation}
+
+This transformation, graphically represented in \ref{fig:prespective1}, is fully non-linear. Managing such transformations in Cartesian coordinates would be extremely complex. For this reason, homogeneous coordinates are introduced.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{FIGURES/Chapter4/Section1/SubSection1/prespective.png}
+  \caption{Pinhole perspective projection mechanism.} 
+  \label{fig:prespective1}  
+\end{figure}
+
+\subsubsection{Omogeneus Coordinates}
+
+Homogeneous coordinates represent an extension of the Cartesian coordinate system by introducing an auxiliary dimension.
+In three-dimensional space, a point $P = [X_c, Y_c, Z_c]^T$ is represented in homogeneous coordinates as $P = [X_o, Y_o, Z_o, w]^T$, where  $w \neq  0$ s an arbitrary scalar. Similarly, a two-dimensional point $p = [u_c, v_c]^T$ is extended and represented as $p = [u_o, v_o, w]^T$.
+The relationship between homogeneous and Cartesian coordinates is expressed by Equation \ref{eq:homogeneous}.
+
+\begin{equation}
+  X_c = \frac{X_o}{w}, \quad Y_c = \frac{Y_o}{w}, \quad Z_c = \frac{Z_o}{w},.
+  \label{eq:homogeneous}
+\end{equation}
+
+Where, the superscript $c$ is used to denote Cartesian coordinates, while the superscript $o$ refers to homogeneous coordinates. Typically, $w=1$ is set by convention to normalize the homogeneous coordinates.
+This coordinate system offers two main advantages. The first is the handling of points at infinity. By setting $w = 0$, homogeneous coordinates allow for an effective representation of points at infinity. However, the most significant advantage lies in the linearization of projective transformations.
+In Cartesian coordinates, perspective projection is characterized by a ratio, making it a nonlinear transformation. Conversely, in the space of homogeneous coordinates, it can be expressed as a simple matrix product (Equation \ref{eq:prespective2}).
+
+\begin{equation} 
+  \label{eq:prespective2}
+  \begin{pmatrix}
+  u \\ 
+  v \\ 
+  1
+  \end{pmatrix}
+  \sim
+  \begin{pmatrix}
+  f & 0 & 0 & 0 \\ 
+  0 & f & 0 & 0 \\ 
+  0 & 0 & 1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+  X \\ 
+  Y \\ 
+  Z \\ 
+  1
+  \end{pmatrix}
+\end{equation}
+
+This transformation rules the perspective projection underlying the pinhole camera model. However, it represents only a simplified version of the camera model.
+
+\subsubsection{General Camera Model}
+
+The model presented above must be generalized by considering several factors to describe the operation of a camera in a real-world application.
+
+Firstly, the model is expressed in physical units. The coordinates of the physical points $[X, Y, Z]$, the image points $[u, v]$ and the focal length $f$ are given in millimetres (or meters).
+However, in practice, only the focal length and physical points are typically expressed in these units, while image points are measured in pixels.
+To convert millimetres to pixels, it is possible to introduce two scaling factors, $s_x$ e $s_y$. This allows Equation \ref{eq:prespective2}  to be reformulated as shown in Equation \ref{eq:prespective3}.
+
+\begin{equation} 
+  \label{eq:prespective3}
+  \begin{pmatrix}
+  u \\ 
+  v \\ 
+  1
+  \end{pmatrix}
+  \sim
+  \begin{pmatrix}
+  s_x f & 0 & 0 & 0 \\ 
+  0 & s_y f & 0 & 0 \\ 
+  0 & 0 & 1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+  X \\ 
+  Y \\ 
+  Z \\ 
+  1
+  \end{pmatrix}
+\end{equation}
+
+In most cases, pixel shapes are square. This implies that $s_x = s_y$ and consequently $ f_x = s_x f = s_y f = f_y = f$.
+Furthermore, the model assumes that the origin of the image coordinate system (in pixels) is located along the camera's optical axis ($Z$). However, this assumption is generally not valid in practical cases, as pixel coordinates are typically measured starting from the image's top-left corner.
+This requires adding a translation to the transformation defined so far, resulting in the form shown in Equation \ref{eq:prespective4}.
+
+\begin{equation} 
+    \label{eq:prespective4}
+    \begin{pmatrix}
+    u \\ 
+    v \\ 
+    1
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+    s_x f & 0 & c_x & 0 \\ 
+    0 & s_y f & c_y & 0 \\ 
+    0 & 0 & 1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+    X \\ 
+    Y \\ 
+    Z \\ 
+    1
+    \end{pmatrix}
+\end{equation}
+
+In which $c_x$ and $c_y$ define the position of the point where the optical axis intersects the image plane. This point is referred to as the principal point.
+
+Finally, in the most general cases, the model introduces an additional parameter, $\alpha$, to account for the possibility that the optical axis is not perfectly orthogonal to the image plane. This way, the intrinsic camera model described by Equation (\ref{eq:prespective5}) is obtained.
+However, in most cases, the image plane and the optical axis are orthogonal, leading to $\alpha = 0$.
+
+\begin{equation} 
+    \label{eq:prespective5}
+    \begin{pmatrix}
+    u \\ 
+    v \\ 
+    1
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+    s_x f & \alpha & c_x & 0 \\ 
+    0 & s_y f & c_y & 0 \\ 
+    0 & 0 & 1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+    X \\ 
+    Y \\ 
+    Z \\ 
+    1
+    \end{pmatrix}
+    = 
+    PPM
+    \begin{pmatrix}
+      X \\ 
+      Y \\ 
+      Z \\ 
+      1
+      \end{pmatrix}
+  \end{equation}
+
+In which $PPM$ is called the perspective projection matrix.
+
+The Projection Perspective Matrix (PPM) reported in Equation \ref{eq:prespective5} can be represented as the product of two matrices  the matrix of intrinsic parameters $K$ (commonly referred to as the camera matrix) and the matrix $[I | 0]$ that encodes the essence of the prespective transformation without any parameters.
+With this distinction, the perspective projection matrix defined in Equation \ref{eq:prespective5} can be reformulated as shown in Equation \ref{eq:PPM1}.
+
+\begin{equation} 
+    \label{eq:PPM1}
+    PPM = 
+    \begin{pmatrix}
+    s_x f & \alpha & c_x \\ 
+    0 & s_y f & c_y \\ 
+    0 & 0 & 1 
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 \\ 
+      0 & 1 & 0 & 0 \\ 
+      0 & 0 & 1 & 0
+      \end{pmatrix}
+    = K
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 \\ 
+      0 & 1 & 0 & 0 \\ 
+      0 & 0 & 1 & 0
+      \end{pmatrix}
+\end{equation}
+
+Even if the Equation \ref{eq:prespective5} allows for a general and complete description of the perspective projections, it assumes that points in 3D space can be represented in coordinates relative to the camera's frame of reference (in which $Z$ is the optical axis). This would make the camera calibration procedure extremely complex (which will be discussed in Section \ref{sez:Camera_Calibration}) or even unfeasible.
+For this reason, it is preferred to describe the pinhole model using three reference systems (Figure \ref{fig:refernce_frames}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{FIGURES/Chapter4/Section1/SubSection1/reference_frames.png}
+    \caption{Characteristic References Frames in the Pinhole Camera Model} 
+    \label{fig:refernce_frames}  
+\end{figure}
+
+In the discussion above, the relationship between the "camera reference system" (in millimetres) and the "image reference system" (in pixels) was already described (Equation \ref{eq:prespective5}). In addition, a third reference system is introduced, often called the "world reference system", in which points are expressed in physical space (also in millimetres).
+This reference system has an arbitrary origin and orientation and is simply an auxiliary system for describing perspective projections and camera calibration.
+Assuming that the camera reference system is rotated and translated relative to the world reference system, a rotation matrix $R$ and a translation vector $T$ can be introduced to satisfy Equation \ref{eq:camera2world}.
+
+\begin{equation} 
+  \label{eq:camera2world}
+  M_c = 
+  \begin{pmatrix}
+  R & T \\ 
+  0 & 1 \\ 
+  \end{pmatrix}
+ M_w
+ = 
+ \begin{pmatrix}
+  r_11 & r_12 & r_13 & t_x \\ 
+  r_21 & r_22 & r_23 & t_y \\ 
+  r_31 & r_32 & r_33 & t_z \\ 
+  0 & 0 & 0 & 1 \\ 
+  \end{pmatrix}
+  M_w
+\end{equation} 
+
+Where the subscript $c$ indicates the coordinates expressed in the camera reference frame, while $w$ refers to the coordinates in the world reference frame. The matrix that relates the camera system to the world system is the extrinsic parameter matrix. It depends on the scene that the camera observes because it takes different values depending on where the origin of the world system is placed. By introducing this last step, it is possible to rewrite Equation \ref{eq:prespective5} in the form presented in Equation \ref{eq:prespective6}.
+
+\begin{equation} 
+  \label{eq:prespective6}
+  \begin{pmatrix}
+  u \\ 
+  v \\ 
+  1
+  \end{pmatrix}
+  \sim
+  K
+  \begin{pmatrix}
+    I & | & 0 \\ 
+    \end{pmatrix}
+  \begin{pmatrix}
+    R & T \\ 
+    0 & 1 \\ 
+    \end{pmatrix}
+  \begin{pmatrix}
+  X \\ 
+  Y \\ 
+  Z \\ 
+  1
+  \end{pmatrix}
+\end{equation}
+
+Unlike what occurs in Equation \ref{eq:prespective5}, the terms $[X, Y, Z, 1]$ do not represent the coordinates in the camera system but those in the world coordinate system. This relationship constitutes the perspective projection at the base of the pinhole camera model. 
+The terms in Equation \ref{eq:prespective6} can be distinguished into intrinsic and extrinsic parameters. As already mentioned, the matrix $K$ contains the intrinsic parameters. These terms are characteristic of the camera as long as it works in a homogeneous medium and the lenses remain unchanged.
+On the other hand, terms in matrix $R$ and vector $T$ are the extrinsic parameters fully dependent on the scene observed by the camera.
+
+By examining Equation \ref{eq:prespective6}, it is possible to count the number of parameters necessary to fully define the model.
+The intrinsic parameters are five: two focal lengths, two coordinates for the pricipal point, and the factor $\alpha$ (often neglected). The latter is typically ignored, meaning the intrinsic parameters to be determined are usually four. The extrinsic parameters include six values: the three angles required to define the rotation matrix $R$ and the three translation coordinates in the vector $T$. In total, ten coefficients must be defined.
+
+Finally, it is important to focus on the assumptions underlying the model. Although previously mentioned, these assumptions should be explicitly addressed to clarify the related issues and solutions adopted.
+First, neglecting the $\alpha$ term assumes that the image plane is perfectly perpendicular to the optical axis and that the camera is rigid, without changes in focal length during image acquisition. This assumption is generally valid for high-quality cameras. It is also assumed that the pinhole is infinitesimally small to avoid blurring effects, which implies a trade-off between image brightness and sharpness. Although this assumption is not strictly true, it does not pose significant problems for optical measurements.
+Lastly, the model assumes that light rays travel in straight lines and that the lenses do not introduce optical distortions or aberrations. Both of these assumptions are entirely false, and they must be properly managed, particularly in non-conventional environments (such as the cavitation tunnel).
+
+\subsection{Distortion Models}
+
+The optical system that constitutes a camera can be characterized by a wide range of imperfections that induce image distortions. These imperfections are typically due to the lenses, which are not accounted for by the pinhole model. Ignoring these distortions could result in significant errors, compromising the accuracy of measurements. In general, the effect of distortion can be expressed by the relationships shown in Equation \ref{eq:distortion1}.
+
+\begin{equation}
+  u' = u + \delta_u(u,v), \quad v' = v + \delta_v(u,v)
+  \label{eq:distortion1}
+\end{equation}
+
+Where the prime symbol $'$ denotes the distorted coordinates, while the coordinates without the prime symbol refer to the coordinates in the distortion-free image.
+
+The following section will discuss the standard types of distortions caused by lenses and the commonly adopted models used in the literature to represent and mitigate these distortions (\cite{Weng1992}).
+
+\subsubsection{Radial Distortion}
+
+Radial distortion occurs when light entering the lens undergoes a distortion that increases with distance from the centre of the field of view. This distortion leads to images that are distorted radially with respect to the centre of the camera. 
+The primary cause of radial distortion is often the imperfect curvature of the camera’s lenses. In practice, three main types of radial distortion can be distinguished.
+
+\begin{itemize}
+  \item Barrel Distortion:
+A negative radial displacement is referred to as barrel distortion (Figure \ref{fig:barrel_distortion}). Barrel distortion causes an increase in the distance of outer points. The apparent effect is an image that appears to be mapped around a sphere (or barrel).
+  \item Pincushion Distortion:
+A positive radial displacement is defined as pincushion distortion.
+This type of distortion causes the outward dispersion of peripheral points (Figure \ref{fig:pincushion_distortion}).
+The effect of pincushion distortion is that lines not passing through the centre of the image appear bent inward toward the centre of the image (resembling a pincushion).
+  \item Moustache  Distortion
+Moustache distortion can be considered a combination of the previously mentioned distortions (Figure \ref{fig:mustache_distortion}). Moustache distortion begins as barrel distortion near the centre of the image and gradually transitions into pincushion distortion toward the periphery. This progression causes horizontal lines in the upper half of the frame to resemble handlebar moustaches.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  % Prima immagine
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Barrel_distortion.png}
+      \caption{Barrel Radial Distortion}
+      \label{fig:barrel_distortion}
+  \end{subfigure}
+  \hfill
+  % Seconda immagine
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Pincushion_distortion.png}
+      \caption{Pincushion Radial Distortion}
+      \label{fig:pincushion_distortion}
+  \end{subfigure}
+  \hfill
+  % Terza immagine
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Mustache_distortion.png}
+      \caption{Mustache Radial Distortion}
+      \label{fig:mustache_distortion}
+  \end{subfigure}
+\end{figure}
+
+Radial distortion can mathematically be described by a function that alters the coordinates of points in the image based on their distance from the centre of the lens (which is typically assumed to coincide with the principal point of the camera).
+Under this assumption, the correction of radial distortion can be achieved through the use of polynomials that model the distortion, as shown in Equation \ref{eq:radial_distorion1}. 
+
+\begin{equation}
+  x' = x ( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6 ), 
+  \quad
+  y' = y ( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6)
+  \label{eq:radial_distorion1}
+\end{equation}
+
+Where, $\rho$ represents the radial distance from the pricipal point of the camera, while $k_1$, $k_2$, and $k_3$ are parameters that define the effect of radial distortion.
+
+Specifically, $k_1$ is generally the primary coefficient governing minor distortions. The coefficient $k_2$ takes nonzero values when it is necessary to compensate for more pronounced distortions. Meanwhile, the coefficient $k_3$ is less common and is employed in the correction of significantly distorted images.
+
+An additional set of parameters, generally called higher-order radial coefficients, can be added to these. These coefficients are used to extend the polynomial radial distortion model (Equation \ref{eq:radial_distorion1}) to the radial distortion model (Equation \ref{eq:radial_distorion2}), allowing for the accurate handling of even more complex distortions.
+
+\begin{equation}
+  x' = x \frac{( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6 )}
+  {( 1 + k_4 \rho^2 + k_5 \rho^4 + k_6 \rho^6 )}, 
+  \quad
+  y' = y\frac{( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6 )}
+  {( 1 + k_4 \rho^2 + k_5 \rho^4 + k_6 \rho^6 )}
+  \label{eq:radial_distorion2}
+\end{equation}
+
+\subsubsection{Tangential Distortion}
+
+Tangential distortion typically produces less pronounced effects compared to radial distortion.
+It arises from an imperfect alignment of the lens with the film or sensor plane. This type of distortion occurs when the image appears shifted from its ideal position, resulting in a distortion that is not symmetric concerning the centre of the image (Figure \ref{fig:tangential_distortion}).
+
+\begin{figure}[htbp]
+  \centering
+  % Prima immagine
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Tangential_distortion.png}
+      \caption{Tangential Distortion}
+      \label{fig:tangential_distortion}
+  \end{subfigure}
+  \hfill
+  % Seconda immagine
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Compound_distortion.png}
+      \caption{Compound Distortion}
+      \label{fig:compound_distortion}
+  \end{subfigure}
+\end{figure}
+
+The tangential distortion model can be expressed as shown by Equation \ref{eq:tangential_distortion}.
+
+\begin{equation}
+  x' = x + [2p_1 y + p_2(\rho^2 + 2x^2)],
+  \quad
+  y' = y + [p_1(\rho^2 + 2y^2) + 2p_2 x]
+  \label{eq:tangential_distortion}
+\end{equation}
+
+Where $p_1$ and $p_2$ are the characteristic coefficients of the model.
+
+In many cases, radial and tangential distortion are present simultaneously (Figure \ref{fig:compound_distortion}). 
+In many cases, the combination of the two models presented in Equation \ref{eq:radial_tangential_distortion} is sufficient to describe the distortion in the image accurately, and no further corrections are needed.
+
+\begin{equation}
+  \begin{aligned}
+  x' &= x \left( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6 \right) + \left[ 2p_1 y + p_2 \left( \rho^2 + 2x^2 \right) \right] \\
+  y' &= y \left( 1 + k_1 \rho^2 + k_2 \rho^4 + k_3 \rho^6 \right) + \left[ p_1 \left(\rho^2 + 2y^2 \right) + 2p_2 x \right]
+  \end{aligned}
+  \label{eq:radial_tangential_distortion}
+  \end{equation}
+
+\subsubsection{Thin-Prism Distortion}
+
+However, it may be necessary to account for additional distortion effects in more complex cases. These effects are generally represented within the thin-prism distortion model. Thin-prism distortion arises due to imperfections in the manufacturing and assembly of the lenses.
+These imperfections can cause the lens to deviate light unevenly, creating an angular distortion effect similar to an optical prism. This type of distortion is typically represented by Equation \ref{eq:thin_prism_distorion}.
+  
+  \begin{equation}
+    x' = s_1 r^2 +s_1 r^4,
+    \quad
+    y' = s_3 r^2 +s_4 r^4
+    \label{eq:thin_prism_distorion}
+  \end{equation}
+  
+Where $s_1$, $s_2$, $s_3$ and $s_4$ are the coefficients of the model. 
+  
+\subsubsection{Scheimpflug Principle}
+  
+Although the three models presented above generally describe the most common types of distortion, it is important to consider a fourth effect. This type of distortion only appears when a Scheimpflug is used in the optical system.
+Scheimpflugs are a special type of lens that allows the camera sensor to be tilted so that an oblique plane can be focused. A simplified schematic of the working principle of the Scheimpflug is shown in Figure \ref{fig:scheimpflug_principle}.
+  
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{FIGURES/Chapter4/Section1/SubSection2/Sheimpflug_principle.png}
+    \caption{
+     Characteristic angles of the Scheimpflug principle.} 
+    \label{fig:scheimpflug_principle}  
+  \end{figure}
+
+These tools are extremely useful in applications similar to those of interest. Nevertheless, it is important to consider that the sensor's tilt introduces additional distortion in the images.
+In \cite{Louhichi2007}, a model was presented to account for this effect. This study proposes the introduction of two terms, $\tau_x$ and $\tau_y$, which define two successive rotations, $R(\tau_x, \tau_y)$, as shown in Equation \ref{eq:scheimpflug_principle1}.
+
+\begin{equation} 
+  \label{eq:scheimpflug_principle1}
+  \begin{split}
+    R(\tau_x, \tau_y) 
+    &= 
+    \begin{pmatrix}
+      \cos(\tau_y) & 0 & -\sin(\tau_y) \\ 
+      0 & 1 & 0 \\ 
+      \sin(\tau_y) & 0 & \cos(\tau_y) \\ 
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 0 & 0 \\ 
+      0 & \cos(\tau_x) & \sin(\tau_x) \\ 
+      0 & -\sin(\tau_x) & \cos(\tau_x) \\ 
+    \end{pmatrix} \\[0.5cm] 
+    &=
+    \begin{pmatrix}
+      \cos(\tau_y) & \sin(\tau_y)\sin(\tau_x) & -\sin(\tau_y)\cos(\tau_x) \\ 
+      0 & \cos(\tau_x) & \sin(\tau_x) \\ 
+      \sin(\tau_y) & -\cos(\tau_y)\sin(\tau_x) & \cos(\tau_y)\cos(\tau_x) \\ 
+    \end{pmatrix}
+  \end{split}
+\end{equation}
+
+Using the matrix $R(\tau_x, \tau_y)$, it is possible to remap the distorted coordinates into the undistorted ones. Equation \ref{eq:scheimpflug_principle2} expresses the relationship between distorted and undistorted point coordinates.
+
+\begin{equation} 
+  \label{eq:scheimpflug_principle2}
+  \begin{pmatrix}
+    x' \\ 
+    y' \\ 
+    1
+    \end{pmatrix}
+  =
+  \begin{pmatrix}
+  R_{33}(\tau_x, \tau_y) & 0 & -R_{13}(\tau_x, \tau_y) \\ 
+  0 & R_{33}(\tau_x, \tau_y) & -R_{23}(\tau_x, \tau_y) \\ 
+  0 & 0 & 1 
+  \end{pmatrix}
+  R(\tau_x, \tau_y)
+  \begin{pmatrix}
+    x \\ 
+    y \\ 
+    1
+    \end{pmatrix}
+\end{equation}
+
+\subsubsection{Pratical Applications}
+
+The distortion models presented can be combined to achieve more comprehensive and sophisticated models. However, assuming that the most complete model (which incorporates all coefficients) is always the most effective would be incorrect. On the contrary, the distortion model that minimizes reprojection errors varies each time cameras are calibrated and strongly depends on both the application type and experimental setup.
+For this reason, this work decided to repeat the calibration calculations for different models each time camera calibration was required. Specifically, four models based on the distortion present in the images were considered.
+
+\begin{itemize}
+  \item The Polynomial Model
+  (non-zero coefficients[$k_1$, $k_2$, $k_3$], [$p_1$, $p_2$])
+  \item The Rational Model
+  (non-zero coefficients[$k_4$, $k_5$, $k_6$])
+  \item The Thin-Prism Model
+  (non-zero coefficients [$s_1$, $s_2$, $s_3$, $s_4$])
+  \item The Tilted Model
+  (non-zero coefficients [$\tau_x$, $\tau_y$])
+\end{itemize}
+
+Table \ref{tab:distortion_models} shows the distortion model combinations considered within this thesis.
+
+\begin{table}[htbp]
+  \centering
+  \resizebox{0.9\textwidth}{!}{
+  \begin{tabular}{ccccc}
+  \toprule
+  Combinations & Polynomial Model & Rational Model & Thin Prism Model & Tilted Model \\
+  \midrule
+  Model 0 & & & & \\
+  Model 1 & $\checkmark$ &  &  & \\
+  Model 2 & $\checkmark$ & $\checkmark$ & & \\
+  Model 3 & $\checkmark$ & & $\checkmark$ & \\
+  Model 4 & $\checkmark$ & & & $\checkmark$ \\
+  Model 5 & $\checkmark$ & $\checkmark$ & $\checkmark$ & \\
+  Model 6 & $\checkmark$ & & $\checkmark$ & $\checkmark$ \\
+  Model 7 & $\checkmark$ & $\checkmark$ & & $\checkmark$ \\
+  Model 8 & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+  \bottomrule
+  \end{tabular}}
+  \caption{Combinations of distortion models considered.}
+  \label{tab:distortion_models}
+\end{table}
+
+These coefficients can also serve as " error storages " in addition to modelling distortions caused by the lenses. By activating a distortion model, a certain number of additional coefficients are introduced to the intrinsic camera parameters. These additional parameters allow for partial compensation of errors generated by effects not directly accounted for by the models (e.g., the air-plexiglass-water interface).
+
+\subsection{Refraction Effects and Management}
+
+Although, in some cases, it is possible to obtain accurate results by handling refraction due to the plexiglass-water interface using only distortion models in general, it is better to address the problem explicitly.
+
+First, clarifying the effects of light refraction through the tunnel windows is necessary. In this regard, a preliminary simplification can be introduced, reducing the problem's complexity while sacrificing minimal accuracy. By examining Table \ref{tab:snell_coefficient}, it is observed that the difference between the refractive indices of water and plexiglass is relatively small. Additionally, the thickness of the tunnel windows ($35$ mm) is considerably smaller than the path that light rays travel in water.
+
+\begin{table}[htbp]
+  \centering
+  \resizebox{0.4\textwidth}{!}{
+  \begin{tabular}{ccccc}
+  \toprule
+  Medium & Refractive Indices \\
+  \midrule
+  Air & 1.000293 \\
+  PMMA (Plexiglas) & 1.4896 \\
+  Water & 1.3330 \\
+  \bottomrule
+  \end{tabular}}
+  \caption{Materials Refractive Indices .}
+  \label{tab:snell_coefficient}
+\end{table}
+
+For these reasons, it is possible to neglect the change in material from plexiglass to water, considering the double interface as a single air-water interface.
+
+As observed in Figures \ref{fig:focal_length_effect} and \ref{fig:optical_centre_effect}, the effect generated by the presence of the interface primarily depends on the angle between the camera sensor and the interface itself.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{FIGURES/Chapter4/Section1/SubSection3/interface1.png}
+  \caption{Refraction effect depending on the angle between the camera sensor and the air-water interface. Camera sensor parallel to air-water interface (Effect on Focal Length).}
+  \label{fig:focal_length_effect}
+\end{figure}
+
+First, consider the case where the camera sensor and the interface are parallel. In this scenario, the real perspective rays are refracted due to Snell's law. The pinhole camera model cannot describe the refraction effect. Consequently, the model (once calibrated) accounts for refraction by simply adopting an effective inclination of the perspective rays different from the actual one. Practically, this leads to overestimating the camera's focal length (Figure \ref{fig:focal_length_effect}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{FIGURES/Chapter4/Section1/SubSection3/interface2.png}
+  \caption{Refraction effect depending on the angle between the camera sensor and the air-water interface. Camera sensor non parallel to air-water interface (Effect on Principal Point).}
+  \label{fig:optical_centre_effect}
+\end{figure}
+
+The problem becomes even more complicated if the camera sensor and the air-water interface are not parallel. In this case, the refraction effect not only alters the estimation of focal length but also causes significant errors in identifying the camera's principal point.
+The erroneous position of the principal point tends to have a more severe consequence than errors in focal length estimation, as it often results in more significant re-projection errors. For this reason, commonly adopted solutions in the literature for handling interface effects focus primarily on accurately estimating the principal point.
+To maintain some flexibility in the experimental setup, it is not feasible to force the alignment of camera sensors parallel to the cavitation tunnel windows. An effective and commonly adopted solution from the literature for restoring the parallelism between the camera sensor and the air-water interface involves prisms. These prisms are often made entirely of plexiglass or are hollow and filled with water (Figure \ref{fig:Plexiglass_prism}).
+
+By placing a prism with a base angle equal to the angle between the camera sensor and the air-water interface, a new interface parallel to the sensor is obtained. In this way, the error in estimating the camera's principal point is fully resolved, leaving only the issue of the focal length to be addressed.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section1/SubSection3/Plexiglass_prism.jpg}
+  \caption{Plexiglas prism.}
+  \label{fig:Plexiglass_prism}
+\end{figure}
+
+Although an inaccurate estimate of the focal length is generally less problematic than errors in measuring the principal point, some considerations are still necessary.
+Firstly, it is essential to ensure that the error in this estimation is reasonable. In this regard, a very effective approach is positioning the camera as close as possible to the interface (e.g., the prism or window). This way, the distance the perspective rays must travel through air is minimized. The result is similar to that achieved by positioning the cameras directly underwater.
+Although placing the camera in direct contact with the interface would be the optimal solution, this is not always feasible. Considering the field of view and the available optics of the laboratory, it is often necessary to accept a certain distance between the cameras and the windows. In general, this does not pose a significant problem. As long as this distance does not become excessive, the resulting error can be managed through distortion models and the camera’s intrinsic parameters, still allowing for high-quality measurements.
+
+\section{Camera Calibration}
+\label{sez:Camera_Calibration}
+
+After selecting the camera model to base the measurement technique, it is necessary to proceed with calibration. Camera calibration is the process of defining both the camera's characteristics and its position in space.
+Calibration procedures can be divided into three categories depending on the number of cameras to calibrate. 
+
+When data from a single camera are required, the process is called mono calibration (Section \ref{sez:mono_calibration}). The purpose of mono calibration is to determine the intrinsic parameters of the camera, the distortion model coefficients, and the extrinsic parameters that relate the camera reference frame to the world reference frame.
+
+When two cameras are calibrated as a stereo pair, the process is referred to as stereo calibration (Section \ref{sez:stereo_calibration}). Finally, multiview calibration is used when three or more cameras must be calibrated simultaneously (Section \ref{sez:multiview_calibration}). In these latter cases, in addition to determining the intrinsic parameters of each camera and their respective distortion coefficients, it is also necessary to obtain the information required to establish the relative positions between every possible pair of cameras.
+
+The following sections provide a brief description of each of these procedures. The aim of these descriptions is to provide a solid foundation that clarifies the principles and reasoning underlying camera calibration. Furthermore, the errors affecting these procedures will be addressed to demonstrate how they have been managed and controlled.
+For a more formal and detailed description of these procedures, readers are referred to specialized texts such as \cite{Hartley2003}.
+
+\subsection{Mono Calibration}
+\label{sez:mono_calibration}
+
+As previously mentioned, calibrating a camera in a monocular configuration involves determining all the characteristic coefficients of the projection model. 
+To better clarify this concept, consider Equation \ref{eq:prespective6}. This equation generally allows for the projection of a three-dimensional point in the world reference system $[X, Y, Z, 1]$ onto a pixel in the image reference system $[u, v, 1]$. The projection is based on the intrinsic parameters of the camera, contained in the matrix $K$, and the extrinsic parameters, represented by the rotation matrix $R$ and the translation vector $T$.
+The same equation can be used to calibrate the camera by reversing the unknowns and parameters. Given the coordinates of the point in three-dimensional space and on the image plane, it is possible to deduce both the intrinsic and extrinsic parameters.
+
+In this form, the problem defined by equation \ref{eq:prespective6} is underdetermined. The entries of the perspective projection matrix ($PPM$ $[3 \times 4]$) represent twelve unknowns to be determined using only two equations (one for $u$ and one for $v$). 
+
+Resolving the problem clearly requires more than knowing the coordinates of a single point in both the world coordinate system and the image plane.  For reasons that will be clarified later, practical applications often involve using numerous points. 
+
+Generally, this task is performed using a calibration pattern. Broadly speaking, a calibration pattern can be any object with easily recognizable features. In most cases, these objects are chessboards (Figure \ref{fig:checkerboard_square}) or dot grids (Figure \ref{fig:checkerboard_dot}). 
+
+ 
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section2/SubSection1/checkerboard_square.png}
+      \caption{Square Calibration Pattern.}
+      \label{fig:checkerboard_square}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section2/SubSection1/checkerboard_dot.png}
+      \caption{Dot Calibration Pattern.}
+      \label{fig:checkerboard_dot}
+  \end{subfigure}
+\end{figure}
+
+In this thesis, chessboard calibration patterns were used. Certain programming libraries specifically developed for computer vision tasks (\cite{opencv_website}) provide algorithms for detecting chessboard corners. When used correctly, these algorithms allow for determining point coordinates in the image plane with sub-pixel accuracy (Figure \ref{fig:chessboardCorners}). Achieving this level of precision is essential to obtain low reprojection errors.
+
+Identifying the chessboard corners in the image grants access to the coordinates $[u, v, 1]$ for a set of points. However, to apply Equation \ref{eq:prespective6}, the coordinates in the world coordinate system $[X, Y, Z]$ are still required.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.45\textwidth]{FIGURES/Chapter4/Section2/SubSection1/chessboardCorners.png} 
+  \caption{Chessboard Corners detected in a Calibration Pattern} 
+  \label{fig:chessboardCorners}  
+\end{figure}
+
+As previously mentioned, the world reference system is entirely arbitrary, and its position can be freely chosen. Typically, the origin of the world reference system is placed at the top-left corner of the pattern (as shown in Figure \ref{fig:worldRF}). Generally, the world reference system is oriented such that the $X$ and $Y$ axes lie on the plane of the pattern, while the $Z$ axis is orthogonal to and extends outward from it. As will be demonstrated later, this arrangement significantly simplifies the calibration procedure.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{FIGURES/Chapter4/Section2/SubSection1/WorldRF.png} 
+  \caption{Positionig of World Reference Frame on a Calibration Pattern} 
+  \label{fig:worldRF}  
+\end{figure}
+
+\subsubsection{Theoretical Aspects}
+
+After defining the reference systems and identifying the corners of the calibration pattern both in the image and the world, the geometric relationship between the two systems can be established. Fullfill this task means determining the coefficients of Equation \ref{eq:prespective6}.
+
+This equation includes twelve coefficients, although not all of them are independent. The matrix $K$ depends on four primary parameters: the focal lengths $f_x$ and $f_y$, and the coordinates of the principal point $c_x$, $c_y$. Three rotation angles uniquely determine the rotation matrix $R$. Finally, the translation vector $T$ consists of three components. Consequently, the total number of unknowns is not twelve but ten.
+
+Equation \ref{eq:prespective6} describes a general perspective projection. However, adopting a planar calibration pattern can be interpreted as a plane homography. The plane homography is a specific perspective projection that defines the mapping between points on one plane and those on another. 
+
+In this particular case, the plane homography represents the relationship between points on the image plane and those on the pattern. If $m$ denotes the homogeneous coordinates of a point on the image plane, $[u, v, 1]$, and $M$ denotes the homogeneous coordinates of the same point in the world reference system, $[X, Y, Z, 1]$, the plane homography assumes the form given in Equation \ref{eq:planeHomography1}.
+
+\begin{equation} 
+  \label{eq:planeHomography1}
+  m = sHM
+\end{equation}
+
+In the present case, this equation assumes a physical meaning, and the homography matrix $H$ represents the perspective projection matrix $PPM$. The term $s$ is a scaling factor required because homogeneous coordinates are defined up to a scaling factor.  
+In these terms, Equation \ref{eq:planeHomography1} takes the form of Equation \ref{eq:planeHomography2}.
+
+\begin{equation} 
+  \label{eq:planeHomography2}
+  m = sK
+  \begin{pmatrix}
+    R & | & T 
+  \end{pmatrix}
+  M
+\end{equation}
+
+By choosing to position the world reference frame as indicated in \ref{fig:worldRF}, the problem is considerably simplified. Indeed, by adopting this reference frame, all the calibration pattern corners lie on the $XY$ plane and thus have a null $Z$ coordinate. This implies that the third column of the rotation-translation matrix \(\begin{pmatrix} R & | & T \end{pmatrix}\) is not necessary, and the coordinates \(M = [X, Y, Z, 1]\) can be reduced to \(\tilde{M} = [X, Y, 1]\), leading to Equation \ref{eq:planeHomography3}.
+
+\begin{equation} 
+  \label{eq:planeHomography3}
+  m
+  = 
+  sK
+  \begin{pmatrix}
+    r_1 & r_2 & | & T 
+    \end{pmatrix}
+  \tilde{M}
+\end{equation}
+
+Where $r_1$ and $r_2$ represent the first and second columns of the rotation matrix, respectively. In this form, the planar homography $H = sK\begin{pmatrix} r_1 & r_2 & | & T \end{pmatrix}$ becomes a $[3x3]$ matrix. Consequently, the number of unknowns to be determined reduces from ten to nine.
+
+Typically, the scaling factor $s$ is fixed to normalize the matrix $H$ and ensure $H_{33} = 1$. This choice imposes an additional constraint on the problem, reducing the number of unknowns from nine to eight.
+
+As previously noted, perspective projection allows us to write two equations (one for $u$ and one for $v$) for each point with known coordinates in both the image plane and the world coordinate system. It is thus evident that the minimum number of points required to solve the system is four.
+
+Although four points are sufficient from a mathematical perspective to determine the components of the matrix $H$, in practical contexts, patterns with many points are commonly used. Indeed, using only four points would make the solution highly sensitive to small errors. A slight inaccuracy in the localization of any of these points would result in significant errors in the calculated homography. In contrast, using patterns with many points allows for optimization techniques, enabling the minimization of the overall projection error and improving the robustness and accuracy of the process.
+
+Once the matrix $H$ components have been determined, the calibration procedure cannot be considered complete. Indeed, it is still necessary to separate the intrinsic parameters of the camera (the matrix $K$) from the extrinsic parameters (the rotation-translation matrix $\begin{pmatrix} R & | & T \end{pmatrix}$).  
+This distinction is fundamental to isolating the camera's optical properties from those related to its position and orientation in space.  
+To define this distinction, it is necessary to use a series of multiple views of the calibration pattern.
+
+As previously discussed, a single pose of the pattern can be associated with ten unknowns (the components of the perspective projection matrix $PPM$) and eight constraints (defined through the homography matrix $H$).  
+The perspective projection matrix can be written as the product of the intrinsic and extrinsic parameters.  
+The camera's intrinsic parameters remain unchanged with varying observed scenes and thus remain invariant across different poses of the calibration pattern.  
+On the other hand, the rotation-translation depends on how the world reference frame is defined, i.e., how the pattern is positioned.
+
+This implies that four of the ten unknowns remain fixed across varying views of the pattern, while eight new constraints can be formulated for each additional pose.  
+Therefore, a sufficient number of views of the pattern can separate the intrinsic from the extrinsic parameters.  
+The minimum number of views required for this separation is determined by Equation \ref{eq:minPatternPose}.
+
+\begin{equation} 
+  \label{eq:minPatternPose}
+  6 \cdot \alpha + 4 = 8 \cdot \alpha  
+\end{equation}
+
+In which the terms on the left-hand side represent the number of unknowns varying with the number of calibration pattern positions considered. The right-hand side indicates the number of degrees of freedom.  
+This relationship shows that two different poses of the calibration pattern would be sufficient to separate intrinsic and extrinsic terms.  
+However, similar to the number of points, using only two poses does not guarantee a good calibration result. Many different positions are utilized to achieve the solution by applying an optimization algorithm.
+
+This principle is precisely the basis of the algorithm proposed by \cite{Zhang2000}. This technique is by far the most widely used in camera calibration. It suggests utilizing the different homographies obtained from multiple poses to provide an initial estimate of the camera's intrinsic parameters and distortion coefficients.  
+Subsequently, an iterative optimization process, often based on the Levenberg-Marquardt algorithm, is employed to minimize reprojection errors, i.e., the distance between the image points projected according to the camera model and the detected image points.  
+
+In addition to optimizing the calculation of the camera's intrinsic parameters, access to a much larger number of points distributed across the entire image plane from many different pattern poses allows for more accurate modeling of lens distortions and improves the precision of distortion coefficients.  
+
+\subsubsection{Accuracy Validation}
+
+To ensure the successful calibration of cameras, the performance at each step must be verified. For this reason, an analysis of the accuracy achieved will be provided at the end of each section discussing a calibration step.
+
+Regarding monocamera calibration, three main factors must be considered.  
+The first of these is the mean reprojection error. The mean reprojection error is the average distance, expressed in pixels, between the world points projected onto the image through the camera model and the corresponding points actually detected in the image.  
+Thus, it provides a good representation of the accuracy with which the estimated intrinsic and extrinsic parameters reproduce the observed geometry.  
+Figure \ref{fig:MeanReprojectionError} shows an example of mean reprojection error for a certain camera, varying the distortion model.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{FIGURES/Chapter4/Section2/SubSection1/MeanReprojectionError.pdf}
+  \caption{Mean Reprojection Error per Distortion Model (Table \ref{tab:distortion_models})} 
+  \label{fig:MeanReprojectionError}  
+\end{figure}
+
+This figure shows that, although each tested distortion model produces satisfactory results, some models are more performant than others. In addition to the mean reprojection error, it is important to consider the difference between the calculated intrinsic parameters and their theoretical counterparts.
+
+Given that the cameras' pixels are square in shape, the focal lengths $f_x$ and $f_y$ must be equal. Figure \ref{fig:FocalLengths} shows the percentage differences between the focal lengths $f_x - f_y$. This length should theoretically be zero.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{FIGURES/Chapter4/Section2/SubSection1/FocalLenghs.pdf}
+  \caption{Focal Lengths Difference per Distortion Model (Table \ref{tab:distortion_models})} 
+  \label{fig:FocalLengths}  
+\end{figure}
+
+The last parameter to consider in evaluating the accuracy of calibration is the coordinates of the principal point of the image. Theoretically, this point should be located at the centre of the image plane.  
+The position of the principal point is an extremely important parameter in camera calibration as it defines the camera ray bundle.  
+Figure \ref{fig:OpticalCenter} shows the difference between the calculated principal point coordinates $c_x$ and $c_y$ and their theoretical values (the sensor's centre) for the different distortion models.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{FIGURES/Chapter4/Section2/SubSection1/OpticalCenter.pdf}
+  \caption{Principal Point Difference per Distortion Model (Table \ref{tab:distortion_models})} 
+  \label{fig:OpticalCenter}  
+\end{figure}
+
+The observed differences in intrinsic parameters do not indicate the precision of the calibration performed but rather its validity. Indeed, if these differences become excessive, it is probable that the optimization process has converged to non-optimal parameters, which, while resulting in acceptable reprojection errors, are not truly representative of the camera.
+
+\subsubsection{Warp Correction of Tunnel Windows}
+\label{sez:Warp_Correction}
+
+The steps shown up to this point allow calibration of a camera operating in a homogeneous medium. However, obtaining a valid calibration in the cavitation tunnel environment may require additional considerations.
+
+Cavitation tests are conducted by applying a vacuum to the tunnel. This depression acts on the tunnel structures, pushing them inward. For this reason, during cavitation tests, the tunnel windows are not flat surfaces but instead become slightly curved inward. The bending of the windows results in further deformation of the path of the perspective rays. Addressing this issue is important to avoid significant errors.
+
+First, it is necessary to consider the actual extent of the bending to which the windows are subjected when the tunnel is under vacuum. The maximum deformation of the windows, measured (using a comparator like the one shown in figure \ref{fig:Comparator}) at the centre of the windows, is approximately $0.8$ mm.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{FIGURES/Chapter4/Section2/SubSection1/Comparator.png} 
+  \caption{Measurement of the Tunnel Window Deformation} 
+  \label{fig:Comparator}  
+\end{figure}
+
+Calibrating the camera directly while the tunnel is under vacuum could theoretically enable the obtaining of a calibration model capable of handling the nonlinearities introduced by this additional deviation of the optical rays.  
+However, from a practical standpoint, performing the calibration under these conditions is unfeasible. Therefore, a first calibration was carried out by positioning the reference pattern in water while keeping the tunnel at atmospheric pressure. Subsequently, a corrective transformation was applied to account for the bending of the windows caused by the vacuum application.
+
+A homography matrix was calculated for each of the cavitation indices under which the experiments were conducted. Two images of the calibration pattern were used to compute each matrix. The first image was captured under atmospheric conditions, while the second was captured with the tunnel under vacuum.  
+Letting $m$ represent the corners of the pattern in the atmospheric image and $m'$ the corners from the vacuum image, the homography can be computed as shown in Equation \ref{eq:Homography1}.
+
+\begin{equation}
+  \label{eq:Homography1}
+  m = H \ m' 
+\end{equation}
+
+In this way, the homography provides a map that allows for associating the coordinates of the points when the tunnel is in depression with their coordinates under atmospheric conditions. By remapping the points analyzed during the measurements through the homography matrix $H$, the distortion effect caused by the windows can be removed, and the validity of the calibration procedure previously described can be restored.
+
+In practical cases, the effectiveness of the homography presents some limitations. Firstly, it must be considered that this transformation is linear and, therefore, cannot correct strongly nonlinear geometric distortions. For this reason, measurements will still be subject to a certain margin of error, albeit reduced. To minimize this error, it is better to position the cameras as close as possible to the tunnel windows. This configuration reduces the camera's field of view, limiting the portion of the window captured and decreasing the impact of surface curvature on the quality of the acquired image.
+
+Therefore, there exists a maximum distance from the windows beyond which the measurements become inaccurate. This occurs both due to window deformation and errors in the focal length estimation caused by the interface.
+
+Even when the camera is placed very close to the window, the effectiveness of the homography must be discussed. Indeed, under these conditions, correction becomes less necessary due to the above reasons. At the same time, it still introduces an additional level of complexity into the system, which could degrade the measurement rather than improve it.
+
+To evaluate these aspects, some analyses must be conducted. For this purpose, in addition to the homography, another matrix $S$ has been calculated. This matrix was obtained by remapping the corners of the pattern from an image acquired under atmospheric conditions back to themselves (as shown in Equation \ref{eq:Homography2}).
+
+\begin{equation}
+  \label{eq:Homography2}
+  m = S \ m 
+\end{equation}
+
+The effect of the matrix $S$ on the coordinates of the points should obviously be identical to that of an identity matrix. The effectiveness of the homography can be analyzed using a new pair of images acquired under different conditions. Applying the homography to the corners of the pattern detected in the image taken under vacuum conditions allows for estimating their corresponding positions under atmospheric conditions. These estimated points can be compared with the actual corners detected in the image acquired under atmospheric conditions. The comparison allows for the calculation of an average error representing the homographic transformation's efficacy.
+
+A similar analysis can be conducted by applying the matrix $S$ to the corners detected in the image under normal atmospheric conditions. In this case, the comparison between the estimated position of the points, obtained downstream of the transformation, and their actual position allows for assessing the error introduced by the application of $S$.
+
+Finally, the displacement of the corners from the vacuum to the atmospheric condition can be evaluated. This corresponds to calculating the average distance between homologous corners between images acquired under different conditions without applying any transformation (Equation \ref{eq:Homography3}).
+
+\begin{equation}
+  \label{eq:Homography3}
+  m = m' 
+\end{equation}
+
+The average distance between homologous corner pairs provides important information for understanding the magnitude of deformation effects on windows.
+
+Table \ref{tab:HomographyErrors} presents an example of these average errors.
+
+\begin{table}[htbp]
+  \centering
+  \resizebox{0.4\textwidth}{!}{
+  \begin{tabular}{cc}
+  \toprule
+  Transformation & Mean Error [pix] \\ 
+  \midrule
+  H & 0.08 \\ 
+  S & 0.11 \\ 
+  \texttt{-} & 0.19 \\ 
+  \bottomrule
+  \end{tabular}}
+  \caption{Mean Errors in Warp Correction of Tunnel Windows.}
+  \label{tab:HomographyErrors}
+\end{table}
+
+If the mean error after applying the homography transformation $H$ is high, it indicates that the images contain high nonlinear transformations. In this case, the experimental setup must be modified.  
+
+On the other hand, when the residual error is relatively low, the measurement can be considered valid. However, in some cases, such as the one in the example, applying the homography may not be necessary. 
+ 
+By examining Table \ref{tab:HomographyErrors}, it is observed that the mean error introduced by applying matrix $S$ is similar to the error that would be made by neglecting the effect of window deformation. This suggests that the increase in measurement accuracy obtained by applying the homography is mostly compensated by the further complexity of the model.  
+
+\subsection{Stereo Calibration}
+\label{sez:stereo_calibration}
+
+Stereo calibration is a process that allows the determination of the geometric relationship between two cameras. This relationship is necessary for analyzing and reconstructing the depth of objects in a three-dimensional scene.  
+This procedure aims to define the extrinsic parameters, i.e., the relative position and orientation of the two cameras.  
+The intrinsic parameters of each camera, previously determined through monocular calibration, remain unchanged.
+
+\subsubsection{Epioplar Geometry}
+
+Before describing the stereo calibration procedure, it is necessary to introduce the concepts of epipolar geometry. 
+Epipolar geometry describes the relationship between two images capturing the same scene from different viewpoints. Specifically, it defines the relationship between the two projections of the same 3D point onto their respective image planes.
+
+From a mathematical standpoint, this relationship can be defined through the essential matrix  $E$. This matrix connects the world coordinates of a point observed from two different camera reference frames. Adding to this, the information from the camera's intrinsic parameters allows for establishing the relationship between the points on their respective image planes (measured in pixels). This relationship is described by the fundamental matrix  $F$.
+
+Understanding the definition of these matrices requires introducing the concept of the epipolar plane. Consider a stereo system comprising two cameras, indicated by subscript $1$ and $2$.
+A point in the world reference frame $M$, along with the origins of the reference frames of the two cameras (denoted $\omega_1$ and $\omega_2$), defines a plane. This plane is known as the epipolar plane $\Pi$.
+
+The intersection of the epipolar plane $\Pi$ with the image plane of each camera generates a line known as the epipolar line. For each image, all epipolar lines converge at a common point, the epipole. Therefore, each image is characterized by a specific epipole, denoted as $e_1$ and $e_2$, respectively.
+Lastly, the segment connecting the optical centers of the two cameras, corresponding to the origins $\omega_1$ and $\omega_2$, is called the baseline.
+
+A schematic illustration of the elements underlying epipolar geometry is shown in Figure \ref{fig:epipolaPlane}.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section2/SubSection2/epipolarPlane.png}
+  \caption{Epipolar Geometry Elements} 
+  \label{fig:epipolaPlane}  
+\end{figure}
+
+Since not only the optical centres of the cameras ($\omega_1$ and $\omega_2$) lie on the epipolar plane $\Pi$, but also the projections of point $M$ onto the image planes ($m_1$, $m_2$), it follows that, given a point in three-dimensional space ($M$) and its projection onto one image plane (e.g., $m_1$), the projection onto the other plane (i.e., point $m_2$) is constrained to lie on the corresponding epipolar line.  
+This constraint is extremely useful in computer vision, as it significantly reduces the difficulty of finding corresponding points in different images, simplifying the three-dimensional reconstruction process.  
+
+The epipolar geometry elements introduced above can be used to define the relationship between corresponding points on the two image planes denoted as $m_1$ and $m_2$.  
+To achieve this, it is first necessary to consider a point $M$ in the world reference frame.  
+Let $PPM_1$ and $PPM_2$ denote the perspective projection matrices; the points $m_1$ and $m_2$ will satisfy Equation \ref{eq:epipolarGeometry1}.
+
+\begin{align}
+    \label{eq:epipolarGeometry1}
+    \lambda_1 m_1 &= PPM_1 M \notag \\
+    \lambda_2 m_2 &= PPM_2 M
+\end{align}
+
+Where  $\lambda_1$ and $\lambda_2$ represent scale factors derived from homogeneous coordinates.
+As before, the world reference frame can be defined arbitrarily. In this case, aligning it with one of the camera's reference frames is convenient. For example, the world reference frame can coincide with the first camera reference frame, as shown in Figure \ref{fig:StereoRF}.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section2/SubSection2/StereoRF.png}
+  \caption{Relationship between Stereo Camera Reference Frames} 
+  \label{fig:StereoRF}  
+\end{figure}
+
+Under this hypothesis, Equation \ref{eq:epipolarGeometry1} can be reformulated as shown in Equation \ref{eq:epipolarGeometry2}.  
+In this equation, the terms $K_1$ and $K_2$ represent the matrices of the respective cameras containing the intrinsic parameters. The rotation matrix $R$ and the translation vector $T$ define the position of the first camera reference frame (i.e., the world reference frame) with respect to the second camera one.
+
+\begin{align}
+    \label{eq:epipolarGeometry2}
+    \lambda_1 m_1 &= 
+        K_1 \begin{bmatrix} I & 0 \end{bmatrix} M \notag \\
+    \lambda_2 m_2 &= 
+        K_2 \begin{bmatrix} R & T \end{bmatrix} M  
+\end{align}
+
+Developing and comparing these equations can be rewritten in the form shown in Equation \ref{eq:epipolarGeometry3}.
+
+\begin{equation}
+    \label{eq:epipolarGeometry3}
+    \begin{aligned}
+    & \lambda_1 K_1^{-1} m_1 = \hat{M}   \\
+    & \lambda_2 m_2 = K_2 (R \hat{M} + T)
+    \end{aligned}
+    \longrightarrow
+    \lambda_2 m_2 = \lambda_1 K_2 R K_1^{-1} m_1 + K_2 T
+\end{equation}
+
+In which $\hat{M}$ is defined as $M = \begin{bmatrix} \hat{M} & 1 \end{bmatrix}^T$, allowing the decomposition of the extrinsic term matrices.  
+By further expanding Equation \ref{eq:epipolarGeometry3}, the form presented in Equation \ref{eq:epipolarGeometry4} is obtained.  
+
+\begin{equation}
+    \label{eq:epipolarGeometry4}
+    \lambda_2 K_2^{-1} m_2 = \lambda_1 R K_1^{-1} m_1 + T
+\end{equation}
+
+From a geometric perspective, this expression indicates that the vector on the left-hand side ($\lambda_2 K_2^{-1} m_2$) is a linear combination of the two vectors on the right-hand side ($\lambda_1 R K_1^{-1} m_1 + T$). This property implies that the three vectors are coplanar and all lie on the epipolar plane $\Pi$.  
+The vector $T \times R K_1^{-1} m_1$ identifies the normal vector to the plane $\Pi$. By taking the scalar product of the elements of Equation \ref{eq:epipolarGeometry4} with this vector, Equation \ref{eq:epipolarGeometry5} is validated.
+
+\begin{equation}
+    \label{eq:epipolarGeometry5}
+    \lambda_2 \left( K_2^{-1} m_2 \right)^T (T \times R K_1^{-1} m_1) = 0
+\end{equation}
+
+The cross-product $(T \times)$ can be rewritten as a matrix product by introducing an auxiliary matrix $[T]_x$, as shown in Equation \ref{eq:epipolarGeometry6}.
+
+\begin{equation} 
+  \label{eq:epipolarGeometry6}
+    [T]_x = 
+    \begin{pmatrix}
+      0 & -T_z & T_y \\
+      T_z & 0 & -T_x \\
+      -T_y & T_x & 0 \\
+      \end{pmatrix}
+\end{equation}
+
+In which [$T_x$, $T_y$, $T_z$] are the components of the vector $T$.  
+In this way, Equation \ref{eq:epipolarGeometry5} takes the form shown in Equation \ref{eq:epipolarGeometry7}..
+
+\begin{equation}
+    \label{eq:epipolarGeometry7}
+    m_2^T (K_2^{-T} [T]_x R K_1^{-1}) m_1 = 0 
+\end{equation}
+
+The matrix that relates the coordinates of the projections of the world point $M$ onto the two image planes ($m_1$ and $m_2$) can therefore be referred to as the fundamental matrix $F$ and expressed through Equation \ref{eq:epipolarGeometry8}.
+
+\begin{equation}
+\label{eq:epipolarGeometry8}
+F = (K_2^{-T} [T]_x R K_1^{-1})
+\end{equation}
+
+If the camera matrices ($K_1$, $K_2$) are known, the intrinsic parameters can be decoupled from those that define the relative position of the two reference systems.  
+Let $\hat{m_1}$ be the coordinates of point $M$ observed from the first camera's reference system, and let $\hat{m_2}$ be the coordinates of the same point seen through the second camera's reference system.  
+In these terms, Equation \ref{eq:epipolarGeometry7} takes the form of Equation \ref{eq:epipolarGeometry9}.
+
+\begin{equation}
+  \label{eq:epipolarGeometry9}
+  (K_2^-1 m_2)^T [T]_x R (K_1^{-1} m_1) = \hat{m_1}^T [T]_x R \hat{m_2} = 0
+\end{equation}
+
+The essential matrix can thus be defined, as shown in Equation \ref{eq:epipolarGeometry10}.
+
+\begin{equation}
+  \label{eq:epipolarGeometry10}
+  E = [T]_x R
+\end{equation}
+
+Knowing the fundamental matrix $F$, it is possible to define, for a given point $m_1$ in one image, the corresponding epipolar line in the other image of the stereo system. The epipolar lines $l_2$ and $l_1$, corresponding to $m_1$ and $m_2$ in the first and second images, respectively, can be expressed using Equation \ref{eq:epipolarGeometry11}.
+
+\begin{equation}
+  \label{eq:epipolarGeometry11}
+  \begin{aligned}
+  & l_2 = F m_1  \\
+  & l_1 = F^T m_2 
+  \end{aligned}
+\end{equation}
+
+\subsubsection{Theoretical Aspects}
+
+In the previous section, the geometrical concepts underlying a stereo camera dipole were introduced. This section provides the practical steps to calculate the essential matrix $E$ and the fundamental matrix $F$.
+
+Like the mono camera calibration, this procedure requires knowledge of the positions of a certain number of points in the world reference frame and their counterparts in the images. 
+Again, a calibration pattern is used to identify these points easily.
+
+By placing the world reference frame as shown in Figure \ref{fig:StereoRF2}, each corner $M$ of the calibration pattern, when projected onto one of the camera image planes, can be described using Equation \ref{eq:stereoCalib1}.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section2/SubSection2/StereoRF2.png}
+  \caption{Relative Orientation between Cameras and World Reference Frames} 
+  \label{fig:StereoRF2}  
+\end{figure}
+
+\begin{equation}
+  \label{eq:stereoCalib1}
+  \begin{aligned}
+  & m_1 = K_1 \begin{pmatrix} R_1 & T_1 \end{pmatrix} M
+  \longrightarrow \hat{m_1} = \begin{pmatrix} R_1 & T_1 \end{pmatrix} M 
+  = R_1 \hat{M} + T_1 \\ 
+  & m_2 = K_2 \begin{pmatrix} R_2 & T_2 \end{pmatrix} M 
+  \longrightarrow \hat{m_2} = \begin{pmatrix} R_2 & T_2 \end{pmatrix} M 
+  = R_2 \hat{M} + T_2\\
+  \end{aligned}
+\end{equation}
+
+Observing Figure \ref{fig:StereoRF2}, it is evident how the roto-translation matrices $\begin{pmatrix} R_1 & T_1 \end{pmatrix}$ and $\begin{pmatrix} R_2 & T_2 \end{pmatrix}$ are related. This relationship can be expressed by Equation \ref{eq:stereoCalib2}.
+
+\begin{equation}
+  \label{eq:stereoCalib2}
+  \begin{aligned}
+    &R = R_2 R_1^T \\ 
+    &T = T_2 - R T_1
+  \end{aligned}
+\end{equation}
+
+
+Calculating the rigid-body transformation $\begin{pmatrix} R & T \end{pmatrix}$ that identifies the reference frame of the first camera concerning the second requires the knowledge of a certain number of corresponding points in the image planes and the world coordinate system.
+
+To determine the minimum number of points needed, we can consider the fundamental matrix $F$. The matrix $F$ is a $[3 \times 3]$ matrix composed of nine elements. However, it is defined up to a scale factor since it is expressed in homogeneous coordinates. This implies that the matrix $F$ effectively has only eight degrees of freedom.
+
+Therefore, identifying at least eight corresponding points between the two camera image planes allows for the computation of the fundamental matrix (since each point grants a constraint).
+
+Observing Equation \ref{eq:epipolarGeometry8}, it can be noticed that the fundamental matrix $F$ must have a rank of two ($\text{rank}(F) = 2$). In fact, the skew-symmetric matrix $[T]_x$ has a rank of two by construction.
+This implies that the essential matrix has only seven degrees of freedom.
+However, in practical cases, many points are utilized to use optimization algorithms to obtain more precise and robust solutions.
+
+Furthermore, as previously discussed in the context of mono camera calibration, by using different poses of the pattern, the fundamental matrix $K$ can be decomposed into the camera matrices ($K_1$ and $K_2$) and the essential matrix $E$.
+
+This way,  the solution obtained is optimized within the spatial region where the pattern was moved during calibration.
+Thus, the calculated perspective matrices are valid only within that volume, while deviations from it produce progressively less accurate results.
+
+\subsubsection{Accuracy Validation}
+
+In this thesis work, the accuracy of stereo calibration was assessed using two main parameters.
+
+First, the root mean square reprojection error (in pixels) was analized, considering the individual cameras and their geometric relationship. 
+Figure \ref{fig:RMSError} presents an example of a calibration, showing the root mean square errors for each of the distortion models considered.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section2/SubSection2/RMSError.pdf}
+  \caption{Mono and Stereo RMS Reprojection Error per Distortion Model (Table \ref{tab:distortion_models})}
+  \label{fig:RMSError}  
+\end{figure}
+
+For single cameras, the root mean square (RMS) error is calculated by considering the Euclidean distance between the points detected in the image during the calibration process and  the world points projected through the computed camera models. This value indicates the accuracy of the camera parameters describing its optical geometry.
+The geometric relationship between the two cameras (rotation and translation parameters) must be observed to assess the stereo dipole's characteristic mean square error.
+In this case, the coherence between the points of one camera and those of the other is evaluated, i.e. assessing the consistency of the epipolar constraint $m_2^T \, F \, m_1 = 0$ for each pair of homologous points.
+In other words, for each pair of homologous points ($m_1$, $m_2$), the distance between the line $l_2 = F \, m_1$ and the point $m_2$ is calculated. This is the distance between the epipolar line that the point $m_1$ draws in the plane of the second camera and the point $m_2$ through which it should pass. 
+This error allows for verifying how accurately the stereo system is able to represent the spatial configuration of the points.
+
+Generally, for calibrations conducted in homogeneous media, an RMS error of approximately $0.2$ pixels is considered optimal, while an RMS error below one pixel is considered satisfactory. However, in the context of the cavitation tunnel, numerous environmental challenges can potentially lead to higher errors. Nonetheless, the RMS values obtained are widely acceptable. Indeed, in many distortion models, all three RMS values are below one pixel, confirming precise and robust calibration. This suggests that the difficulties associated with the cavitation tunnel environment do not significantly compromise the calibration quality, ensuring reliable and accurate results.
+
+However, to ensure accuracy, it is important to consider both the reprojection errors and the triangulation errors shown in \ref{fig:TriError}.
+To define the triangulation error characterizing the calibration of a stereo pair, it is first necessary to consider a pair of homologous points on the image planes ($m_1$ and $m_2$) and reproject them into space. The procedure of reprojection from images to the world coordinate system is known as triangulation. It will be described in detail in the following of this chapter (Section \ref{sez:Recostruction_Strategies}). 
+
+During the reprojection phase, it is essential to account for the optical distortions present in the images and correct them using one of the models considered (Table \ref{tab:distortion_models}).
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section2/SubSection2/TriError.pdf}
+  \caption{Distribution of Percentage Triangulation Error per Distortion Model (Table \ref{tab:distortion_models})}
+  \label{fig:TriError}  
+\end{figure}
+
+To ensure the reliability of error analysis, it is a good practice to use a different image dataset (consisting of various poses of the calibration pattern) than the one employed to define the model. 
+The reprojection of a pair of homologous points ($m_1$ and $m_2$) identifies a point in the three-dimensional world, $M$.
+By projecting the corners of an entire calibration pattern, it is possible to evaluate the mutual distance between two adjacent 3D corners. The measured distance can then be compared with the distance between the adjacent corners of the physical object. 
+A percentage triangulation error can be defined for each pair of adjacent corners based on the difference between these distances.
+Repeating this analysis for different poses of the pattern allows for validating the model with data that spans the entire calibrated volume.
+
+The result of this analysis is a series of statistical distributions (one for each of the distortion models considered). If calculated using a sufficient number of images, these distributions provide valuable insights into the accuracy of the calibration. Furthermore, they allow selecting the most suitable distortion model for the specific case.
+
+To synthesize the information contained in these statistical distributions, key metrics such as statistical moments, maximum error, or the percentage of outliers evaluated using a method like RANSAC (\cite{Fischler1981}) are typically employed. This approach enables the selection of the desired model by considering not only the mean error but also the distribution of data around it. Additionally, these considerations allow for the imposing of constraints on the maximum error or the acceptable level of contamination by outliers.
+Table \ref{tab:stereoMetrix} provides an example of these metrics as they vary across the different distortion models considered.
+
+\begin{table}[h!]
+  \centering
+  \small
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    Model   & Mean [\%] & Max [\%] & Std. Dev. & Skewness & Kurtosis & Outliers [\%] \\
+    \midrule
+    Model 0 & -0.0096   & 4.061    & 0.887     & 0.517    & 1.374    & 0.854 \\
+    Model 1 &  0.0554   & 4.120    & 0.825     & 0.829    & 1.981    & 1.208 \\
+    Model 2 &  0.0540   & 4.113    & 0.820     & 0.824    & 1.976    & 1.208 \\
+    Model 3 &  0.0001   & 4.090    & 0.822     & 0.799    & 2.046    & 2.541 \\
+    Model 4 &  0.0388   & 4.184    & 0.819     & 0.827    & 2.204    & 1.271 \\
+    Model 5 &  0.0070   & 4.089    & 0.815     & 0.800    & 2.069    & 1.250 \\
+    Model 6 & -0.0031   & 4.083    & 0.822     & 0.797    & 2.029    & 1.250 \\
+    Model 7 &  0.0391   & 4.189    & 0.819     & 0.831    & 2.224    & 1.271 \\
+    Model 8 & -0.0030   & 4.083    & 0.821     & 0.797    & 2.026    & 1.250 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Statistical Metrics for Different Distortion Models. Metrics include mean, maximum value, standard deviation (Std. Dev.), skewness, kurtosis, and percentage of outliers.}
+  \label{tab:stereoMetrix}
+\end{table}
+
+The analysis can be conducted either by considering the application of the homographic transformation $H$, described in Section \ref{sez:Warp_Correction}, or by excluding it. This approach allows for a comparison of the results obtained in both cases, evaluating the impact of this transformation on the overall performance of the triangulation process. The choice to apply $H$ can be guided by analyzing the results, allowing for determining if it significantly improves the quality of the reconstructions or not.
+
+\subsection{Multiview Calibration}
+\label{sez:multiview_calibration}
+
+Generally, multiple cameras significantly enhance most computer vision techniques aimed at reconstructing objects in three-dimensional space. As will be extensively discussed in the section dedicated to the description of these techniques (\textsection\ref{sez:Recostruction_Strategies}), simultaneously employing more than two cameras allows for the imposition of a larger number of constraints on each point reprojected in space. Consequently, the position of such points is optimized, leading to increased precision.  
+
+Moreover, the more cameras used in the measurement process, the more viewpoints become available. Observing an object from multiple perspectives enables a more comprehensive understanding of its shape, resulting in a more faithful reconstruction.  
+To utilize multiple cameras simultaneously, it is possible to repeat the procedure used for stereo calibration several times.
+Consider, for example, a system of three cameras denoted by subscripts $1$, $2$, and $3$, respectively. This system shown in Figure \ref{fig:MuliViewRF} represents the simplest example of a multi-camera system.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section2/SubSection3/MuliViewRF.png}
+  \caption{Relationship between Cameras in a Multicamera System}
+  \label{fig:MuliViewRF}  
+\end{figure}
+
+Using the concepts of stereo calibration allows for calculating the relationship that links the second camera reference frame to the first camera one. This relationship would be formalized in the fundamental matrix $F_{2,1}$. The same process could be applied to the third camera, obtaining the fundamental matrix $F_{3,1}$.
+
+Although this approach is not formally incorrect, it is highly suboptimal and often results in significant reprojection errors. This occurs because relying solely on the concepts of stereo calibration neglects several pieces of information contained within the multi-camera system. To understand how to extract and utilize this information, it is first necessary to introduce the concept of the epipolar graph.
+
+\subsubsection{Epioplar Graph}
+
+Consider a set of $Z > 2$ images captured by distinct cameras. The epipolar graph describes the relationships among all possible pairs of cameras in the set.  
+The field of view of some camera pairs will partially overlap. In these cases, a relationship can be defined between the cameras, synthesized in the fundamental matrix $F$ (or the essential matrix $E$) characteristic of the pair.  
+Other pairs of cameras will observe completely different scenes, and thus, no relationship can be found between them.  
+Figure \ref{fig:EgSketch} illustrates a graphical representation of the epipolar graph.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{FIGURES/Chapter4/Section2/SubSection3/EgSketch.png}
+  \caption{Epipolar Graph Graphical Representation}
+  \label{fig:EgSketch}  
+\end{figure}
+
+Each node of the epipolar graph represents a camera. Each edge represents the relationship between the two nodes it connects. 
+Thus, each edge of the graph is described by a fundamental matrix $F$ or, if the camera's intrinsic parameters are known, by an essential matrix $E$.
+More precisely, each pair of cameras can be associated with two branches of the epipolar graph. During the stereo calibration, two fundamental (or essential) matrices can be computed for each camera pair. For instance, for cameras 1 and 2, both the fundamental matrix connecting the points of camera 2 to those of camera 1, $F_{2,1}$, and the fundamental matrix connecting the points of camera 1 to those of camera 2, $F_{1,2}$, can be calculated. Since these matrices derive from different stereo calibrations, matrix $F_{2,1}$ is not simply the transpose of $F_{1,2}$. These minor differences provide additional valuable information for optimizing the multicamera system and must be fully exploited to enhance the reliability and accuracy of 3D reconstruction.
+
+\subsubsection{Theoretical Aspects}
+\label{sez:TheoreticalMultiCalib}
+
+Numerous techniques exist to fully use the information in the epipolar graph and achieve optimal multi-camera calibration. These techniques aim to describe all the perspective matrices of the system cameras relative to a common reference frame.
+
+In this thesis, a well-known approach called Camera Synchronization was chosen to initialize the perspective matrices. Subsequently, they were optimized using a technique called Bundle Block Adjustment.
+The following briefly describes the fundamental principles of the employed techniques. For a more formal and comprehensive explanation, we refer the reader to the specialized texts used (\cite{Hartley2003}, \cite{Fusiello2005}).
+
+Camera synchronization is based on a network of relative transformations between different reference frames. This method allows for initialising each perspective matrix of the system cameras relative to a common reference frame.
+Therefore, it is necessary to decide which reference frame to use for the perspective matrices. Similar to stereo calibration, it is convenient to use the reference frame of a single camera as the primary reference frame.
+In a system comprising $m \geq 3$ cameras, the reference frame of camera 1 is designated as the primary reference frame.
+Each of the perspective matrices $P_i$ can then be expressed using Equation \ref{eq:Multiview1}.
+
+
+\begin{equation}
+  \label{eq:Multiview1}
+  P_i = K_i [R_i \ | \ T_i] 
+\end{equation}
+
+In which $R_i$ and $T_i$ denote, respectively, the rotation ($R_{i,1}$) and translation ($T_{i,1}$) from the reference frame of camera $i$ to that of camera $1$.
+
+Generally, the relative rotation and translation from the $i$-th camera reference frame to the first camera cannot be directly determined. This is because there is no guaranteed overlap between the scene observed by camera $i$ and that captured by camera $1$. Therefore, the relative rotation-translation $\begin{pmatrix} R_i \ | \ T_i \end{pmatrix}$ must be computed by composing relative orientations. By examining an epipolar graph (Figure \ref{fig:EgSketch}), it can be observed that more than one path can be followed to express the rotation-translation $\begin{pmatrix} R_i \ | \ T_i \end{pmatrix}$. Synchronization implements a globally adapted solution that considers all available orientations as edges of the epipolar graph.
+
+First, synchronization focuses on defining the angular orientation of each camera. This corresponds to calculating the rotation matrix $R_i$ for each camera in the system. The $R_i$ matrices must satisfy the compatibility equation \ref{eq:Multiview2} for the pair $(i, j)$ available.
+
+\begin{equation}
+  \label{eq:Multiview2}
+  R_{i,j} = R_i R_j^T
+\end{equation}
+
+This problem is widely known in the literature as rotation averaging (\cite{Hartley2013}) or rotation synchronization (\cite{Singer2011}). From a mathematical perspective, it can be synthesized as a minimization problem expressed by Equation \ref{eq:Multiview3}.
+
+\begin{equation}
+  \label{eq:Multiview3}
+  \min_{R_1, \dots, R_m \in SO(3)} \sum_{(i,j)} ||R_{ij} - R_i R_j^T||_F^2.
+\end{equation}
+
+This implies finding rotations that minimize the sum of errors between the observed relative rotations ($R_{ij}$) and those calculated using the estimated rotations ($R_i R_j^T$).
+To solve this minimization problem, the spectral decomposition of a matrix containing all the relative rotations is typically employed.
+The matrix of relative rotations is usually denoted by $Z$ and assumes the form shown in Equation \ref{eq:Multiview4}.
+
+\begin{equation}
+  \label{eq:Multiview4}
+  Z = \begin{bmatrix}
+  I & R_{1,2} & \cdots & R_{1,m} \\
+  R_{2,1} & I & \cdots & R_{2,m} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  R_{m,1} & R_{m,} & \cdots & I
+  \end{bmatrix}.
+\end{equation}
+
+In a practical scenario, not all relative rotations are typically available; in such cases, the blocks of $Z$ corresponding to unknown rotations are set to zero.  
+The first column of $Z$ contains the rotations that describe the reference frames of all cameras with respect to the first camera one. Usually, this column is called the matrix $X = \begin{bmatrix} R_1, R_2, \dots, R_m \end{bmatrix}^T$ and contains the unknowns of the problem.
+
+Since $Z$ is a symmetric matrix, it can be written as $Z = XX^T$. Multiplying both sides of this equation by $X$ and recognising that $X^T X = mI$, the eigenvalues problem are obtained as stated in Equation \ref{eq:Multiview5}.
+
+\begin{equation}
+  \label{eq:Multiview5}
+  ZX = m X
+\end{equation}
+
+Applying graph theory, this problem can be rewritten as shown in Equation \ref{eq:Multiview6}.
+
+\begin{equation}
+  \label{eq:Multiview6}
+  ZX = (D \otimes I_{3})X
+\end{equation}
+
+In this, $D$ denotes the matrix of degrees of the epipolar graph, which contains the degree of the graph nodes on its diagonal.
+
+In an ideal case, the columns of matrix $X$ constitute the three eigenvectors of $(D \otimes I)^{-1}Z$ corresponding to the eigenvalue one, while the other eigenvalues are zero.  
+In practice, this generally does not occur. For this reason, the eigenvectors associated with the dominant eigenvalues are taken.
+
+Finally, to ensure that the estimated rotations are indeed valid rotations (i.e., belong to the special orthogonal group $SO(3)$), the obtained solution is projected onto the $SO(3)$ group, providing the closest rotation matrix.
+
+Once the rotation matrices are written with respect to a common reference frame, the same procedure can be applied to the translation vectors.  
+In the case of translation, the compatibility condition to be satisfied is expressed by Equation \ref{eq:Multiview7}.
+
+\begin{equation}
+  \label{eq:Multiview7}
+  T_{i,j} = R_i ((-R_j^T T_j)-(-R_i^T T_i)) = R_i (\tilde{C}_j - \tilde{C}_i)
+\end{equation}
+
+This can be expressed in the form of Equation \ref{eq:Multiview8}.
+
+\begin{equation}
+  \label{eq:Multiview8}
+  R_i^T T_{i,j} = \tilde{C}_j - \tilde{C}_i = u_{i,j}
+\end{equation}
+
+In which $\tilde{C}_i$ denotes the centre of the i-th camera (in Cartesian coordinates), and $u_{i,j}$ represents the translation written with respect to the global reference frame (i.e., expressed relative to the reference frame of the first camera).
+
+The solution to this problem again derives from graph theory. As with the previous case, a matrix $X$ is introduced, containing the centres of each camera juxtaposed:
+$X = \begin{bmatrix} \tilde{C}_1 & \tilde{C}_2 & \dots & \tilde{C}_m \end{bmatrix}$. 
+Utilizing this matrix, Equation \ref{eq:Multiview8} can be rewritten as shown in Equation \ref{eq:Multiview9}.
+
+\begin{equation}
+  \label{eq:Multiview9}
+  X b_{i,j} = u_{i,j}
+\end{equation}
+
+Where the vector $b_{i,j}$ (shown in Equation \ref{eq:Multiview10}) represents a edge of the epipolar graph and, in terms of graph theory, can be seen as a column of the incidence matrix.
+
+\begin{equation}
+  b_{ij} = (0, \dots, \underset{i}{-1}, \dots, \underset{j}{1}, \dots, 0)^{\top}
+  \label{eq:Multiview10}
+\end{equation}
+
+Equation \ref{eq:Multiview9} can be written in matrix form (as shown in Equation \ref{eq:Multiview11}), introducing the incidence matrix.
+
+\begin{equation}
+  X B = U 
+  \label{eq:Multiview11}
+\end{equation}
+
+In which $B$ is the incidence matrix ($m \times l$, where $l$ is the number of edges of the epipolar graph). While $U$ ($3 \times l$) is the matrix that has the vectors $u_{i,j}$ as columns.
+
+Aligning the global reference frame with the first camera's one lead to have $\tilde{C}_1 = 0$.
+By imposing this constraint, the first row of matrix $B$ can be removed. This new matrix is $B_1$ ($(m-1) \times l$). 
+This step transitions from matrix $B$, which has a maximum rank of $m-1$, to matrix $B_1$, which has a maximum rank.
+
+At this point, by vectorizing Equation \ref{eq:Multiview11}, we obtain a set of equations that allow us to compute all the components of matrix $X$ (Equation \ref{eq:Multiview12}).
+
+\begin{equation}
+  (B_1^{\top} \otimes I) \operatorname{vec}(X_1) = \operatorname{vec}(U) 
+  \label{eq:Multiview12}
+\end{equation}
+
+Obviously, as in the previous case, this equation represents an overdetermined problem, which generally does not have an analytical solution. It can be demonstrated that, among all solutions satisfying the compatibility constraints, the least squares solution is the closest to the measurements in the Euclidean norm.
+
+At this point of the discussion, the projection matrices of each camera ($P_i$) have been expressed within a standard reference frame. Furthermore, the computation of these matrices has accounted for all the relative orientations among the cameras using the information in the epipolar graph. 
+Despite this, the solution thus obtained is not statistically optimal. 
+This method, indeed, ignores all the information contained in the positions of the points, which have only contributed to determining the relative orientation between pairs of images.
+
+A truly global method should optimize a cost function that simultaneously incorporates all images and all tie points.
+
+The bundle block adjustment is an optimization procedure that minimizes the overall reprojection error of tie points in the images where they are visible relative to their 3D coordinates and the cameras' parameters (both internal and external).
+
+From a practical perspective, minimizing the reprojection error means to solve a complex minimization problem.
+
+Consider a series of world points $M^j$, where $j = \dots n$. Each point can be projected onto the image plane of the i-th camera according to the relation $P_i M^j$. The distance between the point measured on the image plane, $m_i^j$, and its projection through the camera model, $P_i M^j$, constitutes the reprojection error associated with that point and that camera.
+The bundle block adjustment aims to minimize the sum of the squared distances between the j-th point reprojected by the i-th camera for every image in which the point appears.
+Equation \ref{eq:Multiview13} shows the cost function of the problem.
+
+\begin{equation}
+  \chi(M^j, P_i) = \sum_{i=1}^{m} \sum_{j=1}^{n} \left\| \tilde{\eta}(P_i M^j) - m_{ij} \right\|^2
+  \label{eq:Multiview13}
+\end{equation}
+
+Where $\tilde{\eta}$ is a function referred to as the perspective division (Equation \ref{eq:Multiview14}).
+
+\begin{equation}
+  \tilde{\eta}: \mathbb{R}^3 \to \mathbb{R}^2, \quad \tilde{\eta}([x, y, z]^\top) = 
+  \begin{bmatrix} 
+    \displaystyle\frac{x}{z} &
+    \displaystyle\frac{y}{z} 
+  \end{bmatrix}^\top
+  \label{eq:Multiview14}
+\end{equation}
+
+This problem is highly nonlinear and involves a significant number of degrees of freedom. Specifically, it requires the simultaneous adjustment of both the $m$ cameras and the $n$ connection points. Each camera has ten degrees of freedom, while each point contributes three more. 
+This results in a cost function with numerous local minima. 
+To ensure that the calibration process is robust and reliable, using the projective matrices $P_i$ obtained from camera synchronization as the starting point is essential. This approach ensures that the initial configuration is close to the global minimum, thereby guaranteeing the calibration process's success.
+
+\subsubsection{Accuracy Validation}
+
+The complexity of synchronization and adjustment processes in multiview calibration requires verification of the obtained results to ensure their reliability.
+The Bundle Block Adjustment is based on minimizing the reprojection error. 
+However, a reduced reprojection error does not necessarily guarantee an accurate calibration model.
+Indeed, if the Bundle Block Adjustment converges to a local minimum, the resulting model may not adequately represent reality. For this reason, it is essential to consider the multicamera system's triangulation performance.
+
+This thesis employed a three-camera system. Two indicators were observed to ensure the reliability of the calibration for this system.
+Three stereo pairs are obtained by expressing all the system's projection matrices relative to the reference frame of the first camera. As done for stereo calibration, it is possible to evaluate the performance of each stereo pair by analyzing the metrics reported in Table \ref{tab:MultiViewMetrics1}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lrrr}
+  \toprule
+  & Cam 1 - Cam 2 & Cam 1 - Cam 3 & Cam 2 - Cam 3 \\
+  \midrule
+  Mean [\%]     & 0.057 & 0.047 & 0.036 \\
+  Max [\%]      & 3.750 & 3.078 & 3.33 \\
+  Std. Dev.     & 0.914 & 0.723 & 0.829 \\
+  Skewness      & -0.034 & 0.381 & 0.213 \\
+  Kurtosis      & 0.520 & 0.883 & 0.221 \\
+  Outliers [\%] & 0.542 & 0.813 & 0.135 \\
+  \bottomrule
+  \end{tabular}
+  \caption{Triangulation Metrics for both the Stereo Rig in a Multiview Calibration}
+  \label{tab:MultiViewMetrics1}
+\end{table}
+
+Even if each dipole produces good triangulation results, this does not ensure that the entire system is correctly oriented and calibrated.
+For this reason, the distances between points in the world space were analyzed by projecting homologous points through dipoles of different cameras.
+Figure \ref{fig:MultiTriang} shows the distributions of the distances between homologous points triangulated using different stereo dipoles.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{FIGURES/Chapter4/Section2/SubSection3/MultiTriang.pdf}
+  \caption{Statistrical Distributions of Distances between Triangulated Homologous Points with Different Stereo Rigs}
+  \label{fig:MultiTriang}  
+\end{figure}
+
+Examining these distributions and the associated metric values (Table \ref{tab:MultiViewMetrics2}) makes it possible to ensure the successful outcome of the multi-camera calibration.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    & 
+    \begin{tabular}[c]{@{}c@{}}Cam 1 - Cam 2\\ vs\\ Cam 1 - Cam 3\end{tabular} & 
+    \begin{tabular}[c]{@{}c@{}}Cam 1 - Cam 2\\ vs\\ Cam 2 - Cam 3\end{tabular} & 
+    \begin{tabular}[c]{@{}c@{}}Cam 1 - Cam 3\\ vs\\ Cam 2 - Cam 3\end{tabular} \\
+    \midrule
+    Mean [mm]     & 0.056 & 0.051 & 0.046 \\
+    Max [mm]      & 0.223 & 0.220 & 0.153 \\
+    Std. Dev.     & 0.047 & 0.041 & 0.028 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Metrics of Distributions of Distances between Triangulated Homologous Points with Different Stereo Rig Configurations}
+  \label{tab:MultiViewMetrics2}
+\end{table}
+
+\section{Recostruction Strategies}
+\label{sez:Recostruction_Strategies}
+
+This section presents the three-dimensional reconstruction techniques used in this thesis. Specifically, the focus is on these methods' theoretical aspects and potential applications. The challenges encountered and the solutions adopted for their practical implementation will instead be discussed in detail within the chapters dedicated to the case studies (Chapter \ref{chap:chapter5}, Chapter \ref{chap:chapter6}).
+Specifically, this thesis explores two three-dimensional reconstruction methods: stereo triangulation and shape from the silhouette.
+Both techniques were selected for their specific characteristics, making them complementary in the context of analysed case studies.
+
+\subsection{Stereo Triangulation}
+\label{sez:Stereo_Triangulation}
+
+The literature contains a large number of triangulation algorithms. The algorithm used in this thesis is known as the linear triangulation method. This algorithm is by far among the most widely used triangulation techniques. It guarantees good accuracy with low complexity.
+The popularity of this technique also makes it appealing from an implementation perspective. Various programming libraries, such as OpenCV (\cite{opencv_website}), provide optimized implementations of this algorithm, facilitating the development of practical applications.
+
+When a point in three-dimensional space, $M$, is observed by a camera, its projection $m$ onto the image plane defines a visual ray. This ray originates from the camera's optical centre, $\omega$, and passes through the projected point on the image plane. 
+Given the camera's perspective projection matrix ($PPM$) and the coordinates of the point $m$, it is possible to project the visual ray into 3D space. However, it is impossible to determine the point $M$ coordinates directly. For this reason, triangulation requires using at least two cameras ($1$ and $2$) in a stereo configuration. 
+
+In such a framework, the projections $m_1$ and $m_2$ of a 3D point $M$ onto the respective image planes are described by Equation~\ref{eq:Triangulation1}.
+
+\begin{equation}
+  m_i = PPM_i M \quad i = 1,2
+  \label{eq:Triangulation1}
+\end{equation}
+
+Where $M = [X, Y, Z, 1]$ denotes the homogeneous coordinates of the three-dimensional point. While, $m_i = [u_i, v_i, 1]$ denotes the homogeneous coordinates of the projection of $M$ onto the image plane of the i-th camera. Finally, $PPM_i$ denotes the i-th perspective matrix obtained during calibration.
+
+As shown in Figure \ref{fig:sketchTriangulation}, by knowing the perspective matrices of two or more cameras and the projections of a point on the respective images, it is possible to determine the three-dimensional coordinates of that point. Two visual rays can be drawn using the Equation \ref{eq:Triangulation1}.
+The intersection of these rays defines the coordinates of the point in three-dimensional space.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section3/SubSection1/sketchTriangulation.png}
+  \caption{Stereo Triangualtion by Visual Beams Intersection}
+  \label{fig:sketchTriangulation}  
+\end{figure}
+
+From a mathematical perspective, finding the intersection of visual rays corresponds to solving a linear system.  
+To define this system, it is first necessary to develop Equation \ref{eq:Triangulation1}, as shown in Equation \ref{eq:Triangulation2}.
+
+\begin{equation}
+  \begin{cases}
+    u = \prescript{1}{}{PPM} \, M \\
+    v = \prescript{2}{}{PPM} \, M \\
+    1 = \prescript{3}{}{PPM} \, M \\
+  \end{cases}
+  \longrightarrow
+  \begin{cases}
+    \left( \prescript{1}{}{PPM} - u \, \prescript{3}{}{PPM} \right)^\top M = 0 \\
+    \left( \prescript{2}{}{PPM} - v \, \prescript{3}{}{PPM} \right)^\top M = 0 \\
+  \end{cases}
+  \label{eq:Triangulation2}
+\end{equation}
+
+Here, $\prescript{n}{}{PPM}$ represents the \(n\)-th row of the perspective projection matrix of the camera.  
+Each camera, therefore, provides two equations, which correspond to the Cartesian representation of the visual ray.  
+By combining at least two visual rays into a system, we obtain Equation \ref{eq:Triangulation3}, which allows the calculation of the world coordinates of the point $M$.  
+By introducing the matrix $A$, which collects the various perspective rays, the problem can be rewritten in matrix form.
+
+\begin{equation}
+  \begin{cases}
+    \left( \prescript{1}{}{PPM_1} - u_1 \, \prescript{3}{}{PPM_1} \right)^\top M = 0 \\
+    \left( \prescript{2}{}{PPM_1} - v_1 \, \prescript{3}{}{PPM_1} \right)^\top M = 0 \\
+    \left( \prescript{1}{}{PPM_2} - u_2 \, \prescript{3}{}{PPM_2} \right)^\top M = 0 \\
+    \left( \prescript{2}{}{PPM_2} - v_2 \, \prescript{3}{}{PPM_2} \right)^\top M = 0 \\
+  \end{cases}
+  \longrightarrow
+  A \ M = 0
+  \label{eq:Triangulation3}
+\end{equation}
+
+Although this approach is highly robust, achieving good results requires careful consideration of some key factors. First, it is essential to correct the positions of the homologous points $m_1$ and $m_2$ by applying the most suitable distortion model to eliminate lens-induced effects. Additionally, if necessary, the homographies ($H_1$ and $H_2$) should be applied to account for the deformation of the tunnel windows. This process ensures that the point coordinates are corrected for optical aberrations. 
+
+Accurately identifying homologous points in different images is a complex challenge in practical cases. Due to the discrete nature of digital images, locating exact projections of the same point in three-dimensional space is basically impossible.
+These uncertainties are further compounded by the inherent inaccuracies of the perspective matrices. Even minor errors in these matrices can have significant effects, often preventing the intersection of the projective rays associated with homologous points. Mathematically, this results in the inability to analytically solve Equation \ref{eq:Triangulation3}.
+
+Observing Equation \ref{eq:Triangulation3}, it is evident that two visual rays provide four constraints. However, determining the position of a point in three-dimensional space requires only three coordinates, making the system overdetermined. The solution to this problem is typically obtained using a least-squares approach, frequently using a singular value decomposition (SVD).
+Adding additional cameras to the system can significantly enhance the accuracy of the 3D reconstruction. Each new camera introduces two additional constraints to Equation \ref{eq:Triangulation3}, thereby increasing the robustness of the overall solution. A larger number of constraints enables a more precise estimation of the position of the point $M$ and ensures higher reliability of the measurement system.
+
+Finally, it is important to consider the sensitivity of Equation \ref{eq:Triangulation3} to noise. The matrix $A$ contains terms with significantly different orders of magnitude. This occurs because, when expressing image point coordinates in homogeneous form, the first two components are typically much larger than the third. Furthermore, depending on how the world reference system is defined, the projection matrices may have components with differing orders of magnitude. 
+These differences make the matrix $A$ ill-conditioned and, therefore, sensitive to noise. For this reason, a data preconditioning procedure is usually applied. This procedure involves introducing an affine transformation $T$ to reformulate the projection matrices, as shown in Equation \ref{eq:Triangulation4}.
+
+\begin{equation}
+  \hat{PPM} = T \ PPM
+  \label{eq:Triangulation4}
+\end{equation}
+
+Here, $\hat{PPM}$ represents the well-conditioned perspective projection matrix.  
+The elements of the matrix $T$ allow for translating and scaling the coordinates of the image points so that they have comparable magnitudes.  
+A common form of the matrix $T$ is provided in Equation \ref{eq:Triangulation5}.
+
+\begin{equation}
+  T =
+  \begin{pmatrix}
+    \frac{\sqrt{2}}{d} & 0  & -g_x \\
+    0 & \frac{\sqrt{2}}{d} & -g_y \\
+    0 & 0 & 1
+  \end{pmatrix}
+  \label{eq:Triangulation5}
+\end{equation}
+
+The components of this matrix must be calculated based on the group of points to be triangulated.  
+Considering a group of $n$ points ($m^j = \begin{bmatrix} u^j, v^j, 1\end{bmatrix}^T \quad j = 1, \dots, N$) on the image plane, the components of $T$ can be expressed using Equation \ref{eq:Triangulation6}.
+
+\begin{equation}
+  \begin{cases}
+    g_x = \frac{1}{N} \sum_{j=1}^{N} u_i, \\[10pt]
+    g_y = \frac{1}{N} \sum_{j=1}^{N} v_i, \\[10pt]
+    d = \frac{1}{N} \sum_{j=1}^{N} \sqrt{(u_i - g_x)^2 + (v_i - g_y)^2}.
+  \end{cases}
+  \label{eq:Triangulation6}
+\end{equation}
+
+Preconditioning produces normalized points that satisfy two fundamental properties: their centroid is located at the origin of the coordinate system, and the average distance of the points from the origin is $\sqrt{2}$. These conditions ensure that the numerical values in matrix $A$ are well-balanced, reducing the effects of minor errors and improving the stability of singular value decomposition.
+
+Triangulation techniques can be divided into two categories: active and passive triangulation. Active triangulation involves using external markers to simplify the identification of corresponding points in images captured by different cameras. These markers can include laser projections, structured light patterns, or printed patterns on the object, such as grids or point series. On the other hand, passive triangulation relies solely on the geometric and chromatic characteristics of the object to be reconstructed without the need for external markers. In this case, the identification of corresponding points between camera images is achieved through feature recognition (i.e., pixels or areas easily identified and matched in different images).
+
+\subsection{Shape from Silhouette}
+
+Shape from silhouette is a technique for reconstructing an object's three-dimensional shape from silhouettes observed from multiple viewpoints. This approach utilizes the geometric information the silhouettes provide to generate a 3D volume approximating the object's overall form, known as the visual hull. 
+The theoretical principle behind this technique is based on the intersection of visual cones, defined by the projected silhouettes in 3D space. Each image captures the object's shape from a specific viewpoint, representing its silhouette. Visual cones are generated by projecting these silhouettes along the camera's perspective rays. The intersection of these cones provides an approximation of the object's three-dimensional volume. 
+A representative diagram of the shape from the silhouette is shown in figure \ref{fig:shapeby}.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{FIGURES/Chapter4/Section3/SubSection2/ShapeBy.png}
+  \caption{Visual Cones Intersection in Shape by Silhouette}
+  \label{fig:shapeby}  
+\end{figure}
+
+From a practical standpoint, applying the shape-by-silhouette technique first requires considering a volume in three-dimensional space. This volume is typically discretized into a voxel grid, which consists of a set of three-dimensional points, each associated with a small volume.
+
+Using Equation \ref{eq:prespective6}, each voxel can be projected onto the image plane of a specific camera. By comparing this projection with the object's silhouette as seen from the camera, it is possible to determine which voxels belong to the object and which do not. Consequently, the initial voxel grid is refined by eliminating any voxels that correspond to pixels outside the object's silhouette when projected onto the image plane. This process, known as 'carving', allows the volumetric representation to be restricted within the limits defined by the observed silhouette.
+Obviously, using a single camera leads to a very coarse three-dimensional reconstruction of the object.
+This occurs because all points in three-dimensional space that project within the silhouette on the image plane are considered part of the object, including those that belong to the shadow cones created by perspective. Additional cameras observing the object from different viewpoints are necessary to achieve a better reconstruction. This reduces the size of the shadow cones, progressively enhancing the precision of the object's carving.
+
+Even in this context, it is important to consider optical distortions caused by the lenses and distortions caused by tunnel window bending. 
+However, in this case, applying the calculated corrections to the reprojected points would be very inconvenient. Indeed, it would be necessary to invert both the distortion models and, when used, the homographies.
+Inverting these relationships is not straightforward. For example, homographies often suffer from poor conditioning, necessitating a procedure similar to that discussed in Section \ref{sez:Stereo_Triangulation}.
+
+For this reason, it is preferable to correct the coordinates of the silhouette points and then compare these with the voxel projections on the image planes directly. This ensures that both distortion models and homographies are applied straightforwardly.
+
+Compared to stereo triangulation, this technique has advantages and disadvantages.
+On the one hand, the implementation is considerably simpler, as it does not require identifying and matching homologous points between images from different cameras. It is sufficient to segment the object's edges to be reconstructed, a generally less complex task.
+On the other hand, however, the effective use of this technique is not trivial. For the visual hull to represent a good approximation of the real object, obtaining an extremely accurate silhouette segmentation is essential. Furthermore, an accurate reconstruction requires a sufficient number of views of the object taken from different angles.
+In a cavitation tunnel, the number of available cameras is often limited due to the high cost of the instrumentation and the restrictions of optical access to the test section. For this reason, the viewing angles must be chosen with great care to maximise the quality of the reconstruction.
+
