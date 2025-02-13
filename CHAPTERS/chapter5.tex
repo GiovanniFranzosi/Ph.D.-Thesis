@@ -1,0 +1,832 @@
+\chapter{Case Study I: Bubble Cavitation on a NACA 0015}
+\label{chap:chapter5}
+
+This Chapter introduces the first case study of this thesis. This case study explores the fundamental dynamics of cavitation, focusing on understanding the mechanisms associated with cavitation erosion.
+The research aims to enhance the understanding of cavitation phenomena through experimental investigations. The adopted approach is based on the computer vision techniques developed within the thesis and enables the accurate measurement of cavitation key characteristics.
+
+The proposed method has been applied to measure cavitation occurring on a NACA 0015 hydrofoil. The experimental campaign on this hydrofoil includes various cavitation regimes, including travelling bubbles, sheet and cloud cavitation. However, in the current work, analyses are limited to conditions with zero angle of attack to focus on travelling bubbles.
+Actually, travelling bubbles represent an interesting case study for analyzing bubble dynamics. In addition, their behaviour presents some similarities with blade root cavitation occurring on propellers of high-speed vessels, which is part of the long-term objectives of current research.
+The collected data were analyzed in two different ways. The first approach allowed for the extraction of characteristic data concerning the observed cavitation state. Examples of such data include the mean bubble areas at varying distances from the leading edge, the ratio between the area instantaneously occupied by cavities and the overall area affected by the phenomenon, or the extent of cavitation.
+The second approach consists of determining the time-resolved dynamics of single-bubble cavitation. These analyses allowed for the assessment, also through statistical considerations, of the main features defining single bubble cavitation. The maximum expansion area, slope and growth time, collapse time, the maximum area reached in possible rebounds, duration, and bubble velocity were measured for a conspicuous number of bubbles.
+
+The presented results demonstrate how the proposed technique can provide quantitative measurements of cavities, providing information on their potential energy. The method focuses on macroscopic cavities (i.e., millimetric-sized) since characterizing micro-scale phenomena for realistic flow fields presents extreme challenges. However, this limitation of the proposed method does not prevent its future application to cavitation erosion assessment since the energy of micro-scale phenomena is related to macro-scale cavitation energy.
+In general, the collected data provide a valuable opportunity to study cavitation in depth since similar quantities are hardly obtainable with commonly adopted approaches.
+
+The following outlines the methodology and findings of the study. The Chapter is organized into four main Sections. The first section presents the used experimental setup and the data acquired during the campaign. The first section details the experimental setup and provides an overview of the data collected during the campaign. The second section describes the analysis techniques developed for this study, illustrating step-by-step the solutions adopted to solve the problems faced. In the third section, the results of the analyses are presented and critically discussed, with comparisons to available literature. Finally, the Chapter concludes by summarizing key findings and suggesting directions for future research.
+
+\section{Facility and Experimental Setup}
+\label{sez:setup1}
+
+The research presented here is based on collected data during an experimental campaign conducted in the cavitation tunnel at the University of Genoa. This facility is a closed water circuit designed by Kempf \& Remmers. 
+The test section of the cavitation tunnel measures 2 meters in length, 0.57 meters in width, and 0.57 meters in height. The maximum flow velocity within the test section reaches 8.5 m/s, with a nozzle contraction ratio of 4.6:1. The static pressure can be adjusted from atmospheric to near vacuum.
+Further details regarding the University of Genoa cavitation tunnel can be found in Appendix \ref{app:appendixA}.
+Assessing water quality is crucial for successfully executing tests and monitoring flow velocity and static pressure. Water quality significantly impacts the size and dynamics of cavitation. The cavitation tunnel at the University of Genoa has a sensor capable of measuring the amount of dissolved oxygen in the water. For these experiments, this value, used as an indicator of water quality, was set to 4.4 parts per million (ppm).
+
+The experiments were performed on a NACA 0015 airfoil. The hydrofoil has a chord of 0.2m and a span of 0.57m that goes from one side of the tunnel to the other. The foil is mounted directly on the tunnel windows using a rotating flange system, allowing the adjustment of the angle of attack of the foil.
+Tests were conducted under various conditions, including multiple angles of attack (0°, 4°, 8°, and 12°), cavitation numbers, and flow velocities (6.5m/s, 8m/s) whenever it was interesting to observe the influence of the Reynolds number.
+In the present work, the cavitation number is defined as in Equation \ref{cavitation_number}.
+
+\begin{equation}
+    \label{cavitation_number}
+        \sigma_v = \frac{P_\infty - P_v}{0.5 \cdot \rho \cdot V^2}
+\end{equation}
+
+As already mentioned, this study is focused on analyzing mid-chord cavitation. Therefore, only conditions corresponding to a 0° angle of attack are presented and discussed. Under these conditions, the flow velocity was maintained at 8 $m/s$.  
+Preliminary tests were conducted to identify cavitation numbers corresponding to diverse cavitation conditions. These tests established the cavitation index at which cavitation inception occurs ($\sigma_{vi} = 0.66$). This value is higher than would result from the analysis of the theoretical pressure distribution on a NACA 0015 hydrofoil (\cite{Abbott1945}).
+This discrepancy can be due to various causes, including water quality aspects related to cavitation nuclei size (\cite{franc2006fundamentals}). 
+This result was confirmed with good repeatability by successive verification tests; therefore, it was accepted since it does not significantly affect the scope of the present work. Table \ref{tab:Experimental_Conditions} presents the cavitation numbers selected during the preliminary tests.
+
+\begin{center}
+    \resizebox{0.8\textwidth}{!}{
+    \begin{minipage}{\linewidth}
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    Conditions & Angle of Attack [°]& Flow Velocity [m/s]& $\sigma_v/\sigma_{vi}$ [-] \\
+    \midrule
+    A & 0 & 8 & 0.97 \\
+    B & 0 & 8 & 0.93 \\
+    C & 0 & 8 & 0.89 \\
+    \bottomrule
+    \end{tabular}
+    \captionof{table}{Tested Experimental Conditions}
+    \label{tab:Experimental_Conditions}
+    \end{minipage}
+    }
+\end{center}
+
+Data were collected using a high-speed, three-camera system. A pair of cameras (SpeedSense LAB 340CM 12M-70) is in synchronisation to acquire stereo images. A third camera (Phantom VEO710L) with a higher frame rate was added to better resolve the dynamics of the phenomena over time. This third camera was synchronised with the others to acquire ten frames for each frame acquired by the first two. 
+The frequency of the slower cameras was set at 1100fps, while the faster one was set at 11000fps.
+A pair of high-power LED strobe lights (GSVITEC Multiled) was added to the setup. These lights are necessary for the correct operation of high-speed cameras, which have a very short exposure and require a very bright field of view. A comprehensive description of the instrumentation used in this experimental setup can be found in Appendix \ref{app:appendixB}.
+Conducting preliminary studies was necessary to position the cameras and lights correctly. 
+Figure \ref{fig:setup} shows a picture of the setup used.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section1/Setup.png}
+    \caption{Experimental Setup. Cameras \& Light Positioning.}
+    \label{fig:setup}
+\end{figure}
+
+First, the most suitable optical measurement technique had to be chosen. As discussed in Chapter \ref{sez:Recostruction_Strategies}, various computer vision techniques are available in the literature. Specifically, this thesis focuses on two approaches: triangulation and shape-from-silhouette. Triangulation proves highly effective when a large number of corresponding points can be identified with great precision in at least two images. Conversely, the shape-from-silhouette method produces good results when multiple cameras are employed to minimize shadow cones.
+
+The application of computer vision techniques to bubbles forming on the surface of a hydrofoil presents significant challenges due to the characteristics of cavitation bubbles. Making a practical choice requires careful consideration of the specific features of the case study.
+Bubbles are visible in the images primarily because of the light reflection on their surface. However, light reflection depends on the camera pose. As a result, each camera captures different reflections, making it challenging to identify corresponding points in the images from other cameras. For this reason, achieving satisfactory results using passive stereo triangulation was not possible.
+This problem could be partially mitigated using an active triangulation approach, i.e. exploiting a coherent light source to generate light spots on the bubble surface and use them for triangulation.
+Although this is effective in principle, with such an approach, it is difficult to obtain the very high space resolution needed to allow the time-resolved reconstruction of cavitating bubbles, including the last phase of the collapse of cavities.
+
+Due to the above, the active triangulation method was not adopted in the current study, while preliminary analyses of the images verified the possibility of applying triangulation with light reflections. Based on this analysis, identifying accurate matches between two cameras is extremely difficult, especially when the bubble surface appears smooth and transparent (Figure \ref{fig:active_triangulation}). Better results can be obtained for cloudy structures, but further studies are needed to define matching points properly. Due to this, the triangulation approach was not adopted for the analyses of cavities reported here. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section1/PassiveTri.png}
+    \caption{Poor Stereo Matching by Passive Triangulation.}
+    \label{fig:active_triangulation}
+\end{figure}
+
+On the other hand, the shape from silhouette approach also presents severe issues. The cavities analysed in the current work are thin cavities close to the hydrofoil surface. Due to this and the limits of optical access, it is almost impossible to position the cameras so that the bubbles' thickness can be measured appropriately using the shape-by-silhouettes approach.
+Due to all the above, it was decided to focus the study on measuring the cavity area, neglecting their thickness and volume.
+As described in detail in the following chapter, these measurements were obtained in two steps.
+First, the surface of the hydrofoil was reconstructed using an active triangulation technique. Then, the regions occupied by the cavitating structures were obtained using 3D surface points and shape by silhouette.
+
+Finally, to assemble an effective setup, it is necessary to consider the distortive factors caused by the cavitation tunnel environment. As discussed in Chapter \ref{chap:chapter4}, various phenomena complicate computer vision measurements in the cavitation tunnel. The primary factors include the deviation of perspective rays due to the air-plexiglass-water interface and the distortion induced by the deformation of the tunnel windows under vacuum conditions.
+An important part of the procedure to minimize these effects involves the correct placement of lights and cameras. For this reason, the cameras were positioned as close as possible to the tunnel window to minimize the optical ray path in the air. In addition, they were placed with the sensors at an angle of ten degrees to the window. This angle represents the best trade-off between the need to focus both cameras on a common field of view and the requirement of keeping camera sensors parallel to the tunnel window. The position of the lights was chosen to produce many reflections on the cavitation structures, facilitating their detection and the segmentation phase.
+
+\section{Analysis Techniques}
+\label{sez:Analysis_techniques}
+
+The following section will describe the analysis techniques and processing methods used to obtain the measurement data. This section is divided into three subsections, each presenting a specific procedure aspect. The focus is placed on the problems associated with each phase and the solutions adopted in each case.
+
+\subsection{Preliminary Steps}
+\label{sez:Preliminary_Steps}
+
+Before delving into the procedural steps required for measurements, it is necessary to resemble some basic concepts
+of computer vision and apply them to the specific application scenario.
+
+First of all, it is necessary to clarify how the cameras were operated. As previously discussed, employing various cameras in a multi-camera setup can generally yield better results. However, the implementation of such techniques is complex and does not offer substantial benefits in the present study. Therefore, a pair of lower-frequency cameras was deemed sufficient for reconstructing the cavity regions. For this reason, it was decided to calibrate the cameras two by two in a stereo configuration. Only the pair of the slowest cameras were used to reconstruct the cavity structures.
+The other two were used to obtain a constraint to combine the spatial information provided by the low-frequency dipole with the faster camera’s temporal resolution.
+
+The pinhole model was used to describe the cameras mathematically. Based on this model, the cameras were calibrated. The calibration procedure follows the methodology outlined in Section \ref{sez:Camera_Calibration}.
+Two image datasets were collected for this purpose, each comprising fifty images of the calibration pattern captured in various poses. The first dataset was used to determine the distortion coefficients and perspective projection matrices (PPMs) for the cameras. The second dataset served as a test set to validate the calibration procedure.
+For each combination of distortion models, the corresponding perspective matrices were used to reproject the pattern's corners into three-dimensional space. This step allowed for an assessment of the calibration procedure's performance. Among the evaluated factors, the overall triangulation error is the most significant metric for comparison.
+As previously discussed, the distortion model producing the best results depends strongly on the specific setup. In this specific case, the chosen model was Model 3 (\ref{tab:distortion_models}), which incorporates both polynomial and thin prism distortion coefficients. This model produced a distribution with a mean error near zero and minimal variance. The resulting error is practically negligible because the target measurements (corner dimensions) are relatively small (5 mm).
+Similar error levels were observed across all conditions examined in this study. These errors are considered perfectly acceptable.
+Figure \ref{fig:CalbResults} shows the statistical distribution of the triangulation error.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection1/CalbResults.pdf}
+    \caption{Percentage triangulation error distribution obtained using calibration model 3. ($V = 8 \, \text{m/s}$, $\sigma_v/\sigma_{vi} = 0.97$, $\alpha = 0^\circ$)}
+    \label{fig:CalbResults}
+\end{figure}
+
+The shape of the error distribution reported in Figure \ref{fig:CalbResults} is quite interesting. This distribution offers valuable insight into the effects of an erroneous estimation of the principal points coordinates.
+While the errors appear minimal (and the calibration model still fully valid), the distribution significantly deviates from the Gaussian shape. 
+These discrepancies occur because no Plexiglas prisms were used in this case study to improve the perspective ray path, which caused an inaccurate estimation of the cameras' principal point.  
+To understand the improvement that the use of these devices brings to measurement, one can refer to the distirbutions shown in Figures \ref{fig:TriError}.
+
+The final step in achieving an accurate measurement system involves accounting for window deformations under vacuum conditions in the tunnel. The homographic transformations outlined in Section \ref{sez:Warp_Correction} were computed and applied to address this effect. Performance tests on these transformations revealed that the correction acquires considerable importance under pronounced vacuum conditions. Conversely, when the vacuum is slight, the effects of the correction are almost negligible. 
+
+Even after applying the dewarping procedure, the error slightly increases under vacuum conditions compared to atmospheric ones. This error is still very small, with an average close to zero and a maximum error below 2\%.
+
+\subsection{Foil Surface Reconstruction}
+\label{sez:Foil_Surf}
+
+Although the relationships linking the information in the images to the physical world have already been derived, further preparation is required to proceed with the actual measurements. In this phase, the surface of the hydrofoil will be identified and reconstructed.
+This procedure is necessary since the foil surface will be used to measure the extension of the cavity structures, as described in the following section.
+Although the foil's geometry is known, this step is more challenging than it appears. The supports on which the foil has been mounted may manifest a strain, causing the foil surface to shift.
+The magnitude of this strain is related to the forces acting on the foil itself. So, this effect assumes greater importance in cases where lift and drag are elevated, i.e. for conditions of high flow velocity and angle of attack. However, there is also no reason to neglect this aspect in other conditions.
+For this reason, it was decided to reconstruct the hydrofoil surface with an optical measurement technique.
+The technique used to reconstruct the surface is known as active triangulation. This technique uses a series of easily detectable markers. 
+By projecting these markers onto the surface of the foil, it is possible to quickly obtain the information needed to reconstruct the surface itself in 3D space. 
+In the present application, laser dots generated by a pointer were used as markers.
+A stereo video pair was recorded while the laser pointer was moved so that the dots covered the entire surface of the foil.
+Markers can be used to detect and match corresponding points in stereo images. Techniques widely used in computer vision for such tasks are feature detection algorithms such as SIFT or SURF. However, in the present application, these types of algorithms proved to be relatively ineffective.
+For this reason, a custom point detection and matching procedure was developed.
+First, the images had to be pre-processed to improve the contrast between the laser-generated markers and the background. Once the points with the highest gloss were detectable, they were used as features.
+A combination of the epipolar constraint and a constraint-based on homography was used to find the corresponding features in the stereo image pair.
+First, the epipolar constraint was imposed. The epipolar constraint is a geometric constraint that, once the stereo dipole configuration is fixed, allows a point in one camera's image plane to be associated with a single line in the other's image plane. This line is called the epipolar line (\cite{Fusiello2005}).
+This constraint simplifies the matching research, as searching for the correspondent point on an entire image is no longer necessary but just along the epipolar line. However, this is not sufficient to identify the matching point unambiguously; therefore, a second constraint was added. 
+This constraint was defined by computing a homography again. The images acquired in the vacuum condition described in the previous section were used to obtain the homography. Homography was calculated by associating the points detected by one camera with those detected by the other. 
+Although this relationship may be approximated, it is not a cause for concern since the constraint only requires low precision.
+Using the epipolar constraint, with a certain tolerance, a small group of possible matches can be found for each point identified in the first image. 
+Homography is then used to estimate the position of the same point on the second image.
+The best match among the possible ones is the one minimizing the distance from the point position estimated by homography. Figure \ref{fig:FoilMatch} shows the detected markers in a single frame.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/FoilMatch.png}
+    \caption{Matched laser dot markers in a single frame.}
+    \label{fig:FoilMatch}
+\end{figure}
+
+Many correspondences were collected by repeating this process for each of the 2000 frames in the video.
+The position of the points in three-dimensional space is then estimated by applying the reprojection matrices to the matching points found in the stereo images. Finally, a smoothing algorithm was applied to the remaining points to eliminate noise in the data. 
+The results of the recostruction procedure is reported in Figure \ref{fig:FoilSurf}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/FoilSurf.png}
+    \caption{3D Model of the Hydrofoil Surface.}
+    \label{fig:FoilSurf}
+\end{figure}
+
+\subsection{Cavitation High-speed Video Analysis}
+\label{sez:video}
+In this section, the analysis of high-speed video will be discussed. For clarity, it was decided to divide the analysis into two parts.
+The first section will focus exclusively on the data collected by the lower-frequency cameras, showing how the extensions of the cavity structures were obtained. The second will present the analysis of the videos collected by the faster camera. This second section will then describe how the bubble dynamics were analysed and how this data was related to the areas obtained with the lower frequency stereo pair.
+
+\subsubsection{Lower Frequency Cameras}
+\label{sez:Stereo_Cameras}
+As mentioned above, cavitation bubble areas were obtained using shape by silhouette. In general, this technique uses the shape of an object in a series of images to derive its 3D shape.
+The first step is segmenting the cavitation bubbles in the acquired images. This step is rather difficult due to the nature of the bubbles themselves. Certain parts of a bubble typically appear brighter due to increased reflectivity or lighting. At the same time, some other areas remain in shadow and are difficult to distinguish from the background. For this reason, traditional segmentation algorithms, generally based on the variation of the grey level in the image, do not perform satisfactorily in this case.
+Traditional segmentation techniques in this field were investigated in \cite{Franzosi2023}. Although the article demonstrates how it is possible to segment cavity structures with this approach, it also shows their limitations. 
+For this reason, machine learning-based algorithms were preferred for segmentation in the current work. If properly used, these algorithms produce excellent results at the cost of a higher computational effort.
+In this work, bubble segmentation was done using the Segment Anything Model (SAM). SAM is an easy-to-use segmentation algorithm that has proven highly effective in identifying cavities. Interested parties can find a comprehensive description of how this algorithm works in \cite{Kirillov2023}. 
+Segmented objects utilising SAM cannot be used directly in the shape by silhouette. The algorithm often detects cavities and other objects, such as the foil surface or reflections on the tunnel window. A typical segmentation output is shown in Figure \ref{fig:CavitySAM}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/CavitySAM.png}
+    \caption{Segmentation Procedure's Results Achieved Applying SAM to a Couple of Stereo Frames.}
+    \label{fig:CavitySAM}
+\end{figure}
+
+Removing the other objects from the list provided by SAM is a crucial step in reconstructing only the cavitation bubbles.
+This task is generally simple because the reflections and the foil surface are much larger than the cavitating structures. Using a filter based on the standard score and the RANSAC method (\cite{Fischler1981}), outliers can be removed based on the pixel extensions of the segmented objects. 
+Once the cavity structures in the images of each camera have been identified, they must be paired. So, once a bubble has been taken on the first image, the corresponding one on the second must be found. This task was performed with the combination of epipolar constraint and homograph filter, which is already described in the section on foil surface reconstruction. The only difference is that, in this case, the points used to find the matches are the centroids of the bubbles instead of the points of highest brilliance. An example of the results obtained through the use of SAM and the matching procedure can be seen in Figure \ref{fig:CavityMatch}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/CavityMatch.png}
+    \caption{Matching of the Detected Cavities (the same colour indicates the same cavity in the stereo pair).}
+    \label{fig:CavityMatch}
+\end{figure}
+
+After identifying matching bubbles in the two images the shape by silhouette method can be used.
+As mentioned in the introduction to this chapter, this type of technique presents difficulties in this case. In fact, due to optical access, it was not possible to use many cameras or position them to capture the thickness of the cavities correctly.
+For this reason, the shape-by-silhouette technique was modified to capture just the areas of cavity structures on the hydrofoil surface.
+First, the three-dimensional points constituting the foil surface obtained in the previous paragraph were considered. Each point was associated with a rectangular area instead of a volume. The area of each rectangular element was calculated as the product of the half-distances from a certain point to adjacent points on the x-axis and y-axis.
+Each point was projected into the image plane to proceed with the shape by silhouette and obtain the areas of the cavity structures from the sum of the valid points.
+At this point, it is essential to note that, as described, the technique does not consider either the dewarping procedure or the distortion removal.
+In this case, these corrections were applied to the images. This way, the coordinates of each pixel in the images are recalculated considering the various distortion effects. Thus, obtained images on which the shape by silhouette can be directly applied.
+This method avoids inverting dewarping homographs and distortion models, which is preferable since inverting these transformations poses complications due to matrix conditioning.
+In this way, the shapes and extensions of each cavity structure in the videos were obtained (Figure \ref{fig:Cavity3DModel}). 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Cavity3DModel.png}
+    \caption{3D Model of the Cavities on the Foil Surface Resulting from the Shape by Silhouette (for a specific instant).}
+    \label{fig:Cavity3DModel}
+\end{figure}
+
+As already done for the calibration and the dewarping phase, it is essential, in this case as well, to estimate the precision of the technique. 
+The minimum size associated with a single surface point reaching the camera's resolution limit was estimated to obtain this estimate.  This dimension is approximately $0.04, \text{mm}^2$.
+Comparing this measurement with the average size of the detected cavities reveals that the technique is very accurate.
+The collected data, presented in the results chapter, provides some cavitation status characteristics.
+
+\subsubsection{Higher Frequency Camera}
+\label{sez:High_Frequency}
+
+The available stereo rig can not reach an acquisition frequency sufficient to obtain the cavitation structures' time-resolved dynamics. 
+However, as previously mentioned, a third camera with a higher acquisition frequency allows for a more precise observation of the phenomenon's dynamics. Utilizing a single camera fails to yield a physical measurement that accounts for three-dimensional effects such as foil curvature. Hence, coupling the data obtained from the high-speed camera with the stereoscopic data acquired from the slower cameras represents the most appropriate solution.
+The first step is to extract some data from the fastest camera, such as the shapes and positions of the cavities in the frames. This process closely resembles the one outlined in the previous paragraph, yet it differs significantly in one aspect. As before, the contours of cavitation bubbles were extracted for each video frame. 
+However, in order to resolve the bubble evolution through time a given bubble must be recognised along successive frames.
+This type of problem is extensively addressed within the field of computer vision and is referred to as object tracking. Numerous methods exist for tracking an object in a video, all based on assigning each object a unique identification number (ID) that must persist over time.
+In this case, each frame was analyzed using the SAM algorithm to extract cavitation structures present in the frame. Their respective centroids were evaluated for each cavity obtained. By comparing the centroid of a specific cavity with those from the previous frame, it is possible to associate it with its counterpart in the preceding frame.
+The procedure to get this match is presented below.
+A quantity representing the estimated displacement is added to the coordinates of all centroids from the previous frame. This quantity reflects the movement exhibited by that centroid between the previous frame and the one before that. By evaluating the minimum distance of the centroid under analysis from these calculated points, conclusions can be drawn. The analyzed object and the one that produced the minimum distance are considered homologous only if this distance falls below a fixed threshold. In such a case, the object retains its ID in the previous frame; otherwise, it is assumed as a new object and assigned a new ID.
+While this method is highly effective, it presents robustness issues. Indeed, a cavity may not be segmented correctly in an image, breaking the object tracking and initializing it as a new object in the subsequent frame. To prevent this possibility, a correction was implemented to approximate the location of objects not detected in multiple frames. If such an object is not detected for several frames beyond a set threshold, it is assumed that the cavity's life cycle has ended. Figure \ref{fig:CavitySnapshot} shows a typical single bubble life cycle.
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/1.png}
+        \subcaption{t = 0 [ms]}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/2.png}
+        \subcaption{t = 1.64 [ms]}
+    \end{minipage}
+
+    \vspace{0.3cm} % Spazio verticale tra le righe
+
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/3.png}
+        \subcaption{t = 2.91 [ms]}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/4.png}
+        \subcaption{t = 4.27 [ms]}
+    \end{minipage}
+
+    \vspace{0.3cm} % Spazio verticale tra le righe
+
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/5.png}
+        \subcaption{t = 4.82 [ms]}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section2/SubSection2/Snapshots/6.png}
+        \subcaption{t = 5.09 [ms]}
+    \end{minipage}
+    \caption{A time-lapse sequence illustrating the typical life cycle of a single bubble, with images subsampled from the recorded video. (a) The bubble is barely visible shortly after cavitation inception, (b) The bubble begins to grow, (c) The bubble reaches its maximum size, (d) The bubble collapses, (e) The bubble undergoes a brief rebound, (f) The bubble collapses completely for the final time.}
+    \label{fig:CavitySnapshot}
+\end{figure}
+
+
+Tracked objects include cases of bubbles merging or splitting at a certain point. These cases were excluded from further analyses to focus on single bubble dynamics. Actually, the analysis of these more complex cases would require different approaches and is postponed to further studies.
+This filtering process is straightforward because, generally, such dynamics are not recognized as a single object throughout their entire lifespan. By discarding objects with short lifespans, unwanted dynamics can effectively be filtered out.
+Once an object's life cycle is obtained, the extracted data consists of the pixel areas it occupies in each of the frames in which it appears. This data needs to be processed to obtain physical measurements.
+
+To link the pixel data with measurements in physical quantities, cavitation bubbles in the fast camera images must be matched with those captured by the stereo rig. This step is feasible because the stereo and fast cameras are synchronised as described in \ref{sez:setup1}. The slower cameras capture one frame for every ten frames acquired by the fast camera.
+For frames for which both fast camera and stereo rig images are available, it is possible to couple the pixel size of the cavities captured by the fast camera with the cavity size in millimetres squared obtained from the stereo data. This coupling was achieved using the method based on the combination of the epipolar constraint and the homographic filter already described.
+Coefficients were obtained from the ratio of pixel areas to square millimetres. They are then used to scale the pixel areas to estimate their measurements in square millimetres, even for frames where stereo data is unavailable. A similar procedure was followed to estimate the cavity centre's position relative to the foil's leading edge at each instant.
+Access to the areas of the cavitating structures and their position relative to the leading edge for each instant of their life allows evaluation of specific quantities characteristic of the phenomenon. These quantities will be presented and discussed in Section \ref{sez:timeResolvedResults}
+
+\section{Results and Discussion}
+\label{sec_results}
+This Section presents the outcomes derived from the analyses conducted. It is subdivided into two parts.
+The first part delves into the results obtained from the data collected with the stereo camera rig. These results are achieved using the methodologies illustrated in Section \ref{sez:Stereo_Cameras}.
+The results obtained from the time-resolved analyses will be discussed in the last part, as described in Section \ref{sez:High_Frequency}.
+
+Before analyzing these results, it is crucial to discuss the validity of the analysis. This study evaluated the errors embedded at each analysis step to verify the technique's accuracy.
+The errors introduced with the calibration procedures, the reconstruction of the foil surface, and the measurement of the cavities features are summarized in Table \ref{tab:Errors}.
+The results of detecting the features of the cavities' dynamics in the time-resolved analysis were also inspected for reliability. Defining a quantitative assessment of the error was more difficult in this case. However, the procedure appears robust upon spot checks.
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{2} % Regola l'altezza delle righe
+    \begin{tabular}{>{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{4cm}}
+    \toprule
+    \textbf{Error Type} & \textbf{Absolute Error} & \textbf{Percentage Error} \\ \midrule
+    Mean Calibration Error & 0,016 [$mm$] & 0.32 [\%]  \\
+    Max Calibration Error & 0,095 [$mm$] & 1.89 [\%]  \\
+    Mean Reprojection Error (With Dewarping Procedure)  & 0,016 [$mm$] & 0.32 [\%]  \\
+    Max Reprojection Error (With Dewarping Procedure) & 0,098 [$mm$] & 1.97 [\%]   \\
+    Mean Reprojection Error (Without Dewarping Procedure) & 0,021 [$mm$] & 0.41 [\%] \\
+    Max Reprojection Error \\ (Without Dewarping Procedure) & 0.106 [$mm$] & 2,12 [\%]  \\
+    Camera Resolution Sensitivity & 0.036 [$mm^2$] & ---  \\ \bottomrule
+    \end{tabular}
+    \caption{Estimated Procedure Errors.}
+    \label{tab:Errors}
+\end{table}
+
+These errors are minimal and entirely negligible; for this reason, the measurement procedure can be considered reliable.
+
+\subsection{Stereo Data Results}
+\label{SD_rresults}
+The application of shape by silhouette techniques to stereo data provides the area occupied by cavities on the hydrofoil surface. This quantity is obtained for all the cavities segmented for each frame, resulting in tens of thousands of samples for each condition. From this dataset, the statistical distribution of cavities areas against the foil's chord position is obtained.
+These distributions provide valuable insights into the characteristic dimensions and position of cavitation structures. This allows identifying the regions corresponding to the main phases of cavitation evolution: onset, growth, maximum extent, collapse, cloud generation, cavitation instabilization and rebound. 
+The distributions of cavity size are shown in Figure \ref{fig:069}, \ref{fig:066}, \ref{fig:063}, along with some cavitation observations.
+
+In addition to the single cavity size, the total cavitation area is analysed. Two metrics have been measured in this regard. The first is the extent of the region where the cavitation occurs during the total measurements ($T_{\text{ce}}$), which correlates with the pressure distribution on the hydrofoil surface. The second quantity investigated is the ratio between the surface area instantaneously occupied by cavities ($I_{\text{ca}}$) and the total cavitation area of the phenomenon ($T_{\text{ca}}$). 
+As will be explained, the mean value of this ratio depends on the phenomenon's main characteristics.
+These data are shown in Figure \ref{fig:combinedGraph}.
+The results are analysed in the following, commenting on each condition individually. Lastly, the results of the three conditions are compared, investigating the correlations between measured quantities and overall cavitation behaviour.
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/066.png}
+        \captionsetup{justification=centering}
+        \subcaption{Frame from high-speed video.}
+    \end{subfigure}
+    \vspace{0.5cm} 
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/069.pdf}
+        \captionsetup{justification=centering}
+        \subcaption{Distributions of cavity sizes along the foil chord (Median, Interquartile Range).}
+    \end{subfigure}
+    \caption{\textbf{Condition for $\boldsymbol{\sigma_v / \sigma_{vi} = 0.97}$.} 
+    (a) Snapshot extracted from High-Speed Video (Camera 1) shows an early stage of cavitation development.
+    (b) Distribution of cavity sizes along the foil chord. The distribution shows the sizes of the cavities detected on the surface of the hydrofoil, highlighting the median value and the interquartile range.}
+    \label{fig:069}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/069.png}
+        \captionsetup{justification=centering}
+        \subcaption{Frame from high-speed video.}
+    \end{subfigure}
+    \vspace{0.5cm} 
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/066.pdf}
+        \captionsetup{justification=centering}
+        \subcaption{Distributions of cavity sizes along the foil chord (Median, Interquartile Range).}
+    \end{subfigure}
+    \caption{\textbf{Condition for $\boldsymbol{\sigma_v / \sigma_{vi} = 0.93}$.} 
+    (a) Snapshot extracted from High-Speed Video (Camera 1) shows an intermediate stage of cavitation development.
+    (b) Distribution of cavity sizes along the foil chord. The distribution shows the sizes of the cavities detected on the surface of the hydrofoil, highlighting the median value and the interquartile range.}
+    \label{fig:066}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/063.png}
+        \captionsetup{justification=centering}
+        \subcaption{Frame from high-speed video.}
+    \end{subfigure}
+    \vspace{0.5cm} 
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection1/063.pdf}
+        \captionsetup{justification=centering}
+        \subcaption{Distributions of cavity sizes along the foil chord (Median, Interquartile Range).}
+    \end{subfigure}
+    \caption{\textbf{Condition for $\boldsymbol{\sigma_v / \sigma_{vi} = 0.89}$.} 
+    (a) Snapshot extracted from High-Speed Video (Camera 1) shows a fully developed cavitation.
+    (b) Distribution of cavity sizes along the foil chord. The distribution shows the sizes of the cavities detected on the surface of the hydrofoil, highlighting the median value and the interquartile range.}
+    \label{fig:063}
+\end{figure}
+
+\subsubsection{Condition 1: $\sigma_v/\sigma_{vi} = 0.97$}
+\label{sez:stereo_1}
+This condition is characterised by close-to-inception cavitation.  Under this condition, cavitation takes the form of sparse bubble cavitation. Bubbles are often separated and behave as single-bubble cavitation. While the formations of cavity clusters is rare.
+This behaviour leads to a low $[I_{\text{ca}} / T_{\text{ca}}]$ ratio of approximately 10\%. As shown in Figure \ref{fig:069} (Left), the bubbles occupy a small region of the total cavitation area.
+
+Figure \ref{fig:069} (Right) shows the size of the cavitating structures varying along the foil chord for the condition of $\sigma_v = 0.69$. Observing this figure allows for identifying a specific trend in the dynamics of cavitation structures. Firstly, looking at the distributions of cavitation structures near the leading edge, it can be assessed that cavitation origin occurs between 3\% and 7\% of the chord. Afterwards, an almost linear growth of the cavities can then be observed until the maximum is reached. The maximum extent of the cavities is between 27\% and 31\% of the foil chord.
+Downstream of the maximum, a sharp decrease in cavities area is observed. This reduction corresponds to the collapse phase of the cavities, as confirmed by analysis of the high-speed videos.
+It's worth analysing in detail the collapse dynamic observable in the videos.
+In particular, the appearance of the bubbles changes slightly before the maximum. While the surface of the bubbles seems unvaried on the outer side, the inner one becomes rough and irregular. This effect seems to correspond to a change in the motion characteristics of the bubbles, which is more evident in the subsequent frames.
+Specifically, it appears that the body of the bubbles does not proceed uniformly. The side in contact with the foil moves slower than the outer side. 
+This deceleration initiates from the downstream edge of the cavity and gradually leads the bubbles to twist around a spanwise directed axis. Hence, the bubble motion changes from the initial pure translation to roto-translation.
+The final stage is not evident in the distributions, but it corresponds to the end of the sharp decrease in the distributions, located around 35\% of the chord.
+Finally, the collapse phase is followed by rebounds. When these are present, the cavitation extends up to a maximum of 43\% of the hydrofoil chord.
+
+Up until now, the analysis has focused on the trend of the median against the chordwise coordinate. Concerning the size distributions obtained to each chordwise position, of which only interquartiles are reported, a large variance is observed. Actually, this variance is confirmed by visual observations.
+It is important to note that the presented distributions do not exclusively represent the typical dynamics of a single bubble. While this is the dominant dynamic, it is not the only one. The data also reveals the presence of at least two other characteristic behaviours in the cavities dynamics.
+Observing the videos, it becomes evident that two or more bubbles with different speeds often approach each other until they merge through coalescence. These clusters' presence significantly alters the cavity size's statistical distribution. These agglomerates are larger than single bubbles, causing the mean value of the distribution to shift towards higher values and increasing the variability of the data.
+
+On the other hand, the large variance is also due to the presence of many small-size bubbles among detected cavities. These partially correspond to free bubbles flowing at some distance from the foil surface. In addition, some bubbles are observed on the foil, experiencing a rather small growth during their motion. This can be due to various reasons, such as those related to the characteristics of the initial nucleus or turbulence.
+
+\subsubsection{Condition 2: $\sigma_v/\sigma_{vi} = 0.93$}
+\label{sez:stereo_2}
+The second condition considered corresponds to a more developed cavitation. As highlighted in Figure \ref{fig:066} (Left), the cavities exhibit a faster and more pronounced growth under this condition compared to the previous scenario. The $[I_{\text{ca}} / T_{\text{ca}}]$ ratio in this instance averages at 25\%. The cavitation structures are more dense and appear as single bubbles only in the regions closest to the leading edge.
+As the cavitation structures move towards the trailing edge, the likelihood of two or more bubbles coalescing increases.
+The graph in Figure \ref{fig:066} (Right) shows notable characteristics of the observed cavitation dynamics. 
+The cavitation dynamics can be drafted into growth, collapse and final decline phases. Significant disparities with respect to the previous condition are observed.
+Firstly, the growth is larger downstream of the zone, where clusters begin to form cavitation.
+The data variability observed in this condition is ascribed mostly to the presence of single bubbles and agglomerates, while very small bubbles are almost not present.
+
+The cavitation structures progressively grow to approximately 36\% of the chord, where the cavities are mostly clusters. 
+It is worth noticing that the indicated chordwise position refers to the centroid of the cavitation structure, which may extend significantly upstream and downstream in this condition. While for single bubbles, the collapse appears as a global contraction of the whole cavity volume, such a global collapse is not observed for agglomerates.
+Actually, when the downstream edge of the agglomerate reaches a given region, it starts collapsing
+Actually, the collapse of agglomerates appears as the continuous destruction of vapour at the downstream edge of the cavity when it reaches a given region, which in this case is a narrow band located about at the 40\% of the chord.
+Downstream of the collapse, vortical structures composed of microbubbles are released, looking like horse-shoe vortexes that are not entirely cavitating. These collapse-born structures gradually become smaller and less compact until they disappear at about 60\% of the foil chord.
+
+\subsubsection{Condition 3: $\sigma_v/\sigma_{vi} = 0.89$}
+\label{sez:stereo_3}
+For this condition, the cavitation dynamics can be split into two distinct regions: one closer to the leading edge and the other downstream. 
+The upstream region contains single bubbles, while the downstream region contains a unique, large agglomerate (Figure \ref{fig:063} (Left)).
+The size of this agglomerate combined with the presence of the single bubbles upstream leads the ratio  $[I_{\text{ca}} / T_{\text{ca}}]$ to reach a value close to 95\%. This means that istantaneus cavitation occupies almost the entire region where it may occur. 
+Given its characteristics, this condition cannot be analysed as in the two previous cases. For this reason, the large agglomerate and single bubbles were analysed separately.
+First, the analysis is focused on the single bubbles. For this condition, the single bubbles show two different behaviours. The bubbles form at the leading edge and expand rapidly, similarly to the condition for $\sigma_v = 0.66$. When the bubbles come into contact with the upstream edge of the agglomerate, they may merge with it or slide over it, preserving their integrity. However, bubbles belonging to this second type often merge with the agglomerate before collapsing.
+Single bubbles detected within the agglomerate region feature rather irregular behaviour compared to those of condition one. This is due to the complex interactions between the bubble and the surrounding cavitation structures.
+Focusing instead on the agglomerate, two distinct layers can be identified: a layer close to the hydrofoil surface resembling cloud cavitation and an outer layer of structures resulting from the coalescence of individual bubbles. The extension of the agglomeration remains almost stable over time due to the continuous coalescence of new bubbles on the upstream side and the destruction of vapour on the downstream edge. Its upstream edge is rather jagged since it results from merging single bubbles with the agglomerate. On average, this edge is around 22\% of the chord length.
+Instead, the downstream edge is found approximately at 70\%  of the chord length.
+In this zone, the agglomerate collapses. Similar to the previous condition, the collapse does not affect the entire structure but only the portion near the downstream edge. 
+The collapse occurs in a narrow region where the outer surface of the agglomerate's structure twists upon itself.  Beneath the agglomerate in this region, bright, cloudy structures flowing upstream are observed, evidencing the presence of re-entrant jets. This phenomenon rules the collapse dynamics. Actually, when the cloudy substrate, hence the re-entrant jet, reaches a specific size, it causes the breaking of the outer cavitating structure, shedding cavitating vortices downstream.
+These vortical structures are larger than those observed previously and include primary spanwise vortices and secondary streamwise vortices as reported in \cite{Foeth2008} for sheet cavitation. These structures propagate at most up to 78\% of the chord and then collapse. 
+
+\subsubsection{Comparison}
+\label{subsubsez_comparison}
+This section compares the results just described, highlighting the differences and similarities between the three conditions.
+Firstly, the data providing a global description of cavitation (e.g. total cavitation extent) are compared. 
+Figure \ref{fig:combinedGraph} (Left) shows the cavitation extent against the cavitation number. The observed trend is almost linear. The variation in the extent is mainly due to the shift of the downstream edge of the cavitating region.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{FIGURES/Chapter5/Section3/SubSection1/combinedGraph.pdf}
+    \caption{\textbf{Global cavitation characteristics as a function of the cavitation number.} 
+    \textbf{The plot on the left} represents the extent of cavitation along the chord of the hydrofoil. \textbf{The middle plot} shows the ratio between the instantaneous and total cavitation areas. \textbf{The plot on the right} illustrates the region affected by collapse mechanisms along the chord of the hydrofoil.}
+    \label{fig:combinedGraph}
+\end{figure}
+
+Figure \ref{fig:combinedGraph} (Middle) shows the trends of the $[I_{\text{ca}} / T_{\text{ca}}]$ ratio varying with the cavitation number. The decrease in the cavitation number not only increases the region where cavitation may occur but also increases the intensity of instantaneous cavitation, causing, in turn, a variation of its characteristic behaviour.
+As described in the previous paragraphs, cavitation consists of a few individual bubbles for the close-to-inception condition. As the cavitation index decreases, more bubbles are present and merge together, forming large agglomerates.
+These aglomerates generally do not show individual dynamics. Upstream, new bubbles feed them, while downstream, they are consumed near the collapse region.
+As mentioned in the previous paragraphs, different cavitation conditions are characterized by different collapse dynamics.
+In particular, for single-bubble cavitation, the collapse begins gradually under the action of external pressure. Meanwhile, the bubbles begin twisting under the action of the shear layer.
+This rotation around a spanwise directed axis influences the collapse dynamics. Collapsing bubbles keep an almost hemispherical shape without assuming the appearance of a vortex. However, their shape is often elongated in the spanwise direction, and some vortical structures appear after the rebound, highlighting the presence of vorticity.
+In conditions where cavitation is larger, the collapse mechanics are different.
+In the intermediate condition, only a few bubbles maintain individual dynamics until the collapse. In such cases, bubble dynamics are similar to those previously described; however, due to their larger size, they further stretch under the action of the shear layer, as demonstrated by streaks of cavitation in contact with the body surface.
+However, most of the bubbles merge together, forming agglomerates. This process is more efficient among bubbles already twisted and stretched. As mentioned above, agglomerates do not collapse simultaneously as a whole, but vapour destruction starts at its downstream edge.
+Here, the edge of the agglomerate wraps around itself with mechanics driven by the formation of a re-entrant jet. In this case, the collapse occurs in a narrow region downstream of which vortical structures are shed.
+The formation of a re-entrant jet at the trailing edge of large sheet cavities is a well-documented phenomenon in literature (\cite{Chahine2014}, \cite{DeLange1997}). Travelling bubble cavitation observed on the hydrofoil in the current study is thinner and presents larger three-dimensional effects. Due to this, the re-entrant jet appears weaker than for large sheet cavities, and it does not cause global break-up of cavitation. Yet, as observed here, it contributes to the collapse mechanism of bubble agglomerates.
+The above-described dynamics are more developed for the condition with $\sigma_v/\sigma_{vi} = 0.89$, with some differences.
+Firstly, single bubbles again tend to twist upon themselves. In this case, though, not all bubbles degenerate into streaks. Actually, a unique agglomerate is present, leaving a large amount of streaks on the hydrofoil surface. 
+Intact bubbles convected from the leading edge often encounter these streaks. In this case, the bubbles do not degenerate but preserve their integrity for a certain period, sliding above the streaks of the main cavity.
+The large, stable agglomerate present in this condition consists of two layers: a cavitating substrate composed of cavitation strips and micro-bubbles and an upper layer of coherent bubbles.
+The collapse occurs with a similar dynamic to the previous one. Upon reaching the collapse zone, the agglomerate wraps around itself. Observing the videos, one can indeed notice a part of the cavitation structure wedging beneath the main body of the agglomerate, sliding in the opposite direction of the flow. This phenomenon regulates the collapse dynamics and generates vortices released downstream.
+In this case, cavitation is much more developed than in the previous case. So, the region affected by the re-entrant jet and, thus, by the collapse is slightly more extensive. Figure \ref{fig:combinedGraph} (Right) shows the regions affected by the collapse for the three analysed conditions.
+
+\subsection{Time Resolved Results}
+\label{sez:timeResolvedResults}
+
+The time-resolved analyses presented in this section specifically study the typical dynamics of single-bubble cavitation. For this reason, these analyses have been exclusively applied to the condition where  $\sigma_v/\sigma_{vi} = 0.97$. Indeed, among the observed conditions, it is the only one in which single bubble dynamics predominate over others.
+The behaviour of cavitation structures was tracked over time by applying the methodology proposed in Section \ref{sez:High_Frequency}. This approach allows focusing on single bubbles while excluding agglomerates and free bubbles.
+The evolution of over five hundred individual single bubbles was traced, and each of these dynamics was analyzed to collect information describing its main characteristics. 
+
+In addition, the observed bubble dynamics were compared with predictions from some theoretical models. Initially, the Rayleigh-Plesset equation (\ref{eq:RP}) was selected to analyze and compare the cavitation dynamics with the theoretical behaviour of a spherical bubble.
+
+\begin{equation}
+    \label{eq:RP}
+    \frac{p_B(t) - p_\infty(t)}{\rho} = R \frac{d^2 R}{dt^2} + \frac{3}{2} \left( \frac{dR}{dt} \right)^2 + \frac{4 \nu}{R} \frac{dR}{dt} + \frac{2S}{\rho R}
+\end{equation}
+
+Where $p_B(t)$ is the internal pressure of the bubble modelled as described in \cite{brennen2014cavitation}, ignoring thermal effects (Equation \ref{eq:PB}). While $p_\infty(t)$ is the external pressure over the foil. In this case, the data provided by \cite{Abbott1945} for a NACA 0015 hydrofoil were used to define $p_\infty(t)$. Finally, a fitting procedure was used to set the value of the initial radius of the bubble $R_0$. This value is $R_0 = 0.38$ $[mm]$. This value is a bit large compared to typical values \cite{brennen2014cavitation}. This value has been defined through a fitting procedure in order to compare the theoretical evolution of the bubble with the measurements, and it is likely affected by the differences between the measurements and the theoretical model, which is based on several simplifying assumptions. Addressing this issue could be a matter of future studies, requiring directly measuring the cavitation nuclei spectrum. However, this problem does not affect the comparison outcomes reported here.
+
+\begin{equation}
+    \begin{aligned}
+    &p_{G_0} = p_{\infty}(0) - p_V + \frac{2S}{R_0} \\[6pt]
+    &p_B(t) = p_V + p_{G_0} \left(\frac{R_0}{R}\right)^3
+    \end{aligned}
+    \label{eq:PB}
+\end{equation}
+
+Results are illustrated in Figures \ref{fig:rpDim} and \ref{fig:rpAdim}. 
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{\textwidth} 
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/rpDim.pdf}
+        \caption{Dimensional data}
+        \label{fig:rpDim}
+    \end{subfigure}
+    \\ 
+    \begin{subfigure}[b]{\textwidth} figura
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/rpAdim.pdf}
+        \caption{Normalized data}
+        \label{fig:rpAdim}
+    \end{subfigure}
+    \caption{Comparison between the dynamics of single bubble cavitation observed experimentally and those predicted by the Rayleigh-Plesset equation for a cavitation nucleus of 0.38 mm.}
+    \label{rpDynamics}
+\end{figure}
+
+Specifically, Figure \ref{fig:rpDim} depicts cavitation bubble size evolution along the foil chord. 
+Figure \ref{fig:rpAdim} presents the same dynamics shifted and normalized. The instantaneous cavity size was normalized using its maximum value, while the position along the foil chord was firstly shifted and then normalized using the position in which the first collapse of the cavity occurred (excluding rebounds). The shift allows compensating for some ambiguity in the definition of the initial growth positions of bubbles. Actually, the starting point for measured bubbles corresponds to the position along the chord where the bubble was first detected, which depends on bubble size and enlightenment.
+Despite being a theoretical model based on several simplifying assumptions, the Rayleigh-Plesset equation offers a close approximation of the dynamics of cavitation bubbles observed experimentally. 
+Actually, a good agreement is observed in terms of trends and values of key quantities, such as the maximum bubble size, collapse position, and extent of rebound. 
+Nevertheless, the position where the bubble starts growing seems anticipated in the theoretical model. As a matter of fact, around $10\%$ of the chord length, the theoretical bubble is larger than those measured in the experiment. On the other hand, the theoretical location of the collapse agrees rather well with experimental data, resulting globally in a slightly longer bubble duration.
+In addition, a slight difference can be observed in the cavities' growth pattern. The experimental data are characterized by an almost linear growth, whereas the R-P model indicates that the growth is initially more than linear. Around $17\%$ of the chord length, the model shows a change in concavity, leading to a more gradual increase until the maximum size is reached.
+
+The agreement between the model and the experiments is even better when looking at normalized data in \ref{fig:rpAdim}. Actually, only minor differences can be observed here, as the already mentioned discrepancies in the growth trend and a slightly anticipated position of the maximum according to the solution of the Rayleigh-Plesset equation.
+Following the first collapse, bubble rebounds are observed both in the experimental and in the model. However, larger discrepancies are observed here. In addition, only one rebound is observed most of the experiments while more rebounds are predicted by the model. These discrepancies could be reasonably ascribed to the behaviour of the observed cavitation. 
+Actually, as already remarked, during collapse the bubble behaviour is rather different from the spherical model and the successive rebound takes the form of a cloudy cavitation structure, often characterized also by some vertical motion.
+
+In summary, this analysis clearly demonstrates that the R-P equation succeeds rather satisfactorily in modelling the dynamics of travelling bubble cavitation on a hydrofoil, notwithstanding the simplification on which it is based.
+Actually, the Rayleigh-Plesset equation describes the evolution of a spherical bubble in an infinite volume of fluid at rest. Both of these assumptions are not met in the real scenario, where an asymmetric bubble evolves in a flow with a certain velocity and in proximity to a solid wall. 
+The presence of a wall, such as the surface of the foil, alters the bubble behaviour, causing asymmetric bubble collapse with the formation of a micro-jet (\cite{franc2006fundamentals}). 
+Such a mechanism, which could be modelled as in \cite{Plesset1971}, is still different from the evolution of the bubble on the hydrofoil surface observed in the current work. 
+In particular, the bubble occupies flow layers with different velocities, being therefore subject to shear effects, causing instability in the lower surface of the bubble with the production of cloud cavitation. 
+In addition, under the effect of the shear layer, vorticity is generated, causing the bubble to twist. 
+
+Actually, the effects of the surrounding flow field further influence bubble behaviour, leading to the dynamics described in detail in Section \ref{sez:stereo_1}, which, evidently, do not cause major variation in the global behaviour of the cavity. 
+
+Finally, it must be remembered that the presented analysis is not based on knowledge of the initial bubble size, which was determined by a fitting procedure, as previously mentioned. This fact introduces some uncertainty about the agreement between data and the R-P equation. Actually, the fitting procedure could have partially compensated discrepancies with the data by providing a fictitious value of the initial bubble size. While this fact does not affect previous conclusions about global trends, the effects of the initial bubble size in the measured data are complex and partially different from that predicted by the theoretical model, as it will be further investigated later in this section. 
+
+In addition to the analysis of the global bubble behaviour discussed above, the prosecution of this section focuses on the in-depth analysis of some of the key characteristics of cavitation bubble dynamics.
+
+These key characteristics identified for each bubble can be divided into three classes as in Table \ref{tab:rpFeatures}.
+Firstly, instants of maximum bubble extension, collapse, cavity disappearance, and maximum extension of any present rebounds were identified. The knowledge of these key points in the bubble dynamic allows identifying all the cavitation features investigated.
+The time of occurrence of these key points was used to evaluate the bubble's growth, maximum extension, and maximum extension of rebounds. 
+Finally, the time between key events in the bubble's evolution and the total lifetime were assessed.
+In addition, the cavity velocity was calculated by derivating the displacement of the cavity centroid over time.
+For this reason, this measurement properly represents the bubble convection velocity only when the bubble undergoes minimal shape variations, typically occurring shortly before reaching its maximum development. (Figure \ref{fig:rpFeatures}). 
+
+\begin{center}
+    \resizebox{0.8\textwidth}{!}{
+    \begin{minipage}{\linewidth}
+    \centering
+    \begin{tabular}{ccc}
+    \toprule
+    Area-related Quantities & Time-related Quantities & Dynamic Quantities \\
+    \midrule
+    Maximum Cavity Extension & Growth Time & Grow Slope \\
+    Maximum Rebound Extension & Collapse Time & Cavity Speed \\
+     & Rebound Time & \\
+     & Total life Time & \\
+    \bottomrule
+    \end{tabular}
+    \captionof{table}{Cavity Measured Features.}
+    \label{tab:rpFeatures}
+    \end{minipage}
+    }
+\end{center}
+
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/rpFeaturesA.pdf} 
+    \end{minipage}
+    \vspace{0cm}
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/rpFeaturesB.pdf} 
+    \end{minipage}
+    \caption{\textbf{Key characteristics describing the dynamics of single bubble cavitation.} These quantities have been assessed for each of the bubbles observed experimentally.
+    \textbf{The upper diagram} illustrates the dynamics of a typical cavitation bubble, highlighting the key characteristics. \textbf{The lower graph} shows the bubble's velocity curve, with regions marked where the measurement is considered unreliable due to shape effects.}
+    \label{fig:rpFeatures}
+\end{figure}
+
+Although experimental measurements provide valuable insights into the behaviour of cavitating bubbles, certain aspects of their dynamics cannot be directly extracted. Specifically, quantities related to the collapse dynamics are difficult to assess experimentally. The collapse of a cavitating bubble occurs in an extremely short time frame, and even with high-speed cameras, it is impossible to achieve a sufficient temporal resolution to analyze this phenomenon.
+In this context, it may be interesting to combine the information from the experimentally measured dynamics with that contained in theoretical models. This can be done by fitting a theoretical model to the experimental data and then studying the collapse dynamics predicted by the equation.
+However, in this case, the Rayleigh-Plesset model is inappropriate. One of the assumptions upon which this model is based is the fluid's incompressibility. The fluid's compressibility plays a crucial role during the collapse phase, when extremely high pressures are generated. Ignoring this factor leads to oversimplifying the phenomenon, potentially resulting in incorrect predictions of the collapse dynamics.
+
+Moreover, ignoring compressibility effects cause stability problem in numerical solution of the Rayleigh-Plesset equation. As a matter of fact not taking into account the radiation of acustic energy during the last phase of collapse leads to extremely sharp and violent collapses frequently causing divergence of the solver. It must be noted that the Rayleigh-Plesset equation as well as other equations describing the bubble dynamics frequently suffer of similar numerical stability issues.
+
+For this reason, the Keller-Miksis equation was used. An initial version of this equation was introduced in \cite{Keller1956} and later generalized in \cite{Keller1980}.
+This equation incorporates the same assumptions of the Rayleigh-Plesset equation, except for the fluid's incompressibility. Instead, the Keller-Miksis equation is based on Herring's assumption, which considers the speed of sound in the medium (denoted by $c$) to be finite and constant.
+
+Specifically, for this application, the Keller-Miksis equation was expressed using the formulation presented in \cite{Lauterborn2010} to facilitate numerical integration. This formulation is shown in Equation \ref{eq:KellerMiksis}.
+
+\begin{equation}
+    \begin{split}
+        \left( 1 - \frac{\dot{R}}{c} \right) \ddot{R} R + \frac{3}{2} \dot{R}^2 \left( 1 - \frac{\dot{R}}{3c} \right) &= \\
+        \left( 1 + \frac{\dot{R}}{c} \right) \frac{1}{\rho_l} \left[ p_B(t) - p_E(t) \right] &+ \frac{R}{\rho_l c} \left( 1 - \frac{\dot{R}}{c} \right) \frac{dp_B(t)}{dt}
+    \end{split}
+    \label{eq:KellerMiksis}
+\end{equation}
+
+In this equation, the term $p_E(t)$ represents the pressure field the bubble encounters as it moves along the hydrofoil chord. The term $p_B$ denotes the pressure on the liquid side of the bubble's interface, which, in this case, can be expressed by Equation \ref{eq:KellerMiksisPb}.
+
+\begin{equation}
+    p_B = p_v + p_0 \frac{R_0}{R}^{3k} - \frac{2S}{R} - 4\mu \frac{\dot{R}}{R}
+    \label{eq:KellerMiksisPb}
+\end{equation}
+
+In this equation, $p_v$ represents the vapour pressure of the liquid, $S$ is the surface tension, and $\mu$ is the dynamic viscosity. The term $k$ denotes  the polytropic exponent and defines the type of thermodynamic transformation. This coefficient ranges from $1$ (for isothermal transformations) to $\gamma = Cp/C_v$ (for adiabatic transformations). In this work the isothermal transformation was considered, so the $K = 1$ was selected.
+The pressure of the gas inside the bubble under equilibrium conditions, $p_0$, can be expressed using Equation \ref{eq:KellerMiksisP0}.
+
+\begin{equation}
+    p_0 = p_\infty - p_v + \frac{2S}{R_0} 
+    \label{eq:KellerMiksisP0}
+\end{equation}
+
+Using a fitting procedure similar to the previously described, a theoretical curve was derived for each experimentally observed dynamic. This procedure is based on the optimisation of three key parameters: the initial radius of the bubble ($R_0$), a time shift ($\tau$), and a time scale scaling coefficient ($\epsilon$).
+Introducing these parameters significantly modifies the dynamics predicted by the Keller-Miksis equation. However, this choice allows for an excellent approximation of the experimental data.
+In this way, it is possible to obtain curves that faithfully reproduce the experimental dynamics while respecting a certain analytical rigour. These curves are unaffected by noise in the experimental data. Furthermore, a detailed description of the collapse dynamics is obtained by employing a sufficiently short integration step and a specific solver for stiff differential equations.
+Concerning the time step, preliminary computation were conducted varing it, running a sort of convengency analysis. A proper convergence was not achieved, even with a time step as small as $2.5e^{-9} \ [s]$, however a sort of stabilization in the order of magnitude of the extracted quantities was observed. Therefore, this time step was accepted for the present work.
+Figure \ref{fig:KellerMiksis} shows an example of the results obtained from this optimisation procedure.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/KellerMiksis.pdf}
+    \caption{Dynamics of an Experimental Cavitation Bubble vs. Keller-Miksis Model}
+    \label{fig:KellerMiksis}
+\end{figure}
+
+By analysing the obtained curve, other quantities characterising the dynamics of the cavitation bubble and its collapse can be evaluated. Firstly, as shown in \cite{franc2006fundamentals}, the value of the maximum pressure can be calculated (Equation \ref{eq:Pmax}).
+
+\begin{equation}
+    \Pi_{max} = \frac{P_{max} - P_\infty}{P_\infty - P_v} = \frac{\left[\frac{R_0^3}{4R^3}-1\right]^{4/3}}{\left[\frac{R_0^3}{R^3}-1\right]^{1/3}}
+    \label{eq:Pmax}
+\end{equation}
+
+As shown in Figure \ref{fig:KellerMiksis}, it is possible to derive the value of the pressure pulse generated during the bubble's collapse from this expression. By combining this information with the previously obtained data, the impulse's duration and its spatial localization along the foil chord can be determined.
+Although these measurements are indirect and thus potentially subject to uncertainties, they provide valuable insights into the collapse of cavitating structures. The availability of pressure impulse data is utmost importance because this quantity is directly related to the mechanichal stess acted on the material by cavitation, hence to erosion. 
+Therefore, impulse data and the other  measured quantities will be used in future experiments to develop a method for the quantification of the erosive power of cavitation.
+
+Table \ref{tab:kmFeatures} provides a summary of the estimated features of the cavities derived from this analysis.
+
+\begin{center}
+    \resizebox{0.8\textwidth}{!}{
+    \begin{minipage}{\linewidth}
+    \centering
+    \begin{tabular}{cc}
+    \toprule
+    Inception Quantities & Collapse Quantities\\
+    \midrule
+    Cavity Nucleus Radius & Pressure Pulse Magnitude \\
+     & Pressure Pulse Duration  \\
+     & Pressure Pulse Position \\
+    \bottomrule
+    \end{tabular}
+    \captionof{table}{Cavity Estimated Features.}
+    \label{tab:kmFeatures}
+    \end{minipage}
+    }
+\end{center}
+
+Detecting these quantities for several cavities dynamics enables statistical analysis.
+These statistical distributions, depicted in Table \ref{tab:statistics}, offer valuable insights into the mean values and dispersion of the characteristic traits of the dynamics.
+
+\renewcommand{\arraystretch}{1.5} % Spaziatura tra le righe
+\begin{longtable}{>{\centering\arraybackslash}p{0.5\linewidth} >{\centering\arraybackslash}p{0.5\linewidth}}
+\captionsetup{type=figure}
+
+\toprule
+\multicolumn{2}{c}{\textbf{Statistical distributions of experimentally observed parameters}} \\[1ex]
+
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP1.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP2.pdf}} \\
+
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP3.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP4.pdf}} \\
+
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP5.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP6.pdf}} \\
+
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP7.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP8.pdf}} \\
+
+\midrule
+\multicolumn{2}{c}{\textbf{Statistical distributions of parameters derived from the Keller-Miksis model}} \\[1ex]
+
+% Seconda riga di immagini
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM1.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM2.pdf}} \\
+
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM3.pdf}} &
+\adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM4.pdf}} \\
+
+\bottomrule
+\caption{Statistical distributions of the characteristics describing single-bubble cavitation dynamics. The upper section of the table presents the statistical distributions of cavity features directly derived from experimental data. The lower section shows the statistical distributions of parameters obtained by fitting the Keller-Miksis model to the experimental data.}
+\label{tab:statistics}
+\end{longtable}
+
+
+
+% \renewcommand{\arraystretch}{1.5} % Spaziatura tra le righe
+% \begin{longtable}{>{\centering\arraybackslash}p{0.5\linewidth} >{\centering\arraybackslash}p{0.5\linewidth}}
+% \captionsetup{type=figure}
+
+% \toprule
+% % Prima riga di immagini
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP1.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP2.pdf}} \\
+
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP3.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP4.pdf}} \\
+
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP6.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP6.pdf}} \\
+
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP7.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatRP8.pdf}} \\
+
+% \midrule
+% % Seconda riga di immagini
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM1.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM2.pdf}} \\
+
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM3.pdf}} &
+% \adjustbox{valign=m}{\includegraphics[width=\linewidth]{FIGURES/Chapter5/Section3/SubSection2/StatKM4.pdf}} \\
+
+% \bottomrule
+% \caption{Statistical distributions of the characteristics describing single-bubble cavitation dynamics. The upper section of the table presents the statistical distributions of cavity features directly derived from experimental data. The lower section shows the statistical distributions of parameters obtained by fitting the Keller-Miksis model to the experimental data.}
+% \label{tab:statistics}
+% \end{longtable}
+
+These results link a specific hydrofoil working condition with the resulting development in single bubble dynamics. Indeed, by observing these data, it is possible to establish the average maximum size of the bubbles, the speed with which they grow, the speed of collapse, the frequency and size of rebounds and other indicators associated with the development of cavitation. 
+As previously mentioned, by analyzing the characteristics that define the collapse dynamics, it is possible to correlate the observed cavitation state with the associated stress impinged on the material.  
+Such data allows for a quantitative description of the cavitation phenomenon and poses a solid base to link the cavitation dynamic with its erosion power.
+
+Below are some brief considerations that can be drawn from observing the graphs presented in Table \ref{tab:statistics}.
+
+\begin{itemize}
+    \item The distribution of the maximum extension reached by the bubbles exhibits a large variance and a slight skewness towards higher values. In particular, the maximum values measured reach 3 times the mean value. Concerning the minimum values, it can be seen that the smallest single bubbles have a size of approximately 10 $[mm^2]$. Compared with the previous analysis (\ref{stereo_1}), smaller cavities are not observed. This is because the tracking algorithm does not detect tiny free bubbles as they do not remain visible for a sufficiently long period. 
+    
+    \item Upon observing the distribution of maximum rebound extensions, it is evident that the shape closely resembles the one just described. Similar considerations can be applied. However, a notable difference arises in this distribution compared to maximum bubble extensions: a prominent band is observable at zero. This occurrence happens because not all bubbles produce a rebound.
+
+    \item All distributions characterising temporal quantities have a similar pattern. In particular, in this case, the distributions appear to be ruled by the central limit theorem but that the number of samples is insufficient to form a true Gaussian distribution. 
+    The distribution of rebound times has a zero band for the same reason already explained for the distribution of maximum rebound sizes.
+    All these distributions are characterised by a large variance.
+    
+    \item The distribution of mean bubble velocity is characterised by a downward skew, which means that some bubbles slow down even significantly compared to the average. This fact can be associated with the effect of varying bubble trajectories across the boundary layer.
+    
+    \item The distribution of nucleus sizes can be compared to the distribution of the maximum sizes reached by the bubbles. These two distributions have very similar shapes, as the final size of the bubble, once the external pressure field is fixed, depends exclusively on the size of the nucleus. 
+    It could be intresting to compare the maximum cavity size with the radius of the initial nucleus. 
+    The statistics reveal that cavities with smaller initial radii tend to experience a substantially more significant percentage growth (even by factors of tens) than larger ones.
+    
+    \item The data regarding the collapse dynamics describe highly violent events. It is observed that, on average, the collapse of the bubbles occurs within a very short time and generates an extremely high pressure. 
+    No directly comparable cases were found in the literature, however current data could be compared with similar quantities measured in \cite{Brujan2008} during the final stage of the collapse of the laser induced cavities.
+    
+\end{itemize}
+
+Furthermore, these results enable a more detailed investigation into cavitation dynamics. 
+In general, the evolution of a cavitating bubble is influenced by aspects concerning bubble dynamics and by the characteristics of the body and the surrounding flow, such as the external pressure, velocity and turbulence intensity. 
+To investigate the relative merits of such aspects for the case study, results are analysed by assessing the correlation among the measured quantities.
+Figures \ref{fig:Corr1}, \ref{fig:Corr2} \ref{fig:Corr3} shows some of the most meaningful correlations, while Figure \ref{fig:CorrelationMat} shows the correlation matrix.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/Corr1.pdf}
+    \caption{Statistical correlations of characteristics describing the dynamics of single bubble cavitation (Max Cavity Area vs Total Life Time).}
+    \label{fig:Corr1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/Corr2.pdf}
+    \caption{Statistical correlations of characteristics describing the dynamics of single bubble cavitation (Max Cavity Area vs Collapse Time).}
+    \label{fig:Corr2}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/Corr3.pdf}
+    \caption{Statistical correlations of characteristics describing the dynamics of single bubble cavitation (Max Cavity Area vs Max Rebound Area).}
+    \label{fig:Corr3}
+\end{figure}
+
+Correlations for each feature pair were computed using the original dataset and a dataset purified of outlier values using a RANSAC filter.
+According to theoretical models such as the already discussed Rayleigh-Plesset (or Keller-Miksis) equation, some of these quantities should be linked to each other.
+For instance, the larger the maximum size of a cavity, the longer it takes to collapse.
+However, these links are not evident in computed correlations. Just a slight link between the maximum size of bubbles and their entire lifespan can be noted. Specifically, it is observed that larger bubbles tend to have longer lifespans, which agrees quite well with theory.
+The poor correlation between bubble size and collapse time suggests that the effects of the surrounding external pressure on the bubble dynamics are more important than its size and consequent free oscillation behaviour.
+On the other hand, the large variance of data, along with the poor correlation observed between other quantities, highlights the importance of random factors compared to deterministic aspects.
+Among these aspects are the size of cavitation nuclei (\cite{Rijsbergen2020}) and the effect of turbulence. Both of these factors introduce a degree of variability in the development of cavitation structures.
+Actually, the population of nuclei present in water is not uniform. Variations in the sizes of nuclei on which cavitation forms can significantly influence bubble dynamics. 
+Turbulence can be treated from a kinematic point of view as local fluctuations in velocity and, therefore, pressure. These fluctuations significantly affect not only the inception of cavity structures but also the lifespan dynamics.
+Finally, a further factor contributing to the variability of the data is the proximity to the foil surface. Not all cavitating structures develop at the same distance from the foil, nor do they move along the same path. This agrees quite well with the negative skew observed in the mean velocity istogram, suggesting that some of the bubbles are flowing closer to the wall.
+These differences imply that viscous effects have differing impacts on different bubbles.
+This aspect may be rather important considering the experimentally observed collapse dynamics where interaction with shear layer appears to play a key role. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter5/Section3/SubSection2/CorrelationMat.pdf}
+    \caption{Correlations Matrix of Characteristics Describing the Dynamics of Single Bubble Cavitation (The quantities marked with [K.M.] are derived using the Keller-Miksis equation, while the others are obtained through direct measurements.).}
+    \label{fig:CorrelationMat}
+\end{figure}
+
+\section{Conclusions}
+\label{sez_conclusion}
+This study proposes a computer vision approach exploiting high-speed cameras and a dedicated image processing procedure to collect quantitative time-resolved measures of cavitation. 
+The proposed methodology provides high-quality videos of cavitation, allowing the combination of measured quantities with detailed qualitative observations of cavitation behaviour. Each key step of the method was described in detail, highlighting the critical issues encountered and the corresponding resolution strategies adopted.
+
+The developed technique has been used to investigate the behaviour of bubble cavitation on a hydrofoil NACA 0015. The experimental campaign was conducted in the cavitation tunnel at UNIGE, keeping the profile with zero angle of attack and the flow velocity $V = 8 [m/s]$. The tests were repeated, varying the cavitation index to explore the different development levels of the observed phenomenon. 
+
+Two types of analyses were conducted. Firstly, measurements of cavitation structure dimensions along the hydrofoil chordwise position were performed. Statistical distributions of these quantities offer valuable insights into the development and evolution of cavitation associated with a given working condition. Specifically, the analyses showed the evolution of the area occupied by traveling bubble cavitation and bubble collapse with respect to the cavitation number.
+Additionally, a time-resolved analysis was conducted to study the dynamics of single-bubble cavitation. This analysis allowed capturing the complete time evolution of single bubble cavitation, hence obtaining of the main parameters describing these dynamics, such as maximum area expansion or collapse time. The availability of these quantities is of utmost importance since they could allow defining cavitation erosion functions in analogy with criteria used for numerical analyses.
+
+Captured dynamics were compared with those computed by the Ryleigh-Plesset equation in terms of global trend and correlations among bubble size and time evolution. This analysis demonstrated a good agreement between the global trend predicted by the theoretical model and the evolution of bubble cavitation on a real flow problem.
+
+Actually, despite its simplifying assumptions, the theoretical model agrees rather well with the measurements in terms of the global behaviour of single bubble cavitation. On the other hand, differences are present due to the characteristics of the surrounding flow field and its mutual interaction with the bubbles. Due to this, the analysis of specific aspects of bubble dynamics, such as the final phase of collapse, requires the use of experimental data as those presented in this work or more advanced models. Furthermore, the role of external conditions and nuclei characteristics in the onset and evolution of cavitation structures was highlighted.
+
+To get a deeper insight in the final stage of collapse, an additional analysis based on the Keller-Miksis equation was introduced. Using this model allowed overcoming some of the limitations inherent in the Rayleigh-Plesset equation. In this way, it became possible to study bubble collapse dynamics further, estimating quantities closely related to erosive power and the stress impinged on the material. These quantities include the magnitude and duration of the pressure pulse generated by the bubble collapse and the location on the foil chord at which it occurs.
+
+Overall, the presented procedure has demonstrated considerable potential in measuring parameters closely linked to cavitation and the detrimental effects it generates. Therefore, there is considerable interest in applying such methods to other case studies. On the other hand, the proposed methodology does not allow obtaining the cavitation volume, which would provide the most complete characterization of cavities. While addressing this limit, for similar application, will be a matter of future studies, one of the strengths of the current approach is its simplicity and robustness, which make it easily applicable to other test cases such as propeller root cavitation or others.
+In addition, the current approach based on shape by silhouette could allow getting the volume without significant modifications for test cases allowing a better optical access than current studies, as it will be shown in the following chapter for the tip vortex cavitation.

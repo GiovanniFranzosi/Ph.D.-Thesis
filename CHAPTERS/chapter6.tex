@@ -1,0 +1,1262 @@
+\chapter{Case Study II: Tip Vortex Cavitation on a marine propeller}
+\label{chap:chapter6}
+
+This chapter presents the second case study of this dissertation, which investigates the behaviour of tip vortex cavitation in a model-scale marine propeller. As discussed in earlier chapters, tip vortices represent a significant source of noise and vibrations in cavitating marine propulsion systems. A detailed understanding of the dynamics governing this phenomenon and the factors influencing it is essential for validating and refining noise prediction tools commonly adopted during the design process.
+The primary objective of this study is to reconstruct the time-resolved dynamics of the tip vortex under various operational conditions. To achieve this, an extensive experimental campaign was carried out on a single model-scale ship propeller. 
+The propeller was tested across varying flow and loading conditions, with the experimental matrix enclosing 72 distinct cases. These cases are characterized by four wake distributions, three load coefficients ($K_t$), and six cavitation numbers ($\sigma_{07R}$). Synchronous noise measurements were recorded. These data allow for establishing a direct relationship between the vortex dynamics and the resulting acoustic emissions. 
+
+However, the work presented here comprises only an initial phase of the study in which only a portion of the available cases were analyzed. 
+The selected cases were chosen to provide a representative sample of the entire experimental campaign. 
+
+The present study adopts a combination of high-speed video recordings and advanced computer vision techniques to reconstruct the vortex's three-dimensional structure and monitor its temporal evolution.
+This methodology provides a novel perspective on tip vortex dynamics, enabling the direct measurement of vortex volume as it evolves over time. Such an approach offers valuable insight into the transient nature of vortex structures under different operational scenarios.
+
+The findings of this study serve to bridge the gap between experimental observations and theoretical models of vortex-induced noise. Indeed, such data enable the validation of the most popular tools for vortex-induced noise predictions and allow for a more comprehensive understanding of the phenomenon.
+Furthermore, the results deepen the understanding of the relationship between the tip vortex cavitation dynamic and the noise generation. 
+
+This chapter is organized into three main sections to provide a comprehensive overview of the study. The first section outlines the experimental setup used for data acquisition. The second section focuses the analytical techniques applied. While many of these techniques have been described in earlier chapters, this section emphasizes only the modifications or methodological differences specific to the present study, avoiding unnecessary repetition. Finally, the chapter concludes with a detailed presentation and discussion of the results, highlighting their significance and implications.
+
+\section{Experimental Setup and Data Acquisition}
+\label{sez:setup2}
+
+The experimental data discussed in this chapter were obtained from tests conducted in the cavitation tunnel at the University of Genoa (see Appendix \ref{app:appendixA}). Consequently, the observations regarding the facility's characteristics and water quality, as detailed in Section \ref{sez:setup1}, are still valid even for the experiments presented here.
+The selected case study is a four-blade model scale controllable pitch propeller (CCP). Some of the main characteristics of the tested propeller are summarized in Table \ref{tab:caseStudyFeatures}.
+The propeller was installed in a straight shaft configuration.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc} 
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\ \midrule
+        Propeller diameter (m) & 0.23 \\
+        Pitch ratio at 0.7R & 1.3 \\
+        Number of blades & 4 \\
+        Expanded blade area ratio & 0.7 \\ 
+        \bottomrule
+    \end{tabular}
+    \caption{Main Key Parameters of the Tested Model Scale Propeller}
+    \label{tab:caseStudyFeatures}
+\end{table}
+
+As mentioned above, the primary objective of this experimental campaign is to investigate the dynamics of tip vortices under varying flow and load conditions. 
+Specifically, as a long-term goal, this research seeks to enhance the understanding of cavitation dynamics and explore the relationship between these dynamics and the acoustic radiation they generate.
+To achieve these objectives, the experimental setup was designed to enable accurate measurement of the key quantities involved. This includes capturing the flow characteristics, vortex structures, cavitation behaviour, and the radiated noise. This approach ensures that the collected data offers reliable insights into the complex relationship between cavitation dynamics and noise emission.
+
+To investigate the effects of flow conditions, experimental tests were conducted using various wake configurations inflow the propeller disk area. Specifically, the experiments were repeated for four distinct wake profiles. To comprehensively understand the phenomenon, the tested wakes ranged from uniform flow conditions to progressively more pronounced flow slowdowns.
+A device known as a wake screen was employed to generate these wakes. This device, specifically designed to introduce localized flow decelerations (Figure \ref{fig:wakeScreen}), was positioned upstream of the test section in the tunnel (as shown in Figure \ref{fig:hydrophonesSetup}). The wake screen consists of a coarse-mesh base structure onto which finer meshes are applied in regions where flow deceleration is required.
+The resulting flow was measured at the propeller disk using laser Doppler velocimetry (LDV).
+Knowledge of the inflow conditions enabled iterative adjustments to the wake screen, ensuring that the desired test conditions were accurately achieved.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{FIGURES/Chapter6/Section1/wakeScreen.png}
+    \caption{Wake-Screen.}
+    \label{fig:wakeScreen}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/hydrophonesSetup.png}
+    \caption{Rapresentative Sketch of the Experimental Setup showing the Wake-Screen and Hydrophones Positiontionig.}
+    \label{fig:hydrophonesSetup}
+\end{figure}
+
+In addition to the flow conditions, various propeller operating conditions were also tested by varying the thrust coefficient ($Kt$) and cavitation number (Equation \ref{eq:sigma07R}).
+
+\begin{equation}
+    \sigma_{07R} = \frac{P_{07R} - P_v}{0.5 \cdot \rho \cdot V^2}
+    \label{eq:sigma07R}
+\end{equation}
+
+For each flow condition, three different $Kt$ were tested. For each $Kt$, the tests were repeated for six different cavitation numbers. 
+The $Kt$ values were selected near the propeller's design thrust coefficients to capture the cavitation behaviour under representative loading conditions.
+Preliminary tests were conducted to determine the cavitation numbers for the experiments. The selected indices provide a comprehensive view of the tip vortex development. The ratio between the current cavitation index and the vortex cavitation inception index ($\sigma/\sigma_i$) was kept constant during all the experiments. This approach facilitates straightforward comparisons between cases characterized by different loads or wake conditions.
+In total, data were collected under 72 different conditions. The propeller rotation rate was constant at $n=18 Hz$ for all conditions. Table \ref{tab:testedConditions} summarizes the parameters defining the tested conditions.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lcc}
+    \toprule
+    Wake & Kt & \(\sigma / \sigma_i\) \\ 
+    \midrule
+    Uniform Flow   & 0.20 & 0.96  \\
+    Wake-Screen 1  & 0.22 & 0.86  \\
+    Wake-Screen 2  & 0.24 & 0.76  \\
+    Wake-Screen 3  &    & 0.67  \\
+    &    & 0.58  \\
+    &    & 0.48  \\
+    \bottomrule
+    \end{tabular}
+    \caption{Driving Parameters of the Experimental Matrix.}
+    \label{tab:testedConditions}
+\end{table}
+
+For each tested condition, several measurements were conducted.
+First and foremost, since the primary objective of this work is to measure tip vortex cavitation and analyze its evolution over time, high-speed videos were recorded.
+To achieve this, three high-speed cameras were employed in a multi-camera configuration. Two cameras (SpeedSense LAB 340CM 12M-70) were positioned to observe the propeller from above, while the third (Phantom VEO710L) was placed laterally (Figure \ref{fig:setup2}).
+
+The experimental setup was equipped with a synchronizer (DANTEC Performance Synchroniser), enabling precise synchronization between the cameras and the propeller's rotation. This ensured consistent blade positioning across revolutions. 
+The three cameras operated at a shared acquisition frequency of 1134 fps, achieving a spatial resolution of approximately 5°. 
+To maximize the diversity of observation angles, the cameras were positioned within the constraints of optical access, a choice that, as previously discussed, significantly improved the results of shape-by-silhouette reconstructions.
+To further diversify the observation points, the cameras were significantly tilted relative to the tunnel windows. However, this alignment posed potential measurement challenges, as detailed in Chapter \ref{chap:chapter4}. To mitigate these issues, a plexiglass prism was mounted in front of each camera, ensuring that the optical interface remained parallel to the camera sensors.
+The scene was illuminated by two high-intensity LED stroboscopic lights (GSVITEC Multiled), providing uniform and adequate lighting. 
+A 1000-frame video was recorded for each test condition, capturing over 60 blade passages and 15 complete propeller revolutions. This approach ensured a representative dataset for analyzing the phenomenon.
+
+In addition to the computer vision tests, several auxiliary experiments were conducted. 
+
+Initially, the noise generated by the propeller was measured under each recorded condition. This acoustic data was captured using two hydrophones.  
+These hydrophones are respectively one Bruel \& Kjaer type 8103 and one Reson TC4013 miniaturized hydrophones. The amplifier Bruel \& Kjaer Nexus 2692-A-OS4 is used to provide charge amplification and signal conditioning. Noise signals are acquired with a sampling frequency equal to 200 kHz for a duration of 60s.
+Hydrophone H1 was positioned in an external chamber near the bottom window of the tunnel, while hydrophone H2 was placed directly within the test section and mounted on a streamlined support. A schematic illustration of the experimental setup, including the locations of the hydrophones and the wake screen, is reported in Figure \ref{fig:hydrophonesSetup}.
+
+The tip vortex viscous core was also investigated. This parameter plays a significant role in the present noise measurements. Indeed, the radius of the viscous core vortex is employed by empirical noise prediction models to define the velocity field at the propeller tip. Consequently, it determines the size of the cavitating vortex and, subsequently, the spectrum of the noise it radiates.
+The viscous vortex was measured for each wake tested at $Kt = 0.22$ under atmospheric conditions.
+To measure the tip vortex core, the flow velocity field at the propeller tip was observed.
+The flow velcity has been measured using a two-component differential fringes laser doppler system (Dantec Fiber Flow). The light source is an ionized argon laser with a power of 300 mW. Adopted wave lengths are 488 nm (blue beams) and 514.5 nm (green beams). The transducer is a 60 mm optic head connected to the transmitting optic and two photomultipliers through optic fibres. The main lens has a focal length of $400 mm$, and a beam separation of 38 mm leads to a measuring volume of $190 \mu m$ diameter and 4 mm length. The probe volume is constituted by green and blue fringes with a spacing of 5.1 and 5.4 $\mu m$, respectively, allowing simultaneous measurement of two-speed components in the plane perpendicular to the optic axes. A frequency shift of 40 MHz for one beam of each couple is obtained through a Bragg cell, allowing the determination of speed direction. eceived signals are acquired simultaneously with once per revolution (OPR) signal generated by the 1024 pulses encoder on the propeller shaft, in order to perform ensemble average. The water in the tunnel has been seeded using hollow glass particles, having a diameter of 10 $\mu m$.
+The positioning and alignment of the probe is done using a target. The target consists of a small rectangular plate with a small hole of diameter 0.3 mm, as described in ITTC procedure. It has been ensured that the laser beam passes through the hole on the target plate, aligning the measurement volume to ensure that all the acquisitions share a common referece frame. 
+The laser probe has been installed on three axes traversing system, which allows to achieve the accuracy of $0.1 mm$ in all directions. 
+These measurements consist in LDV measurements of the phase locked average of the axial and vertical velocity components across the tip vortex. Specifically a set of measuring points have been defined downstream of the propeller as schematically shown in Figure \ref{fig:LDVtraverse}. 
+The longitudinal position of measuring points have been defined in order to coincide approximately to the location of tip vortex cavitation inception, assessed by visual observations. As a result points are located $30\%$ of propeller radius downstream of the propeller plane. Also the vertical location of points has been defined by visually aligning the LDV measuring volume with the path of tip vortex cavitation. 
+Globally, 49 different points were measured using a maximum vertical spacing of 2 millimeters in the outer regions of the vortex, progressively reducing it to 0.25 millimeters in the innermost regions. Table \ref{tab:viscousCoreTrav} summarizes the positions of the points, reported in millimeters relative to the estimated vortex center.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/LDVtraverse.png}
+    \caption{Sketch of LDV Measuring Points for Characterization of Tip Vortex Flow.}
+    \label{fig:LDVtraverse}
+\end{figure}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        -14 & -12 & -10 & -9 & -8 & -7 & -6 & -5.5 & -5 & -4.5 \\ \hline
+        -4 & -3.5 & -3 & -2.5 & -2.25 & -2 & -1.75 & -1.5 & -1.25 & -1 \\ \hline
+        -0.75 & -0.5 & -0.25 & 0 & 0.25 & 0.5 & 0.75 & 1 & 1.25 & 1.5 \\ \hline
+        1.75 & 2 & 2.25 & 2.5 & 3 & 3.5 & 4 & 4.5 & 5 & 5.5 \\ \hline
+        6 & 7 & 8 & 9 & 10 & 12 & 14 & & & \\ \hline
+    \end{tabular}
+    \caption{LDV Measuring Points for Characterization of Tip Vortex Flow (Distance in mm from the vortex core).}
+    \label{tab:viscousCoreTrav}
+\end{table}
+
+In practical application, perfectly aligning the laser with the vortex is challenging, and this procedure is often imprecise. Nevertheless, the visual alignment is sufficiently accurate to ensure an adequate characterization of the vortex flow and the required parameters, i.e., the radius of the viscous vortex core.
+
+A complete overview of the adopted experimental setup is reported in Figure \ref{fig:setup2}.
+
+\begin{figure}[!]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/setup2.png}
+    \caption{Experimental Setup and Instrumentation.}
+    \label{fig:setup2}
+\end{figure}
+
+\subsection{Presented Conditions}
+\label{sez:presCond2}
+
+As previously mentioned, this thesis will present only a subset of the tested conditions, as the analytical work is still ongoing. The selected conditions aim to provide a comprehensive, albeit limited, perspective on the phenomenon under study.
+For this reason, four distinct conditions, hereafter referred to as Conditions A, B, C, and D, will be presented. The characteristic parameters of these conditions are summarized in Table \ref{tab:PresentedConditions}. These conditions offer the necessary framework to investigate the effects of various parameters on the tip vortex cavitation and its dynamics.
+
+Specifically, two different wake flow fields at the propeller disk were analyzed. The first wake (previously called Wake-Screen 1) was designed to induce a gradual and moderate flow deceleration, resembling the wakes typically observed in twin-screw vessels. Conversely, the second wake (called Wake-Screen 3) is more representative of the wakes of single-screw cargo ships. It is characterized by a sharp and marked deceleration in regions near 0°, where, in full-scale ships, the stern appendage structures are located.
+A graphical representation of Wake-Screen 1 is provided in Figure \ref{fig:Wake1}, while Wake-Screen 3 is illustrated in Figure \ref{fig:Wake2}.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccccc} % Adjusted number of columns
+        Condition & Wake & Kt & $\sigma/\sigma_i$ & $\sigma_{07 R}$ \\ \hline
+        A & Wake-Screen 3 & 0.20 & 0.48 & 2.60 \\ 
+        B & Wake-Screen 3 & 0.24 & 0.48 & 2.90 \\ 
+        C & Wake-Screen 3 & 0.20 & 0.67 & 3.60 \\ 
+        D & Wake-Screen 1 & 0.20 & 0.67 & 2.35 \\ 
+    \end{tabular}
+    \caption{Characteristic parameters of the presented test conditions.}
+    \label{tab:PresentedConditions}
+\end{table}
+
+\begin{figure}[htbp!]
+    \centering
+    % Prima immagine
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/Wake1.png}
+        \caption{Contour Plot of Axial Wake (1-w) Fraction at Propeller Disk (Wake-Screen 1).}
+        \label{fig:Wake1}
+    \end{subfigure}
+    \hfill
+    % Seconda immagine
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/Wake2.png}
+        \caption{Contour Plot of Axial Wake (1-w) Fraction at Propeller Disk (Wake-Screen 3).}
+        \label{fig:Wake2}
+    \end{subfigure}
+\end{figure}
+
+The following briefly describes the observed tip vortex cavitation for each of the presented conditions. Visual analysis of the high-speed videos allows for capturing qualitative information that is otherwise difficult to measure. Combining these observations with quantitative measurements makes a comprehensive understanding of the phenomenon possible.
+Each of the conditions discussed is accompanied by snapshots that illustrate the dynamics of the vortex. These snapshots correspond to the same blade position for each condition, facilitating more immediate comparisons.
+
+\subsubsection{Condition A: ($\mathrm{Wake-Screen3}$, $K_t = 0.20$, $\sigma_{07R} = 2.60$)}
+\label{sez:A}
+
+Under this condition, the vortex dynamics can be observed at a relatively low cavitation number and in the presence of a severe wake.
+From the images provided (Figure \ref{fig:0A}), it can be observed that when the blade enters the wake peak (i.e., the region of the flow with the highest deceleration), sheet cavitation is present at the leading edge, and the vorticity of the cavitating structures is not intense.
+
+At the subsequent instant (Figure \ref{fig:5A}), the vorticity of the cavitation increases. This leads to the degeneration of laminar cavitation into a leading-edge vortex. The rapid development of the vortex is consistent with the hight and abrupt deceleration induced by the wake in the flow (Figure \ref{fig:Wake2}). The observed vortex exhibits a significant size and a highly irregular shape.
+The instant corresponding to Figure \ref{fig:10A} shows the blade exiting from the wake peak. In this image, the vorticity further increases while the sheet cavitation tends to disappear from the blade's leading edge. The vortex remains considerably large in that frame and presents an increasingly fragmented shape.
+
+Once the blade exits the region of the flow most influenced by the wake, the vortex detaches from the blade. Figure \ref{fig:14A} shows that the sheet cavitation completely disappears while the vortex remains attached to the blade tip. Subsequently (Figure \ref{fig:19A}), the vortex fully detaches and is still in the wake (Figure \ref{fig:24A}). During this phase, the vortex dynamics become rather complex, exhibiting significant changes in shape and size.
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/1.jpg}
+        \caption{Time: 0.000 [s]}
+        \label{fig:0A}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/2.jpg}
+        \caption{Time: 0.005 [s]}
+        \label{fig:5A}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/3.jpg}
+        \caption{Time: 0.010 [s]}
+        \label{fig:10A}
+    \end{subfigure}
+    \medskip
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/4.jpg}
+        \caption{Time: 0.014 [s]}
+        \label{fig:14A}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/5.jpg}
+        \caption{Time: 0.019 [s]}
+        \label{fig:19A}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionA/6.jpg}
+        \caption{Time: 0.024 [s]}
+        \label{fig:24A}
+    \end{subfigure}
+    \caption{Snapshots showing the evolution of tip vortex cavitation under Condition A.}
+    \label{fig:SnapshotA}
+\end{figure}
+
+\subsubsection{Condition B: ($\mathrm{Wake-Screen3}$, $K_t = 0.24$, $\sigma_{07R} = 2.90$)}
+\label{sez:B}
+
+This condition is achieved by increasing the propeller thrust coefficient $Kt$ and adjusting the cavitation number to maintain a constant the ratio $\sigma/\sigma_i = 0.48$, based on the previous condition. The variation in $K_t$ results in only a minor change in the vortex dynamics. For this reason,  most of the previous observations remain valid in this case.
+However, there are some slight differences worth noting. First, the vortex appears slightly larger at all observed blade positions. Additionally, it can be observed that the sheet cavitation is generally more extensive and stable compared to the previous case (Figure \ref{fig:0B}).
+As in the previous case, the sheet cavitation acquires vorticity when the blade passes through the wake peak, eventually degenerating into a leading-edge vortex. However, unlike the previous case, the vortex in this condition detaches from a region of the leading edge closer to the blade root and remains stable longer.
+Indeed, as shown in Figure \ref{fig:14B}, the leading-edge vortex is still clearly visible, and even in Figure \ref{fig:24B}, the tip vortex can still be observed attached to the blade.
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/1.jpg}
+        \caption{Time: 0.000 [s]}
+        \label{fig:0B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/2.jpg}
+        \caption{Time: 0.005 [s]}
+        \label{fig:5B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/3.jpg}
+        \caption{Time: 0.010 [s]}
+        \label{fig:10B}
+    \end{subfigure}
+    \medskip
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/4.jpg}
+        \caption{Time: 0.014 [s]}
+        \label{fig:14B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/5.jpg}
+        \caption{Time: 0.019 [s]}
+        \label{fig:19B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionB/6.jpg}
+        \caption{Time: 0.024 [s]}
+        \label{fig:24B}
+    \end{subfigure}
+    \caption{Snapshots showing the evolution of tip vortex cavitation under Condition B.}
+    \label{fig:SnapshotB}
+\end{figure}
+
+\subsubsection{Condition C: ($\mathrm{Wake-Screen3}$, $K_t = 0.20$, $\sigma_{07R} = 3.60$)}
+\label{sez:C}
+
+This condition corresponds to Condition A but at a higher cavitation number. From a practical perspective, this is analogous to an operating condition in which the propeller is subjected to a lower load.
+By analyzing the images, it can be observed that cavitation is less developed compared to Condition A. Specifically, Figure \ref{fig:0C} shows a significantly reduced sheet cavitation compared to previous cases, and the emerging vortical structures are also smaller in size.
+The vortex maintains a small size even when fully developed (Figures \ref{fig:5C}, \ref{fig:10C}). Under this condition, the vortex shape is better defined and less irregular than in the preceding cases. Moreover, the shape and size of the vortex appear to be more stable.
+The vortex's lifespan, however, appears to be similar to the previously described conditions, suggesting that it is more dependent on the flow conditions rather than the operating conditions. Indeed, as shown in Figure \ref{fig:19C}, the vortex has just detached from the blade tip, and despite its small size, it remains visible in the wake even in Figure \ref{fig:24C}.
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/1.jpg}
+        \caption{Time: 0.000 [s]}
+        \label{fig:0C}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/2.jpg}
+        \caption{Time: 0.005 [s]}
+        \label{fig:5C}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/3.jpg}
+        \caption{Time: 0.010 [s]}
+        \label{fig:10C}
+    \end{subfigure}
+    \medskip
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/4.jpg}
+        \caption{Time: 0.014 [s]}
+        \label{fig:14C}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/5.jpg}
+        \caption{Time: 0.019 [s]}
+        \label{fig:19C}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionC/6.jpg}
+        \caption{Time: 0.024 [s]}
+        \label{fig:24C}
+    \end{subfigure}
+    \caption{Snapshots showing the evolution of tip vortex cavitation under Condition C.}
+    \label{fig:SnapshotC}
+\end{figure}
+
+\subsubsection{Condition D: ($\mathrm{Wake-Screen1}$, $K_t = 0.20$, $\sigma_{07R} = 2.35$)}
+\label{sez:D}
+
+The characteristic parameters of this condition are similar to those of the previous one (Condition C). However, the propeller is sujected to a weaker and more gradual wake in this case. Comparing this condition to Condition C shows some interesting observations.
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/1.jpg}
+        \caption{Time: 0.000 [s]}
+        \label{fig:0D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/2.jpg}
+        \caption{Time: 0.005 [s]}
+        \label{fig:5D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/3.jpg}
+        \caption{Time: 0.010 [s]}
+        \label{fig:10D}
+    \end{subfigure}
+    \medskip
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/4.jpg}
+        \caption{Time: 0.014 [s]}
+        \label{fig:14D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/5.jpg}
+        \caption{Time: 0.019 [s]}
+        \label{fig:19D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section1/SubSection1/ConditionD/6.jpg}
+        \caption{Time: 0.024 [s]}
+        \label{fig:24D}
+    \end{subfigure}
+    \caption{Snapshots showing the evolution of tip vortex cavitation under Condition D.}
+    \label{fig:SnapshotD}
+\end{figure}
+
+First, by observing Figures \ref{fig:0D} and \ref{fig:0D}, it can be noted that the extent of the present sheet cavitation is reduced in this case. In contrast, the vortical structures extend further along the blade's tip, suggesting that the vortex roll-up occurs slightly earlier under condition D.
+Furthermore, as clearly shown in Figures \ref{fig:10D} and \ref{fig:14D}, the vortex remains more stable and better defined than the previous case.
+These observations indicate that, although conditions C and D were obtained while maintaining a constant ratio of $\sigma/\sigma_i = 0.67$, condition C is characterized by a more fully developed vortex. 
+
+\section{Computer Vision Tecniques}
+\label{CVT2}
+
+This section describes the methods and analysis procedures adopted for data processing. Specifically in this section the computer vision techniques used to extract measurements from high-speed videos are presented.
+These analyses constitute the core of the work performed. 
+
+Since many of the techniques extensively discussed in Chapters \ref{chap:chapter4} and \ref{chap:chapter5} are used again in this analysis, it was decided not to provide new explanations but rather to refer to the previously detailed discussions. For this reason, the analyses presented here focus primarily on the differences compared to previous cases and the solutions adopted to make these analyses effective for measuring the cavitating vortex.
+Specifically, this Section is structured into two main parts. First, it outlines the preliminary steps required to establish an accurate and reliable measurement system.
+The second part of the section presents the video processing techniques adopted to measure key characteristics of vortex cavitation. These techniques aim to investigate the cavitating vortex volume and radius dynamics.
+
+\subsection{Preliminary Steps}
+\label{Preliminary2}
+
+Three different cameras were employed to achieve a reliable and detailed reconstruction of the shape and volume of the tip vortex cavitation. As extensively discussed, the use of multiple cameras significantly enhances the performance of computer vision techniques and specifically proves to be highly beneficial for reconstruction through shape by silhouette.
+
+Theoretically, adding more cameras to the experimental setup would have been possible to achieve better results. However, from a practical standpoint, incorporating additional cameras would complicate the measurements without providing substantial benefits. Due to the limited optical access to the tunnel's test section, effectively positioning a larger number of cameras would be challenging and offer only minimal additional information.
+
+As previously discussed in Chapter \ref{chap:chapter4}, when more than two cameras are used, it is necessary to pass from stereo calibration to multiview calibration.
+
+From a practical perspective, this requires adopting specific strategies. In fact, in this case, the cameras were positioned to provide significantly different points of view from one another. This choice maximizes reconstruction accuracy but greatly complicates the calibration process. Specifically, it becomes impossible to obtain a clear view of the calibration pattern from all cameras simultaneously. This makes it much more difficult to detect the pattern's corners, reducing the precision and robustness of the calibration procedure.
+
+For this reason, multiple sets of images were captured to calibrate the cameras. Initially, a dataset of 1000 images was acquired for each camera by moving the pattern to keep it approximately parallel to the camera's sensor. These datasets were then used for the individual calibration of the cameras. In this process, the camera matrices and the distortion model coefficients were defined using easily recognizable points.
+
+Three additional datasets, similar to the original, were acquired for stereo calibration. In this case, each dataset was optimized for the specific stereo pair of cameras under consideration, excluding the third one. 
+These datasets allow for the definition of high-quality fundamental and essential matrices for each possible camera pair.
+
+As previously discussed in Section \ref{sez:TheoreticalMultiCalib}, multicamera calibration involves a phase of synchronization of the cameras' reference systems, followed by an adjustment to minimize the overall system error. 
+To enhance the effectiveness of this process, it is generally preferable to use a set of points that are visible simultaneously across all cameras in the system (when possible).
+As detailed in Section \ref{sez:TheoreticalMultiCalib}, multicamera calibration entails synchronizing the cameras' reference systems, followed by an optimization step to minimize the overall system error. To enhance the effectiveness of this process, it is generally preferable to use a set of points that are visible simultaneously across all cameras in the system (when feasible).
+
+For this reason, a final dataset was acquired by positioning and moving the calibration pattern so that its corners were visible in all cameras simultaneously. These images were then processed and filtered to exclude those in which the pattern corners could not be reliably identified in every camera. However, for the above reasons, the number of snapshots where all cameras accurately detected corners was relatively small.
+To ensure a sufficiently large dataset, images from the stereo calibration datasets were added to the filtered dataset. Using the corners identified in these images, the Bundle Block Adjustment procedure was established.
+
+The conditions tested during the cavitation experiments did not require achieving extreme vacuum conditions within the tunnel. For this reason, it was decided not to include homographies employed to correct window distortions in the calibration procedure.
+However, the cameras' steep inclination relative to the air-plexiglass-water interface necessitated using plexiglass prisms to minimize errors in estimating their principal point.
+
+The performance of the calibration system was evaluated following the guidelines described in Chapter \ref{chap:chapter4}. Specifically, the tests presented here were conducted on different days. A new calibration was repeated each day to avoid measurement errors caused by minor camera movements.
+The results demonstrate that the measurement system performed well across all distortion models tested. Distortion Model 4 (Table \ref{tab:distortion_models}) provides slightly better performance for the present setup.
+Generally, each calibration yields a mean triangulation error close to zero, with a maximum error never exceeding three percent. Excellent results are also observed in the distances between homologous points triangulated with different pairs of cameras. The average of these distances is approximately $0.05 mm$ and generally does not exceed $0.1 mm$.
+
+\subsection{High-Speed Video Processing}
+\label{sez:CVProc2}
+
+Among the available analysis techniques, the shape-by-silhouette method was selected to reconstruct the cavitating vortex from high-speed videos.
+Much of the discussion in Chapter \ref{chap:chapter5} applies here. However, some significant differences make the application of this technique to the present case study slightly more complex and, therefore, worthy of further discussion.
+Below, each of these differences is analyzed in detail, along with the necessary solutions to establish a robust measurement method.
+
+First, the segmentation procedure must be slightly modified compared to Case Study I (Chapter \ref{chap:chapter5}). Specifically, although the Segment Anything Model (SAM) algorithm is highly effective, it struggles to identify the edges of objects that lack well-defined boundaries.
+Due to this, segmenting cavitating vortices is more challenging than segmenting bubbles.
+
+To facilitate segmentation, several additional steps have been introduced
+First, a high-speed video was acquired under atmospheric conditions similar to those used for the measurements. This video defines the background of each angular position of the observed propeller. To achieve better results, the video frames were grouped according to the propeller's angular position.
+A high-quality background can be obtained by averaging the pixel values within each group of images. This approach filters out minor lighting variations (caused by synchronization issues between the camera shutter and the stroboscopic light flashes) and any irregularities in the images (such as those caused by travelling bubbles).
+By subtracting the background obtained through this process from the test video frames, the cavitating structures can be effectively isolated from the background, significantly simplifying the segmentation process.
+Figures \ref{fig:Original} and \ref{fig:Background} illustrate the original images and the results of applying this procedure to frames captured at a specific instant.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Original.png}
+        \caption{Camera I}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Original.png}
+        \caption{Camera II}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Original.png}
+        \caption{Camera III}
+    \end{subfigure}
+    \caption{Original Frames from Condition D High-Speed Video.}
+    \label{fig:Original}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Background.png}
+        \caption{Camera I}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Background.png}
+        \caption{Camera II}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Background.png}
+        \caption{Camera III}
+    \end{subfigure}
+    \caption{Foreground Frames from Condition D High-Speed Video.}
+    \label{fig:Background}
+\end{figure}
+
+Although highly effective, this procedure alone is not sufficient to ensure accurate segmentation of cavitating vortices. 
+Indeed, analyzing the vortex dynamics requires a robust technique ensuring the correct object segmentation in all video frames.
+
+To achieve this, the SAM algorithm can be initialized. SAM segmentation is generally based on a grid of points evenly distributed in the image. However, SAM's performance improves significantly by providing the algorithm with an array of points belonging to the object to be segmented.
+
+For this reason, a feature extraction algorithm was employed to identify points belonging to the cavitating vortices in the images. Given their nature, vortices show optical properties quite different from the rest of the image (i.e., they are characterized by sharp discontinuities in pixel brightness). Using the Scale-Invariant Feature Transform (SIFT), it is possible to extract groups of points from the images, most of which belong to the cavitating vortices.
+
+Since the cavitating vortices are well separated from one another, these points can be easily divided into groups.
+Defining a group of points for each vortex visible in the images further facilitates the segmentation process.
+Any clustering method capable of recognizing elongated clusters can be used to separate the different groups.
+In this case, the K-Nearest Neighbor (KNN) algorithm was adopted.
+Figure \ref{fig:Features} illustrates the results obtained from the feature extraction procedures, while Figure \ref{fig:Clustering} shows the outcome of the clustering procedure applied to the points.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Points.png}
+        \caption{Camera I}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Points.png}
+        \caption{Camera II}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Points.png}
+        \caption{Camera III}
+    \end{subfigure}
+    \caption{Features Extraced in Frames from Condition D High-Speed Video.}
+    \label{fig:Features}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Cluster.png}
+        \caption{Camera I}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Cluster.png}
+        \caption{Camera II}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Cluster.png}
+        \caption{Camera III}
+    \end{subfigure}
+    \caption{Clusters Definition in Frames from Condition D High-Speed Video.}
+    \label{fig:Clustering}
+\end{figure}
+
+By initializing SAM in this way, the segmentation process proves to be accurate and reliable, delivering satisfactory results. Figure \ref{fig:Segmented} provides a representative example of the outcome achieved by implementing SAM in this way.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Segmentation.png}
+        \caption{Camera I}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Segmentation.png}
+        \caption{Camera II}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Segmentation.png}
+        \caption{Camera III}
+    \end{subfigure}
+    \caption{Segmentation results in Frames from Condition D High-Speed Video.}
+    \label{fig:Segmented}
+\end{figure}
+
+Once the vortices have been segmented in the images, the next step is object matching. This involves identifying the same object across images captured by different cameras at the same instant.
+In this context, several differences distinguish this case from the previous study. 
+At first glance, object matching might appear simpler. In the case of bubble cavitation, each image contained a large number of objects, whereas in this case, at most three vortices are visible simultaneously.
+However, certain factors significantly complicate this task, making it impossible to adopt some previously implemented solutions.
+
+In the previous case, a homographic filter was used in addition to the epipolar constraint to establish correspondences between objects.
+However, homographies define a transformation from one plane to another. For this reason, they allow for identifying point (and object) correspondences (with limited accuracy) on an almost planar surface such as that of a hydrofoil.
+The same approach cannot be applied in this case. Since the vortex moves along a cylindrical surface, homographies lose their validity.
+
+Other factors further complicating the analysis include the number of cameras and the differences between the various observation points.
+A higher number of cameras requires recognizing the same object across multiple images, which is inherently more complex. Additionally, due to variations in observation angles and the motion of the propeller, not all vortices are always visible in every image simultaneously.
+For instance, at the instant shown in Figure \ref{fig:Segmented}, two vortices are present, but the third camera captures only one, as the other is covered by one of the propeller blades.
+
+For this reason, several changes have been made to the previously described matching procedure.
+First, all possible permutations among the segmented objects in the different images were considered at each time step.
+To define these permutations, an empty image was added to the list of segmented objects for each camera. This approach allows cases where a given object is not visible in all cameras simultaneously.
+
+The information derived from the epipolar constraint was considered to determine the correct combination of objects. The pixels belonging to each object were used to define epipolar constraints.
+In practice, this means that for a given object observed by a specific camera, it is possible to compute (using the calibration data) the epipolar lines that the object projects onto the other two images. The pixels of the segmented objects in these images can then be used to determine the minimum distance between them and each epipolar line.
+
+This approach yields a set of distances that can be used to assess whether a particular combination of objects constitutes a correct match. Using statistical indicators (such as the mean and standard deviation) of these distances allows for determining whether a given match is potentially correct, though not with absolute certainty.
+
+For this reason, the epipolar constraint was primarily used to eliminate the least probable combinations. The final selection was made by incorporating additional distinguishing features of the vortex, such as its area or the distribution of points in the image. Similarity criteria based on these parameters allowed for identifying the correct combination of objects among all possible ones.
+The matching procedure defined in this manner proved highly robust, reliably identifying the correct match under the tested conditions.
+
+Figure \ref{fig:match} presents the result of the matching procedure applied to the images shown in Figure \ref{fig:Segmented}.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Obj1.png}
+        \caption{Camera I (Object I)}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Obj1.png}
+        \caption{Camera II (Object I)}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Obj1.png}
+        \caption{Camera III (Object I)}
+    \end{subfigure}
+
+    \medskip 
+    
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam1/Obj2.png}
+        \caption{Camera I (Object II)}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam2/Obj2.png}
+        \caption{Camera II (Object II)}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/Cam3/Obj2.png}
+        \caption{Camera III (Object II)}
+    \end{subfigure}
+
+    \caption{Matched objects in high-speed video from Condition D.}
+    \label{fig:match}
+\end{figure}
+
+Once the same object has been identified in all the images where it is visible, its three-dimensional structure can be reconstructed using the shape-by-silhouette method.  
+
+To achieve this, a voxel grid in space must first be defined, with each voxel having a specific volume. Naturally, the smaller the voxel size, the more accurate the vortex reconstruction will be.  
+
+The procedure used to determine the minimum volume achievable, given the cameras' resolution, is similar to the one previously employed. The 3D reconstruction process is iteratively repeated for a selected test case until the resulting vortex volume converges. When further reducing the voxel size no longer leads to significant changes in the reconstructed volume, it indicates that the camera resolution does not allow for higher precision.  
+
+In this case, the achieved precision limit corresponds to a voxel size of $( 0.25 \times 0.25 \times 0.25 \quad \text{mm} $).
+
+Once the visible vortices in each frame were reconstructed, an object tracking procedure was applied to obtain the evolution of each cavitating vortex over time. 
+
+Identifying the same object in consecutive frames is relatively straightforward in this case. By setting criteria based on the vortex's size (volume), the position of its centroid, and the distribution of the voxels in space relative to it, it is easy to assign a unique identity to each vortex.
+Naturally, it may occur that a vortex is not segmented correctly in a given frame. This can lead to reconstruction errors. Interruptions in the dynamics due to these segmentation issues were addressed by adopting a procedure similar to the one described in Chapter \ref{chap:chapter5}.
+Once the three-dimensional shape of the vortices was obtained, their dynamics over time were analyzed, and their volume was computed by simply summing the volumes of the voxels that make up their structure. Figure \ref{fig:3dSnapshot} presents snapshots of the vortex evolution over time.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/0.pdf}
+        \caption{Time: 0.000 [s]}
+        \label{fig:figura1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/5.pdf}
+        \caption{Time: 0.020 [s]}
+        \label{fig:figura2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/8.pdf}
+        \caption{Time: 0.032 [s]}
+        \label{fig:figura3}
+    \end{subfigure}
+
+    \vspace{0.3cm}
+
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/11.pdf}
+        \caption{Time: 0.044 [s]}
+        \label{fig:figura4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/17.pdf}
+        \caption{Time: 0.068 [s]}
+        \label{fig:figura5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/24.pdf}
+        \caption{Time: 0.096 [s]}
+        \label{fig:figura6}
+    \end{subfigure}
+
+    \vspace{0.3cm}
+
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/29.pdf}
+        \caption{Time: 0.0116 [s]}
+        \label{fig:figura7}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/33.pdf}
+        \caption{Time: 0.132 [s]}
+        \label{fig:figura8}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/3D/36.pdf}
+        \caption{Time: 0.144 [s]}
+        \label{fig:figura9}
+    \end{subfigure}
+
+    \caption{Evolution of 3D Model of Tip Vortex Cavitation Over Time.}
+    \label{fig:3dSnapshot}
+\end{figure}
+
+The variation in the volume of the cavitating tip vortex described by this dynamics is shown in Figure \ref{fig:VortexVolume}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section2/Subsection2/VortexVolume.pdf}
+    \caption{Tip Cavitation Vortex Volume Variation Over Time.}
+
+    \label{fig:VortexVolume}
+\end{figure}
+
+Although the volume and its dynamics are extremely interesting, most models used to investigate tip vortex cavitation and its connection with noise.
+Most of the models in the literature describing this connection are based on the radius of the cavitating vortex. Therefore, examining the radius of the cavitating vortex is required for a direct comparison.
+Obtaining this data from the presented measurements is possible, although it can be complex.
+
+In this thesis, a method based on graph theory has been developed to calculate the radius of the vortex from the voxel cloud that describes its structure.
+
+First, it is necessary to define the vortex's "central axis," which is a line that describes its main direction. 
+Generally, a good approach to describing the main direction of a cloud of points is Principal Component Analysis (PCA). Although PCA is not fully sufficient in this case, it still provides a good starting point.
+PCA was employed to extract an approximate main direction and to organize the points along it. The direction defined by PCA was then used to select a subset of the total voxels. By selecting the voxels in such a way as to extract a random sample that is uniformly distributed along the PCA direction, it is possible to significantly reduce the complexity of the problem without losing important information.
+
+Calculating the distance matrix between the points within the subset enables the construction of a Minimum Spanning Tree (MST). 
+The MST is a fundamental concept in graph theory. Specifically, in this case, the MST is applied to the voxels of the subset to create a structure that connects all the points through the shortest possible path. In this structure, the voxels represent the graph's nodes, while the edges are weighted based on the distances between the nodes.
+
+To identify the main path within the graph, a Breadth-First Search (BFS) algorithm is applied to find the point furthest from a randomly selected initial node. Subsequently, the search is repeated from the identified node, allowing for the determination of the most distant pair of points and, consequently, the longest path within the point cloud. This path represents an basic approximation of the central axis.
+
+The extracted path is refined using spline interpolation to ensure a more accurate and robust representation of the central axis. This process results in a continuous and smooth curve that follows the distribution of the points. 
+To further enhance the stability of the outcome, the entire procedure is repeated multiple times, and the spline curves obtained in each iteration are averaged to reduce any unwanted variations.
+
+This method allows for the definition of a curve that represents the central axis of the voxel cloud constituting the vortex structure (Figure \ref{fig:centralAx}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/centralAx.pdf}
+    \caption{Central Axes Definition in a Voxel Cloud.}
+    \label{fig:centralAx}
+\end{figure}
+
+This curve can be used to estimate the radius of the cavitating vortex along its extension. The proposed method defines a series of segments using the central axis points. 
+
+Each segment represents the tangent line to the vortex at a specific point. Two planes orthogonal to each segment were defined. The first plane passes through the origin point of the segment, while the second plane passes through the endpoint.
+
+These two planes can be used to slice the vortex structure into sections. Each section consists exclusively of the voxels between the two planes that define it. 
+This way, a volume (given by the sum of all the voxels between the two planes) and a thickness (given by the distance between the planes) can be assigned to the section. 
+
+The area of the section is obtained by dividing the volume by the thickness. This area can be associated with the area of a disk. 
+The radius associated with this disk can be considered a reasonable estimate of the cavitating vortex radius (Figure \ref{fig:Radii}).
+
+Although this measurement is subject to some uncertainty due to the complexity of the procedure, it provides extremely valuable data for the study of the dynamics of the cavitating vortex and its associated phenomena.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth, trim= 3cm 0.5cm 3cm 0.5cm, clip]{FIGURES/Chapter6/Section2/Subsection2/Radii.pdf}
+    \caption{Tip Vortex Cavitation Radius Definition along his Central Axes.}
+    \label{fig:Radii}
+\end{figure}
+
+\section{Results Presentation}
+
+This Section presents and discusses the results of the analyses conducted. To ensure a clear and detailed overview of the study, the Section has been divided into subsections, each dedicated to a specific aspect of the analysis.
+Specifically, the first subsection will introduce the methods adopted for measuring the radius of the viscous vortex and the corresponding results. The second subsection will present the outcomes of the computer vision analyses for each of the studied conditions. Finally, the measurements of the radiated underwater noise will be described.
+The concluding part of this Section will compare the information obtained from the various measurements and discuss the results.
+
+\subsection{Measurement of the Viscous Vortex Flow}
+\label{sez:viscousCore}
+
+The measurement of the viscous vortex radius was repeated for each of the presented wakes. As mentioned in Section \ref{sez:setup2}, this measurement was performed by assessing the flow's axial and tangential velocity components.
+These velocity components were acquired using LDV measurements at 0° for each point listed in Table \ref{tab:viscousCoreTrav}.
+
+To determine the radius of the viscous vortex, it is assumed that the vertical distribution of axial velocity approximates the radial distribution azimuthal velocity, differing by a factor given by the cosine of the tip vortex pitch angle. This angle was estimated based on the phase angle and the blade angular positions, resulting in values close to 20°.
+It is worth noting that the correction applied to account for the actual vortex pitch has a minimal impact on the final results. In fact, this adjustment leaves the estimation of the viscous radius unchanged.
+
+The vortex measurement obtained in this way was compared with one of the most widely used vortex models \cite{Proctor2010}. As shown in Figures \ref{fig:ViscousCore1} and \ref{fig:ViscousCore3}, this comparison demonstrates good agreement between the measured azimuthal velocity of the vortex and the results predicted by the employed vortex model.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen1/U.eps}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen1/V.eps}
+    \end{subfigure}
+    
+    \vspace{1cm} 
+    
+    \begin{subfigure}[b]{0.75\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen1/Flow.eps}
+    \end{subfigure}
+    \caption{Tip Vortex Flow for Wake-Screen 1. (Upper Side: Axial Velocity (Left) and Vertical Velocity (Right). Bottom Side: Measured Azimuthal Velocity Distributions Against Vortex Model.)}
+    \label{fig:ViscousCore1}
+\end{figure}
+
+Figure \ref{fig:ViscousCore1} presents the characteristic axial and vertical velocities of the wake generated by wake-screen 1 (Figure \ref{fig:Wake1}). The vortex flow is clearly distinguishable from the distribution of these velocities. Some interesting observations can be made by focusing on the figure representing the azimuthal velocity distribution.
+In particular, the experimentally measured flow deviates significantly from a typical two-dimensional vortex.
+
+Examining the innermost region of the flow, the azimuthal velocity does not decay inversely with distance. This deviation occurs because, in that region, the flow enters the propeller’s streamtube. In that region, the pure vortex-induced velocity component mixes with the propeller wake, resulting in a flow different from an isolated vortex.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen3/U.eps}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen3/V.eps}
+    \end{subfigure}
+    
+    \vspace{1cm} 
+    
+    \begin{subfigure}[b]{0.75\textwidth}
+        \centering
+        \includegraphics[width=\linewidth, trim=0cm 0cm 0cm 0cm, clip]{FIGURES/Chapter6/Section3/SubSection1/screen3/Flow.eps}
+    \end{subfigure}
+    \caption{Tip Vortex Flow for Wake-Screen 3. (Upper Side: Axial Velocity (Left) and Vertical Velocity (Right). Bottom Side: Measured Azimuthal Velocity Distributions Against Vortex Model.)}
+    \label{fig:ViscousCore3}
+\end{figure}
+
+In the outer region of the flow, the azimuthal velocity shows an irregular trend with two apparent local maxima. Such behaviour could indicate the presence of two close vortices. One, of greater intensity, originates from the leading edge and rolls up in the wake, taking a significant amount of the vorticity shed by the blade. The other, smaller than the first one, is probably generated near the propeller tip due to the finite chord length of the blade.
+
+Observing Figure \ref{fig:ViscousCore3}, which represents the tip flow measured using wake-screen 3 (Figure \ref{fig:Wake2}), several similarities with the previous case can be noted. The flow also deviates significantly from that of a typical 2D vortex. The outermost region of the flow exhibits a highly irregular pattern, as seen in the previous case. However, some differences occur in this region.
+
+In particular, the two local maxima are absent, possibly due to a higher deceleration of the wake. In this case, the flow slowdown is more abrupt and intense. This could lead to a less uniform flow in the outer region, resulting in azimuthal velocity distributions that differ significantly from those predicted by the $1/r$ law.
+
+These considerations highlight that using a two-dimensional vortex model for underwater radiated noise prediction neglects some characteristic aspects of the phenomenon, which may play a significant role.
+
+Finally, it is important to highlight that the described procedure provides only an approximate characterization of the vortical flow at a specific location in space.
+The tip vortical flow characteristics are expected to vary during blade rotation, and a comprehensive characterization would require a dedicated measurement campaign. This should include data acquisition across the entire propeller disk, at different longitudinal positions, and for all three velocity components.
+
+Nevertheless, this is considered sufficient to obtain the reference data needed for the vortex model construction.
+
+\subsection{Measurement of the Cavitating Tip Vortex}
+\label{sez:cvResults2}
+
+The main results obtained using computer vision techniques are twofold.
+First, the variation in the volume of the cavitating vortex over time was measured. This data was recorded for each vortex identified in the videos.
+These dynamics can be grouped based on the image acquisition frequency and the propeller's rotational speed.
+As described in Section \ref{sez:setup2}, 64 images were acquired for each propeller revolution.
+
+This allows defining the variation in the vortex volume as a function of the blade angular position. However, the vortex position in space is defined only in the world referece frame with its origin in the first camera (as explained in Section \ref{sez}). 
+The position of the propeller and its conventional reference frame in the world referece frame is unknown, preventing the knowledge of the vortex position with respect to the propeller.
+To obtain this information, it would be necessary to establish the propeller position in the world referece frame.
+Defining such a reference system raises significant challenges. However, given its importance, this issue should be addressed in future studies.
+
+By analyzing the individual dynamics of the vortices as a function of angular position, it is possible to determine which blade generated them.
+To achieve this, the 64 blade positions were divided into four groups of 16 positions each. By examining the evolution of each vortex and identifying the angular position at which it reaches its maximum size, it is possible to associate a specific dynamic behavior with a specific blade.To achieve this, the 64 blade positions were organized into four groups of 16 positions each.
+
+The definition of angular position groups is not straightforward. 
+Simply dividing the possible angular positions into four intervals (ranging from 0 to 64) neglects certain aspects that may compromise the correct dynamics assignment to different blades.
+For instance, if vortices, under a specific condition,  reach their maximum 
+extension near the boundary between angular positions associated with different blades, incorrect assignments may frequently occur.
+
+To prevent this issue, these boundaries are defined dynamically by considering the statistical distribution of the angular positions where the maximum volumes are located. Based on this distribution, the angular positions are segmented so that, on average, the vortex volume reaches its maximum at the central angular positions.
+To further refine the process, the method used to identify the maximum and determine the associated blade adopts a slight smoothing procedure to remove some noise from the vortex dynamics. This step removes potential outliers that could compromise correct assignments.
+
+The second result obtained from the computer vision analysis is the radius of the cavitating vortex. As described in Section \ref{sez:CVProc2}, the cavitating radius was measured along the central axis of each reconstructed vortex. This measurement is taken at 100 evenly spaced points along the axes for each vortex.
+Figure \ref{fig:RadiiAx} illustrates an example of the variation in vortex radius along the curvilinear abscissa, representing its central axis. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Radii.pdf} 
+    \caption{Distribution of the cavitating vortex radius along its central axis.}
+    \label{fig:RadiiAx}
+\end{figure}
+
+In general, this measurement is rather noisy due to the algorithm used to define the vortex radius. For this reason, the analysis focuses on the average vortex radius as a function of the angular position.
+To obtain a more representative estimation, the average was computed using only the central values (from the 25th to the 75th percentile) of the radius distributions along the central axis of each vortex. This approach filters out less relevant regions.
+The initial portion of the vortex is typically overestimated due to its connection with sheet cavitation. In contrast, the opposite end underestimatesunderestimates the vortex size as it represents its tip.
+Moreover, in these regions, the measurement is generally less stable. At the extremities, the MST algorithm struggles to identify a path that accurately represents the vortex's mean axis.
+
+The following sections present the cavitating vortex volume radius for each analyzed condition and blade angle. 
+In these graphs, for each propeller blade (shown in different colours), the dark lines indicate the median value, while the coloured bars represent the second and third interquartile range.
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case1/VolumeStat.pdf}
+        \caption{Vortex Volume Variation for each blade along different angular position.}
+        \label{fig:VolumeCase1}
+    \end{subfigure}
+    
+    \vfill
+    
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case1/RadiiStat.pdf}
+        \caption{Mean Vortex Radius Variation for each blade along different angular position.}
+        \label{fig:RadiiCase1}
+    \end{subfigure}
+    \label{fig:Case1}
+    \caption{Condition A (Table \ref{tab:PresentedConditions}). The graphs shows statistical parameters for vortex volume and mean radius across angular positions for each propeller blade. The dark bars represent the means, while the boxes indicate the first and third interquartile ranges.}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case2/VolumeStat.pdf}
+        \caption{Vortex Volume Variation for each blade along different angular position.}
+        \label{fig:VolumeCase2}
+    \end{subfigure}
+    
+    \vfill
+    
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case2/RadiiStat.pdf}
+        \caption{Mean Vortex Radius Variation for each blade along different angular position.}
+        \label{fig:RadiiCase2}
+    \end{subfigure}
+    \label{fig:Case2}
+    \caption{Condition B (Table \ref{tab:PresentedConditions}). The graphs shows statistical parameters for vortex volume and mean radius across angular positions for each propeller blade. The dark bars represent the means, while the boxes indicate the first and third interquartile ranges.}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case3/VolumeStat.pdf}
+        \caption{Vortex Volume Variation for each blade along different angular position.}
+        \label{fig:VolumeCase3}
+    \end{subfigure}
+    
+    \vfill
+    
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case3/RadiiStat.pdf}
+        \caption{Mean Vortex Radius Variation for each blade along different angular position.}
+        \label{fig:RadiiCase3}
+    \end{subfigure}
+    \label{fig:Case3}
+    \caption{Condition C (Table \ref{tab:PresentedConditions}). The graphs shows statistical parameters for vortex volume and mean radius across angular positions for each propeller blade. The dark bars represent the means, while the boxes indicate the first and third interquartile ranges.}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case4/VolumeStat.pdf}
+        \caption{Vortex Volume Variation for each blade along different angular position.}
+        \label{fig:VolumeCase4}
+    \end{subfigure}
+    
+    \vfill
+    
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/Case4/RadiiStat.pdf}
+        \caption{Mean Vortex Radius Variation for each blade along different angular position.}
+        \label{fig:RadiiCase4}
+    \end{subfigure}
+    \label{fig:Case4}
+    \caption{Condition D (Table \ref{tab:PresentedConditions}). The graphs shows statistical parameters for vortex volume and mean radius across angular positions for each propeller blade. The dark bars represent the means, while the boxes indicate the first and third interquartile ranges.}
+\end{figure}
+
+These trends can identify specific key parameters in vortex dynamics. However, to avoid misleading conclusions it is important assess whether the results are affected by measurement issue, e.g. segmentation errors.
+By analyzing the graphs depicting the volume dynamics, it is possible to determine the maximum and average values of the vortex volume and the angular extent over which the vortex is detected. Other relevant data include the growth and decay rates of the vortex volume.
+Extracting quantitative data from the dynamics of the cavitating vortex radius is not straightforward. For this reason, the analysis has been restricted to the average radius while trying to describe the observed dynamics from a qualitative perspective.
+These data are organized and presented in Figure \ref{fig:VortexData}. Additionally, their numerical values are reported in Table \ref{tab:VortexData} for better precision.
+
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/VortexData.pdf}
+    \caption{Main Vortices Data Characteristic for Each Presented Condition}
+    \label{fig:VortexData}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        & Condizione A & Condizione B & Condizione C & Condizione D \\
+        \midrule
+        Max Volume & 2038.21 & 2649.13 & 794.50 & 2341.61 \\
+        Mean Volume & 907.14 & 1163.76 & 382.88 & 605.16 \\
+        Mean Radius & 2.70 & 2.69 & 1.87 & 2.08 \\
+        Extension & 244.69 & 206.72 & 168.75 & 274.22 \\
+        Rump Up & 19.66 & 23.44 & 9.78 & 18.34 \\
+        Rump Down & -12.50 & -23.14 & -5.60 & -10.55 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Main Vortices Data Characteristic for Each Presented Condition}
+    \label{tab:VortexData}
+\end{table}
+
+To organize the discussion as clearly as possible, it was decided to first examine each condition separately. A global overview of the data will be presented in the end of this Chapter (Section \ref{sez:Overview2}). In that section the results from the computer vision will be discussed including infromation from LDV and noise measurements.
+
+\begin{itemize}
+    \item \textbf{Condition A}: ($\mathrm{Wake-Screen3}$, $K_t = 0.20$, $\sigma_{07R} = 2.60$)
+    
+    Observing Figure \ref{fig:VolumeCase1}, the dynamics of each blade are easily distinguishable from those of the others. 
+    Comparing blades some differences can be observed however trends and values are rather consistent.
+    The mean over the blade of the maximum volume reached by the vortices is $2038 \,[mm^3]$, while the average volume is $907 \,[mm^3]$.  
+    The phenomenon persist for a rotation of the propeller of $244 ^{\circ}$.  
+    
+    By analyzing the shape of the vortex dynamics, the growth slope ($19.66 \quad [mm^3/^{\circ}]$) and collapse slope ($-12.50 \quad [mm^3/^{\circ}]$) can be measured. 
+    These values rapresents the expansion and contracion rate of the vortex volume therefore they provide an intesting measurement of the vortex dynamic.
+    More in details, two distinct phases can be identified by observing the ascending segments in the curves shown in Figure \ref{fig:VolumeCase1}. In the first phase, the volume growth is rapid. This growth phase is followed by a plateau (the plateau length vary depending on the specific blade being observed). Once the plateau ends, the growth continues at a slightly lower rate than in the initial phase.
+
+    Observing the videos, it is possible to find some explanations for this behaviour. 
+    First of all, the vortex growth is initially relatively rapid. The vortex originates from laminar cavitation into a leading-edge vortex that quickly extends along the blade chord. However, as the vortex grows, the cavitation at the leading edge collapses. 
+    As a result, for a certain period, one edge of the vortex (toward the trailing edge) continues to grow while the other (toward the leading edge) collapses. During these moments, the growth is damped. 
+    Growth resumes only when the leading-edge vortex completely collapses, leaving only the tip vortex cavitation. In this phase, an increase is observed in both the extension and radius of the vortex.  
+    
+    Once the maximum size is reached, the vortex begins to collapse. During this phase, the vortex progressively moves toward the trailing edge of the blade until it completely detaches from it. At this stage, the collapse is approximately linear until the final moments, where the slope decreases slightly.  
+    This last phase of the dynamics corresponds to the vortex position moving downstream of the propeller and toward the port side. Vortices in this position are poorly visible. Therefore, the estimate of vortex volume in this phase is highly uncertain.  
+    
+    To avoid issues related to the estimation of vortex extension, it is also interesting to observe the dynamics of the radii of cavitating vortices (Figure \ref{fig:RadiiCase1}).  
+    First, it is noticeable that the radius of the cavitating vortex is not constant across different angular positions. Although this behaviour is not clearly visible for all blades, a characteristic trend in the radius variation can be observed.  
+    Initially, the radius increases, rapidly reaching a value close to its maximum (far before the vortex attains its maximum volume).  
+    This initial growth phase is followed by a fluctuation phase, during which the radius oscillates around its maximum value. This phase corresponds to the final stage of volume growth.  
+    During this stage, the vortex undergoes significant modifications in its longitudinal extension while its cross-section oscillates around approximately $3 \quad mm$.  
+    When the vortex enters the collapse phase, its radius decreases gradually, eventually returning to its initial minimum values.  
+
+    After the inital fast decay, the vortex radius seems to stabilize to small values weakly deecaing with time. This means that vortex cavitation persist even outside the wake peack assuming smmother dynamics.
+    The evolution of the vortex in the propeller wake is not entierily visible in the videos, but visual obsevation confermed that vortex collapse occour far downstream the propeller.
+    This partially confermed the trend oveseved in the vortex volume notwithstanding the above mentioned uncertainty.
+
+    Finally, it is interesting to investigate the relationship between the radius of the cavitating vortex and its volume. To examine the connection between these characteristics, it was decided to analyze the correlation between the average volume across each dynamic and its corresponding radius. 
+    Averaging the volume and radii of the vortices over the observed dynamics effectively filters the noise present in the data. A significant portion of this noise arises during the initial and final phases of the dynamics, when the radius and volume of the vortex are small and the algorithms used are less robust. For this reason, considering the average value allows for a clearer analysis.
+    
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/CorrelationA.pdf}
+        \caption{Correlation between Mean Vortex Volume and Mean Vortex Radius in Condition A (Table \ref{tab:PresentedConditions})}
+        \label{fig:CorrelationA}
+    \end{figure}
+
+    As can be seen by observing Figure \ref{fig:CorrelationA}, there is a strong correlation between volume and mean radius. This means that larger cavitating vortices are typically characterized by a larger radius.
+ 
+    \item  \textbf{Condition B}: ($\mathrm{Wake-Screen3}$, $K_t = 0.24$, $\sigma_{07R} = 2.90$)
+    
+    As in the previous case, the different blades are easily distinguishable in Figure \ref{fig:VolumeCase2}. Moreover, in this case, the volume dynamics of the different cavitating vortices appear very similar across the various blades.  
+    Both the growth and collapse phases show an approximately linear trend. However, a small plateau can still be observed, albeit much less pronounced than in the previous case.  
+    
+    The maximum volume the vortices reach under these conditions is, on average, $2650 \text{ mm}^3$. Additionally, in this case, the growth rate ($23.44 \quad [\text{mm}^3/^{\circ}]$) and the decay rate ($-23.14 \quad [\text{mm}^3/^{\circ}]$) are very similar to each other. The growth and decay rates are significantly higher than in the previous case. This occurs because, although the persistence of the phenomenon is similar, the maximum volume reached is significantly larger in this case.
+    
+    The described characteristics constitute almost the only differences between this case and the previous condition.  
+    Although the cavitating vortex radius reaches slightly larger maximum dimensions (Figure \ref{fig:RadiiCase2}), its behaviour is analogous to the previous case's. Not only are the measured average radii almost identical, but the characteristic features of the dynamics are also the same.
+    As in the previous case, the correlation between the volume and the radius of the cavitating vortex appears to be quite robust (Figure \ref{fig:CorrelationB}).
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/CorrelationB.pdf}
+        \caption{Correlation between Mean Vortex Volume and Mean Vortex Radius in Condition B (Table \ref{tab:PresentedConditions})}
+        \label{fig:CorrelationB}
+    \end{figure}
+
+    \item \textbf{Condition C}: ($\mathrm{Wake-Screen3}$, $K_t = 0.20$, $\sigma_{07R} = 3.60$)
+    
+    In this case, the observed dynamics appear slightly different from those in the previous cases while still maintaining some similarities. For this reason, it is worth highlighting some peculiar characteristics of this condition.
+
+    By examining Figure \ref{fig:VolumeCase3}, a very rapid growth can be oserved. This growth leads the volume to reach its maximum extension.  
+    After reaching its peak, the decreasing phase begins. This phase presents some differences among the various observed blades. In fact, in some blades, the collapse begins, albeit slowly, immediately after reaching the maximum. In contrast, for others blades, the maximum is followed by a plateau phase in which the volume remains almost unchanged for a certain period.  
+    Once this phase is completed, the volume rapidly decreases until it reaches approximately its final values.
+    
+    Understanding whether this trend is due to the dynamics of the phenomenon or to an imprecision in the measurement is not straightforward. Nevertheless, it is possible to attempt an explanation by observing the videos.
+
+    Similar to previous cases, the cavitating vortex grows rapidly from the leading edge. However, as the blade progresses in its rotation, the leading-edge vortex becomes unstable. This causes the portion of cavitation connecting the central part of the vortex to thin significantly for certain blade positions.
+    In other cases, the vortex breaks apart, and the vortex edge near the leading edge separates from the one near the trailing edge.
+
+    This phenomenon partially explains why the vortex volume (at least for some blades) quickly reaches its maximum value (which is rather modest in magnitude) and then stops growing. 
+    Indeed, the thinning of the vortices ensures that the volume does not increase significantly for those polar positions. This justifies the presence of the plateau, which, therefore, appears to reflect the phenomenon's actual dynamics.
+
+    On the contrary, as the vortex shrinks, it moves into a less illuminated region of the field of view, complicating segmentation. This, combined with the vortex's reduced size, often results in incorrect segmentation (i.e., only a portion of it is detected), leading to an underestimation of its dimensions. The high dispersion of data in this phase highlights this issue.
+    
+    Regarding the dynamics of the radii of cavitating vortices shown in Figure \ref{fig:RadiiCase3}, the considerations are more similar to the previous cases. Although less clearly visible, the same dynamics previously described can be observed. 
+
+    Specifically, the dynamics of the vortex radius typically exhibit two peaks. Comparing this trend with the volume dynamics, it can be noted that the first peak occurs at the maximum volume. The second peak, on the other hand, appears just before the vortex collapse. Thus, while the total cavitation volume begins to decrease due to the reduction of cavitation at the leading edge, the radius of the cavitating vortex is still increasing and remains relatively high for a certain period.  
+
+    Finally the correlation between the vortex volume and its radius still relatively robust even in this case.
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/CorrelationC.pdf}
+        \caption{Correlation between Mean Vortex Volume and Mean Vortex Radius in Condition C (Table \ref{tab:PresentedConditions})}
+        \label{fig:CorrelationC}
+    \end{figure}
+
+    \item \textbf{Condition D}: ($\mathrm{Wake-Screen1}$, $K_t = 0.20$, $\sigma_{07R} = 2.35$)
+    
+    In this case, the cavitation behaviour is observed under the same propeller operating parameters as in case C but in the presence of a different wake, specifically characterized by a less intense wake peak. For this reason, the cavitation dynamics are substantially different from those observed in the previous cases.
+    
+    Also, for this reason, the analysis algorithm encounters greater difficulties in recognizing cavitating vortices in the present case.  
+    As a consequence, the results obtained in this case are significantly less clear compared to the other conditions presented.
+
+    The reasons why this occurs can be different, but they mainly depend on segmentation. In this case, the wake peak is less intense. This leads to a less decelerated and more uniform floe at the propeller, resulting in significantly different cavitation dynamics.
+    Observing the videos, it is evident that this results in a vortex detaching from the propeller's leading edge, which, compared to previous cases, has a more uniform and well-defined shape. Consequently, from an optical perspective, it produces fewer features and is more difficult to identify.
+
+    In addition, the vortex in the images does not cover the blade edge.  
+    The blade edge is a relatively strong object in the images and generates many features. Therefore, distinguishing the vortex shape from the blade edge is not straightforward. 
+    In other cases, the blade edge and the vortex are instead considered as a single object, still resulting in an error.  
+    This issue has not yet been resolved and will be the subject of future studies.
+
+    Although the analysis in this case is not entirely reliable, it is still possible to combine the information from the videos to make some considerations.
+
+    Specifically, Figure \ref{fig:VolumeCase4} appears to indicate that, at least for blades 1, 3, and 4, the maximum vortex size is larger than the previous case. While the uncertainty of the analysis certainly affects the maximum detected value, an approximate estimation from Figure \ref{fig:VolumeCase4} suggests that a plausible upper bound for the vortex volume is around $1500 \quad [mm^3]$.
+    Additionally, the mean radius appears slightly larger than that observed in condition C.
+
+    These aspects provide valuable insights into the phenomenon. Both this condition and condition C were obtained under the same values of $Kt$ and $\sigma/\sigma_i$. A more intense wake peak characterizes Condition C, resulting in a more decelerated and less uniform flow at the propeller disk. 
+    Due to this, the blade tip loading is expected to reach higher values for case C, causing in turn higher vortex strength. (This is indeed confirmed by the analysis of LDV and inception data). The larger vortex strength surely causes larger vortex cavitation for wake 3 with respect to wake 1, if conditions with the same cavitation number are considered. However, case C and case D share the same $\sigma/\sigma_i$, hence the cavitation number for case D is lower.
+
+    Understanding how to compare vortex strength for different flow conditions is not straightforward.    
+    It is evident that some form of normalization of the cavitation number is required, however, defining an effective normalization is highly complex. 
+    Normilizing the cavitation number with respect to $\sigma_i$, can be considered a reasonable choice. However, it does not necessarily guarantee an exact analogy of the phenomenon.
+
+    To fully understand the implications of using $\sigma/\sigma_i$ as a referece parameter it is necessary to clarify some critical aspects of the measurement process. 
+    Cavitation inception test, inherently involve some degree of uncertainty, despite beenig repeted several times. Moreover, since the tests were conducted on different days and with different test conditions, some of the observed variations may be attributed variation in water quality.
+
+    Nevertheless, some of the differences present in the data can be attributed to the characteristics of the propeller inflow in the two cases.
+    Specifically, the vortex detected in condition D persist for a significantly longer amount of time with respect to codition C (Figure \ref{fig:VortexData}).  
+    This fact is perfectly reasonable resembling the previous considerations about the wake fields. Indeed the wake 3 is characterized by a stronger and narrower wake peack causing a sharp increase in the vortex strength to its average value.
+
+    This leads to an earlier inception in the cavitation vortex if compared with the case D. Outside the wake peack the inflow on the propeller is almost similar in the two cases. 
+    This means that keeping the same $\sigma/\sigma_i$ the cavitation intensity outside the wake peack is larger in the condition D.
+
+    Finally, in this case, the correlation between the vortex volume and its radius is rather weak.
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection2/CorrelationD.pdf}
+        \caption{Correlation between Mean Vortex Volume and Mean Vortex Radius in Condition D (Table \ref{tab:PresentedConditions})}
+        \label{fig:CorrelationD}
+    \end{figure}
+
+    This result further confermed the measurement issues related to the segmentation procedure.
+    In addition vortices for case D are generally characterized by a relatively large length, meaning that their entire volume is frequently cutted. 
+
+\end{itemize}
+
+\subsection{Measurement of the Underwater Radiated Noise}
+\label{sez:NoiseRes}
+
+Noise measurements and subsequent post-processing were carried out following the guidelines established by the International Towing Tank Conference (ITTC) (\cite{ITTC_Noise}). 
+The Average Power Spectral Density, denoted as $G(f) [Pa^2/Hz]$, was estimated for each sound pressure signal $p(t)$ using the Welch method of averaging modified spectrograms. 
+This allows for the evaluation of the Sound Pressure Power Spectral Density $L_p$ (\ref{eq:SpectralDensity}), enabling a detailed analysis of noise characteristics, i.e., identifying dominant frequency components and potential sources of acoustic emissions.
+
+\begin{equation}
+    L_p(f) = 10 \log_{10} \left( \frac{G(f)}{P_{\text{ref}}^2} \right) \quad (\text{dB re } 1 \, \mu \text{Pa}^2/\text{Hz})
+    \label{eq:SpectralDensity}
+\end{equation}
+
+Although noise measurements were collected using two hydrophones, this thesis focuses on the radiated noise spectrum recorded by the in-flow hydrophone (H2). 
+Actually, the signals recorded by H1 provide similar information, however the resulting spectra are less clear because of the complex noise propagation path to this hydrophone, which was positioned in a separate chamber. Figure \ref{fig:NoiseSpectra} reports the noise spectra recorded by H2 for each of the presented conditions.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{FIGURES/Chapter6/Section3/SubSection3/Noise.eps}
+    \caption{Descrizione della figura}
+    \label{fig:NoiseSpectra}
+\end{figure}
+
+Several interesting characteristics of the reported spectra can be noted in the figure.
+
+The obtained spectra generally exhibit a significant concentration of acoustic energy in the mid-to-low frequency range, in good agreement with the presence of cavitating vortices.
+
+A prominent peak is generally associated with a large and persistent vortex. Actually this peak is attributed to the pulsation of the vortex volume at its natural frequency (\cite{ETV_JMSE}).
+This scheme is consistent with the spectrum obtained for  case D, for which the vortex, although not particularly large, is well-shaped and highly persistent. 
+Furthermore, free volume pulsation is not the  unique noise generation mechanisms for vortex cavitation. Actually, other phenomena may contribute significantly to the acoustic signature of tip vortex cavitation. These phenomena include the abrupt volume variations driven by the fluctuating propeller inflow, cavity collapses, and vortex burst.
+Generally, when this happens, the acoustic energy is distributed across a broader frequency band, as exemplified in case C.
+
+Actually, wake 3 appears to generate more complex and violent dynamics, with vortex break-up occurring frequently. As a result, spectra obtained for cases A, B, and C, are not characterized by a prominent low frequency peak, featuring instead larger high frequency noise compared with case D.
+As mentioned, this behaviour is clearly detectable in case C, for which the low frequency peak takes the form of a rather wide hump.
+Spectra for cases A and B are eaven more complex since two peaks are present at low frequency. The higher frequency peak could be consistent with vortex noise in terms of central frequency. However the cause of the presence of the lowest frequency peak is harder to explain.
+
+It should be noted that, in this case, sheet cavitation is present in addition to tip vortex cavitation and these phenomena strongly interact each other. 
+In addition, the noise generated by sheet cavitation alters the spectrum and can hide the peak associated with the vortex's presence.
+As a result, the noise spectra produced by tip vortex cavitation alone or combined with sheet cavitation can assume various shapes. Understanding how the observed phenomena affect the spectral characteristics is complex and requires in-depth studies.
+These results stress the limits of the commonly used models for tip vortex cavitation and noise.
+
+\section{Comparative Analysis of the Results}
+\label{sez:Overview2}
+
+Finally the presented data can be compared to provide a general overview of the obseved trends.
+
+Initially the condition A can be compared with condition B focusing on the effect of the thrust coefficient. 
+The thrust coefficient is directly related to the vortex strength. Consequently the case B features higher inception index. 
+According to the data adopting the same $\sigma/\sigma_i$ in the two cases results in very similar cavitation extent and dynamics. This is also confirmed by the noise spectra. 
+Hence in this case the variation in the propeller loading scales the development of cavitation without influencing significantly its dynamics. This result agrees pretty well with trends predicted by 2D vortex models. 
+
+Condition A and condition C can be compared to investigate the effect of the cavitation number. These cases show significant differences in almost all the observed macroscopic parameters.
+Both the vortex volume and radius are considerably smaller in condition C, where $\sigma$ is higher. Specifically, as shown in Figure \ref{fig:VortexData}, the ratio of vortex volume between condition A and condition C is approximately 2.5. The vortex radius is about $50 \%$ larger in condition A compared to condition C. Furthermore, the vortex persistence over time appears lower in condition C than in condition A (again by approximately $50 \%$).
+Although these data are not sufficient for a systematic analysis of the influence of the cavitation number on the development of cavitating vortices, they provide a quantitative perspective on the phenomenon, which is challenging to observe using other measurement techniques.
+
+A comparison of the radiated noise spectra further supports these findings. In particular, the noise spectrum for condition A exhibits higher energy in the low-to-mid frequency range. As previously discussed in Section \ref{sez:NoiseRes}, the inflow on the propeller disk for wake 3 leads to complex vortex dynamics. 
+However, the presence of more energetic low-frequency dynamics in condition A suggests the presence of larger cavitation, for which global volume fluctuation play a more significant role.
+Another interesting aspect can be deduced from the high-frequency components of the radiated noise spectra. In this case, the differences between conditions A and C are minimal. 
+This suggests that, for present cases, the amount and intensity of phenomena associated to high frequency noise is not significantly influenced by the cavitation size.
+
+The final parameter that can be investigated is the inflow to the propeller disk. To analyse this parameter, a comparison between condition C and condition D can be conducted.
+This comparison has already been partially addressed in Section \ref{sez:cvResults2}. However, it is worthwhile to review some key concepts in light of all the collected data.
+Examining the tip flow obtained from LDV measurements, wake 3 shows a vortex strength approximately $20 \%$ higher than wake 1. This observation suggests that the cavitating vortex may be more developed in condition C than in condition D. However, both the computer vision analysis and noise measurement data indicate the presence of a more significant cavitating vortex in condition D.
+A thorough investigation of this phenomenon is complex and would require dedicated studies. Nevertheless, some relevant considerations can still be made.
+
+Given the uncertainty associated with computer vision measurements in condition D, it is first necessary to verify whether the observed data are consistent with the results of the measurement. A visual analysis of the recorded images confirms that the cavitating vortex is consistently more pronounced in condition D than in condition C.
+Furthermore, the spectrum of the radiated noise supports this observation. Specifically, the noise spectrum in condition D exhibits a prominent peak, whereas in condition C, the energy in the low-to-mid frequency range is distributed over a broader bandwidth. This suggests that the spectrum in condition D is more significantly influenced by vortex pulsation.
+Comparing the high-frequency dynamics is more challenging, as the spectrum in condition D may be affected by a damping effect due to travelling bubbles. The presence of noise absorption cannot be fully demonstrated in post-processing, however it is conjectured because of the sooth shape of the spectrum at high frequency, compared with other spectra usually featuring a more irregular and wavy pattern.
+Ok che forse assorb, però wake 3 causa dinamiche + violente, quindi ok + high freq noise anche se vortice + piccolo.
+
+In conclusion, the analyzed data suggest that a more intense wake peak cannot be directly associated with a more intense cavitating vortex. 
+This occurs because flow conditions strongly influence cavitation dynamics. Condition C has a tip flow characterized by strong velocity gradients and intense dynamics. As a result, cavitation development appears to be dampened.
+
+\section{Conclusions}
+
+In this study, computer vision techniques were developed and applied to analyze the dynamics of tip vortex cavitation.
+This analysis was applied on a model-scale controllable pitch propeller tested under various operating and inflow conditions. 
+%, exploring different inflow patterns at the propeller disk, thrust coefficients, and cavitation numbers.
+The long term aim of this research is the analysis of tip vortex noise and its relation with vortex size and dynamics, with possible implications in vortex noise models.
+
+Actually, the prediction of underwater noise radiated by a cavitating propeller at the design stage often relies on semi-empirical approaches based on simple two-dimensional vortex models and the concept of vortex pulsation. Although being very effective thanks to the tuning on real data, these methods entirely neglect the contributions to the radiated noise of vortex dynamics others than free pulsation (e.g., inflow driven volume variations, cavity instabilities, collapses etc.).
+Within this framework, the approach presented here enables accurate data collection regarding large scale vortex dynamics. These data could facilitate the investigation of the influence of these phenomena on the produced noise.
+Assessing the significance of these contributions helps determining whether the state of the art models provide an acceptable description of the phenomenon or they could require further iprovements.
+
+Specifically, computer vision has enabled the measurement of the volume and radius of the cavitating vortex over time for each selected condition. These data provide a valuable opportunity to investigate vortex cavitation and its relationship with noise further.
+Obtaining this information using conventional measurement techniques would be highly challenging, if not impossible.
+
+In particular, the size and large scale dynamics of the cavitating vortex are strongly linked to the low-to-mid frequency spectral components of cavitating propellers. 
+In principle, assuming that the cavitating vortex behaves as a monopolar noise source, the rediated  acoustic pressure would be directly related to the second time derivative of the volume. Available data could allow comparing the noise associated to the measured volume variations with directly measured noise. 
+This task is not trivial, requiring an appropriate post-processing of volume data in order to compute reasonable time derivatives of these quantities, but it will be surely matter of future activities.
+
+On the other hand, the radius of a cavitating vortex is the main variable describing its size and dynamics according to most commonly used models, therefore its measurement is crucial for verifying the functioning of such models. 
+
+In order to complete the analysis of tip vortex radiated noise additional data have been collected along with vortex dynamics data.
+Firstly, the tip flow was measured, allowing for an estimate of the vortex strength and viscous radius. Furthermore, simultaneously with video acquisition for computer vision analysis, the noise radiated by the cavitating propeller was also measured.
+
+Using these data, the most popular predictive models can be applied. The resulting predictions can then be compared with experimental measurements to assess the significance of cavitation dynamics in noise prediction.
+
+The analyses presented in this thesis represent only a preliminary phase of the study. For this reason, only four conditions have been considered. These conditions were selected to test the developed techniques while providing an overview of the effects of some macro parameters on the development of cavitation.
+
+Although the study is still incomplete, the results suggest that dynamic effects may play a crucial role. In particular, the collected data indicate that when cavitation dynamics become more violent and unstable, the resulting noise spectrum deviates significantly from the predictions of vortex theory.
+
+Future analyses of collected data will target multiple aspects. The comparison of measurements with available models will be extended and improved in order to quantitatively assess limits and possible improvements of the models. Meanwhile, processing more operational conditions will allow studying the correlations between parameters describing vortex dynamics and the main features of noise spectra.
